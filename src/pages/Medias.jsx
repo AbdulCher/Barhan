@@ -20,7 +20,7 @@ function getYouTubeId(src) {
 }
 
 // ── Lightbox ───────────────────────────────────────────────
-function Lightbox({ photos, index, onClose, onPrev, onNext }) {
+function Lightbox({ photos, index, onPrev, onNext }) {
   const photo = photos[index];
 
   return (

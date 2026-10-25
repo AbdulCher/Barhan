@@ -8,15 +8,18 @@ export default function MusicModal({ album, onClose }) {
       onClick={onClose}
     >
       <div
-className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:flex-row"        style={{
-          maxWidth: "920px",
-          marginBottom: "96px",
-          background: "rgba(12,6,3,0.88)",
-          border: "1px solid rgba(226,150,0,0.15)",
-          boxShadow: "0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(226,150,0,0.08)",
-        }}
-        onClick={e => e.stopPropagation()}
-      >
+
+  className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:flex-row"
+  style={{
+    maxWidth: "920px",
+    maxHeight: "90vh",
+    overflowY: "auto",
+    background: "rgba(12,6,3,0.88)",
+    border: "1px solid rgba(226,150,0,0.15)",
+    boxShadow: "0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(226,150,0,0.08)",
+  }}
+  onClick={e => e.stopPropagation()}
+>
         {/* Ligne dorée en haut */}
         <div
           className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none z-10"
@@ -56,29 +59,24 @@ className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:fle
   ✕
 </button>
         {/* Colonne gauche — Pochette carrée */}
-        <div className="flex-shrink-0 relative self-stretch flex items-center"
-             style={{ width: "380px" }}>
-          <div className="relative w-full" style={{ paddingBottom: "100%" }}>
-            <img
-              src={album.cover}
-              alt={album.title}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ display: "block" }}
-            />
-            {/* Dégradé droit */}
-            <div
-              className="absolute inset-y-0 right-0 w-16 pointer-events-none"
-              style={{
-                background: "linear-gradient(to right, transparent, rgba(12,6,3,0.88))",
-              }}
-            />
-          </div>
-        </div>
-
+        <div className="flex-shrink-0 relative self-stretch flex items-center w-full sm:w-[380px]">
+  <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+    <img
+      src={album.cover}
+      alt={album.title}
+      className="absolute inset-0 w-full h-full object-cover"
+      style={{ display: "block" }}
+    />
+    <div
+      className="absolute inset-y-0 right-0 w-16 pointer-events-none"
+      style={{
+        background: "linear-gradient(to right, transparent, rgba(12,6,3,0.88))",
+      }}
+    />
+  </div>
+</div>
         {/* Colonne droite — Contenu */}
-        <div className="flex-1 flex flex-col justify-between px-7 py-8 min-w-0">
-
-          {/* En-tête */}
+<div className="flex-1 flex flex-col justify-between px-7 py-8 min-w-0 overflow-y-auto" style={{ paddingBottom: "2rem" }}>          {/* En-tête */}
           <div className="flex flex-col gap-1 mb-5">
             <p className="font-dm text-xs tracking-[0.22em] uppercase"
                style={{ color: "rgba(226,150,0,0.65)" }}>
@@ -113,7 +111,7 @@ className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:fle
           )}
 
           {/* Boutons */}
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-3 mt-6" style={{ marginBottom: "1.5rem" }}>
             {album.spotify && (
               <a
                 href={album.spotify}
