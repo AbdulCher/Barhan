@@ -24,99 +24,83 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }) {
   const photo = photos[index];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/97 backdrop-blur-sm flex flex-col animate-[fadeIn_0.2s_ease]">
+    
+    <div className="flex-1 flex items-center justify-center px-4 sm:px-16 pb-4 sm:pb-8 relative">
+  <div className="absolute inset-0 pointer-events-none"
+    style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(226,150,0,0.08) 0%, transparent 70%)" }}
+  />
 
-      <div className="flex items-center justify-between px-8 py-5 shrink-0">
-        <button
-          onClick={onClose}
-          className="font-dm flex items-center gap-2 text-xs tracking-widest uppercase
-          text-[#efdecd]/40 hover:text-[#a0b4ff] transition-colors duration-200"
-        >
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-            <path d="M10 3L5 8l5 5"/>
-          </svg>
-          Retour
-        </button>
-        <p className="font-dm text-sm text-[#efdecd]/30 tabular-nums">
-          {index + 1} / {photos.length}
-        </p>
-        <button
-          onClick={onClose}
-          className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-          style={{
-            background: "rgba(43,62,130,0.5)",
-            backdropFilter: "blur(12px)",
-            border: "1px solid rgba(100,136,255,0.4)",
-            boxShadow: "0 0 16px rgba(43,62,130,0.4)",
-            color: "#a0b4ff",
-          }}
-        >
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-            <path d="M3 3l10 10M13 3L3 13"/>
-          </svg>
-        </button>
-      </div>
+  {/* Boutons prev/next cachés sur mobile */}
+  <button onClick={onPrev}
+    className="hidden sm:flex absolute left-6 z-20 w-11 h-11 rounded-full items-center justify-center transition-all duration-200 hover:scale-110"
+    style={{
+      background: "rgba(43,62,130,0.5)",
+      backdropFilter: "blur(12px)",
+      border: "1px solid rgba(100,136,255,0.4)",
+      boxShadow: "0 0 16px rgba(43,62,130,0.4)",
+      color: "#a0b4ff",
+    }}
+  >
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+      <path d="M10 3L5 8l5 5"/>
+    </svg>
+  </button>
 
-      <div className="flex-1 flex items-center justify-center px-16 pb-8 relative">
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(226,150,0,0.08) 0%, transparent 70%)" }}
-        />
-        <button onClick={onPrev}
-          className="absolute left-20 z-20 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-          style={{
-            background: "rgba(43,62,130,0.5)",
-            backdropFilter: "blur(12px)",
-            border: "1px solid rgba(100,136,255,0.4)",
-            boxShadow: "0 0 16px rgba(43,62,130,0.4)",
-            color: "#a0b4ff",
-          }}
-        >
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-            <path d="M10 3L5 8l5 5"/>
-          </svg>
-        </button>
+  <div className="relative max-w-4xl w-full flex flex-col items-center gap-4">
+    <img
+      key={index}
+      src={photo.src}
+      alt={photo.alt}
+      className="w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+    />
+    <p className="font-dm text-sm tracking-widest uppercase text-[#efdecd]/40">{photo.alt}</p>
 
-        <div className="relative max-w-4xl w-full flex flex-col items-center gap-4">
-          <img
-            key={index}
-            src={photo.src}
-            alt={photo.alt}
-            className="w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
-          />
-          <p className="font-dm text-sm tracking-widest uppercase text-[#efdecd]/40">{photo.alt}</p>
-        </div>
-
-        <button onClick={onNext}
-          className="absolute right-20 z-20 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-          style={{
-            background: "rgba(43,62,130,0.5)",
-            backdropFilter: "blur(12px)",
-            border: "1px solid rgba(100,136,255,0.4)",
-            boxShadow: "0 0 16px rgba(43,62,130,0.4)",
-            color: "#a0b4ff",
-          }}
-        >
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-            <path d="M6 3l5 5-5 5"/>
-          </svg>
-        </button>
-      </div>
-
-      <div className="shrink-0 px-8 pb-6 overflow-x-auto">
-        <div className="flex gap-3 justify-center">
-          {photos.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => onPrev(i)}
-              className={`shrink-0 w-14 h-14 rounded-lg overflow-hidden border transition-all duration-200
-                ${i === index ? "border-[#e29600] scale-110" : "border-[#efdecd]/10 opacity-50 hover:opacity-80"}`}
-            >
-              <img src={p.src} alt={p.alt} className="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
-      </div>
+    {/* Boutons prev/next visibles uniquement sur mobile, sous la photo */}
+    <div className="flex sm:hidden gap-6 mt-2">
+      <button onClick={onPrev}
+        className="w-11 h-11 rounded-full flex items-center justify-center"
+        style={{
+          background: "rgba(43,62,130,0.5)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(100,136,255,0.4)",
+          color: "#a0b4ff",
+        }}
+      >
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+          <path d="M10 3L5 8l5 5"/>
+        </svg>
+      </button>
+      <button onClick={onNext}
+        className="w-11 h-11 rounded-full flex items-center justify-center"
+        style={{
+          background: "rgba(43,62,130,0.5)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(100,136,255,0.4)",
+          color: "#a0b4ff",
+        }}
+      >
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+          <path d="M6 3l5 5-5 5"/>
+        </svg>
+      </button>
     </div>
+  </div>
+
+  <button onClick={onNext}
+    className="hidden sm:flex absolute right-6 z-20 w-11 h-11 rounded-full items-center justify-center transition-all duration-200 hover:scale-110"
+    style={{
+      background: "rgba(43,62,130,0.5)",
+      backdropFilter: "blur(12px)",
+      border: "1px solid rgba(100,136,255,0.4)",
+      boxShadow: "0 0 16px rgba(43,62,130,0.4)",
+      color: "#a0b4ff",
+    }}
+  >
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+      <path d="M6 3l5 5-5 5"/>
+    </svg>
+  </button>
+</div>
   );
 }
 // ── VideoCard ──────────────────────────────────────────────
@@ -282,7 +266,7 @@ export default function Medias() {
               <p className="font-dm text-center text-[#efdecd]/40 text-xs tracking-widest uppercase">
                 {photos.length} photos — cliquez pour zoomer
               </p>
-              <div className="columns-2 md:columns-3 gap-4 space-y-4">
+              <div className="columns-1 md:columns-3 gap-4 space-y-4">
                 {photos.map((photo, index) => (
                   <div
                     key={photo.id}
