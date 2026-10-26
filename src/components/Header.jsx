@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import barhanLogo from "../assets/barhanLogoSans.png";
 
 const NAV_LINKS = [
-  { label: "HOME",    to: "/",       color: "transparent", text: "#efdecd" },
-  { label: "ABOUT",  to: "/about",  color: "transparent", text: "#efdecd" },
-  { label: "MUSIC",  to: "/music",  color: "transparent", text: "#efdecd" },
-  { label: "MEDIAS", to: "/medias", color: "transparent", text: "#efdecd" },
-  { label: "BOOK ME",to: "/bookme", color: "transparent", text: "#efdecd" },
-  {/*{ label: "SHOP",   to: "/shop",   color: "transparent", text: "#efdecd" },*/}
+  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "ABOUT",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "BOOK ME",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
 ];
-
 
     
 

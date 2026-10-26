@@ -95,17 +95,17 @@ function ConcertRow({ concert, index }) {
 
       {/* Date */}
       <div
-        className="flex-shrink-0 px-3 py-1 rounded-md"
-        style={{
-          background: "rgba(226,150,0,0.08)",
-          border: "1px solid rgba(226,150,0,0.15)",
-          minWidth: "110px",
-        }}
-      >
-        <span className="font-dm text-xs font-bold tracking-wide" style={{ color: "#e29600" }}>
-          {concert.date}
-        </span>
-      </div>
+  className="flex-shrink-0 px-3 py-1 rounded-md"
+  style={{
+    background: "rgba(43,62,130,0.2)",
+    border: "1px solid rgba(100,136,255,0.2)",
+    minWidth: "110px",
+  }}
+>
+  <span className="font-dm text-xs font-bold tracking-wide" style={{ color: "#a0b4ff" }}>
+    {concert.date}
+  </span>
+</div>
 
       {/* Lieu + ville */}
       <div className="flex flex-col flex-1 min-w-0">
@@ -126,30 +126,44 @@ function ConcertRow({ concert, index }) {
       {/* Bouton billetterie */}
       {concert.link ? (
         <a
-          href={concert.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs font-bold tracking-widest uppercase
-                     transition-all duration-200 hover:scale-105"
-          style={{
-            background: "rgba(226,150,0,0.1)",
-            border: "1px solid rgba(226,150,0,0.3)",
-            color: "#e29600",
-          }}
-        >
-          Réserver →
-        </a>
+  href={concert.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs font-bold tracking-widest uppercase
+             transition-all duration-200"
+  style={{
+    background: "rgba(43,62,130,0.5)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(100,136,255,0.4)",
+    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+    color: "#a0b4ff",
+  }}
+  onMouseEnter={e => {
+    e.currentTarget.style.background = "#e29600";
+    e.currentTarget.style.border = "1px solid #e29600";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+    e.currentTarget.style.color = "#000000";
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+    e.currentTarget.style.color = "#a0b4ff";
+  }}
+>
+  Réserver →
+</a>
       ) : (
         <span
-          className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs tracking-widest uppercase"
-          style={{
-            background: "rgba(239,222,205,0.08)",
-            border: "1px solid rgba(239,222,205,0.08)",
-            color: "rgba(239,222,205,0.25)",
-          }}
-        >
-          Bientôt
-        </span>
+  className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs tracking-widest uppercase"
+  style={{
+    background: "rgba(43,62,130,0.2)",
+    border: "1px solid rgba(100,136,255,0.15)",
+    color: "rgba(160,180,255,0.35)",
+  }}
+>
+  Bientôt
+</span>
       )}
     </div>
   );
@@ -159,12 +173,13 @@ function ConcertRow({ concert, index }) {
 function PressQuote({ item }) {
   return (
     <div
-      className="flex flex-col gap-3 p-6 rounded-xl"
-      style={{
-        background: "rgba(239,222,205,0.08)",
-        border: "1px solid rgba(239,222,205,0.08)",
-      }}
-    >
+  className="flex flex-col gap-3 p-6 rounded-xl"
+  style={{
+    background: "rgba(43,62,130,0.15)",
+    border: "1px solid rgba(100,136,255,0.2)",
+    backdropFilter: "blur(12px)",
+  }}
+>
       <div
         className="font-dm text-3xl leading-none"
         style={{ color: "rgba(226,150,0,0.3)" }}
@@ -417,31 +432,59 @@ export default function About() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-                    href="mailto:contact@barhan.fr"
-                    className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
-                               font-dm text-sm font-bold tracking-widest uppercase
-                               transition-all duration-200 hover:scale-[1.02]"
-                    style={{
-                      background: "rgba(226,150,0,0.08)",
-                      border: "1px solid rgba(226,150,0,0.25)",
-                      color: "#e29600",
-                    }}
-                  >
-                    ✉ Email
-                  </a>
+  href="mailto:contact@barhan.fr"
+  className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
+             font-dm text-sm font-bold tracking-widest uppercase
+             transition-all duration-200"
+  style={{
+    background: "rgba(43,62,130,0.5)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(100,136,255,0.4)",
+    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+    color: "#a0b4ff",
+  }}
+  onMouseEnter={e => {
+    e.currentTarget.style.background = "#e29600";
+    e.currentTarget.style.border = "1px solid #e29600";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+    e.currentTarget.style.color = "#000000";
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+    e.currentTarget.style.color = "#a0b4ff";
+  }}
+>
+  ✉ Email
+</a>
                   <a
-                    href="/contact"
-                    className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
-                               font-dm text-sm font-bold tracking-widest uppercase
-                               transition-all duration-200 hover:scale-[1.02]"
-                    style={{
-                      background: "rgba(239,222,205,0.08)",
-                      border: "1px solid rgba(239,222,205,0.12)",
-                      color: "rgba(239,222,205,0.7)",
-                    }}
-                  >
-                    ✦ Formulaire de contact
-                  </a>
+  href="/bookme"
+  className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
+             font-dm text-sm font-bold tracking-widest uppercase
+             transition-all duration-200"
+  style={{
+    background: "rgba(43,62,130,0.5)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(100,136,255,0.4)",
+    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+    color: "#a0b4ff",
+  }}
+  onMouseEnter={e => {
+    e.currentTarget.style.background = "#e29600";
+    e.currentTarget.style.border = "1px solid #e29600";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+    e.currentTarget.style.color = "#000000";
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+    e.currentTarget.style.color = "#a0b4ff";
+  }}
+>
+  ✦ Formulaire de contact
+</a>
                 </div>
               </div>
             </div>
