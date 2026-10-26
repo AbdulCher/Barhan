@@ -157,7 +157,7 @@ function VideoCard({ src, title }) {
 export default function Medias() {
   const [activeTab, setActiveTab] = useState('photos')
   const [currentIndex, setCurrentIndex] = useState(null);
-  const [showNav, setShowNav] = useState(true)
+  const [showNav] = useState(true)
   const n = photos.length;
 
   const openPhoto  = (i) => setCurrentIndex(i);
@@ -185,18 +185,17 @@ export default function Medias() {
   }, [currentIndex]);
 
   useEffect(() => {
-    let timeout
-    const handleScroll = () => {
-      setShowNav(false)
-      clearTimeout(timeout)
-      timeout = setTimeout(() => setShowNav(true), 800)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      clearTimeout(timeout)
-    }
-  }, [])
+  if (currentIndex !== null) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+  return () => {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  };
+}, [currentIndex]);
 
   return (
     <>
@@ -268,12 +267,12 @@ export default function Medias() {
               </p>
               <div className="columns-1 md:columns-3 gap-4 space-y-4">
                 {photos.map((photo, index) => (
-                  <div
-                    key={photo.id}
-                    onClick={() => openPhoto(index)}
-                    className="relative break-inside-avoid group cursor-pointer overflow-hidden rounded-xl
-                               border border-[#efdecd]/20 hover:border-[#e29600] hover:border-2 transition-all duration-300"
-                  >
+          <div
+  key={photo.id}
+  onClick={() => { if (window.innerWidth >= 640) openPhoto(index); }}
+  className="relative break-inside-avoid group overflow-hidden rounded-xl
+             border border-[#efdecd]/20 sm:cursor-pointer sm:hover:border-[#e29600] sm:hover:border-2 transition-all duration-300"
+>
                     <img
                       src={photo.src}
                       alt={photo.alt}
