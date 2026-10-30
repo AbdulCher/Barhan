@@ -31,24 +31,35 @@ const CONCERTS = [
 ];
 
 // ── Citations presse ───────────────────────────────────────────
+
 const PRESS = [
   {
     id: 1,
     quote: "Une voix qui traverse les frontières et les époques.",
     source: "RFI Musique",
-    year: "2019",
+    year: "2009",
+    url: "https://www.rfi.fr/fr/contenu/20091118-bakhan-voix-plurielle",
   },
   {
     id: 2,
-    quote: "Un artiste qui réinvente le dialogue entre l'Afrique et l'Occident.",
-    source: "Jazz Magazine",
-    year: "2020",
+    quote: "Parcours et biographie de Barhan, artiste entre jazz, blues et traditions africaines.",
+    source: "InfoConcert",
+    year: "2024",
+    url: "https://www.infoconcert.com/artiste/barhan-181922/concerts/presentation",
+  },
+    {
+    id: 3,
+    quote: "Référence des cultures africaines.",
+    source: "Africultures",
+    year: "2024",
+    url: "https://africultures.com/personnes/?no=26627",
   },
   {
-    id: 3,
-    quote: "Barhan Ndiaye possède ce rare talent de rendre l'universel intime.",
-    source: "Le Monde",
-    year: "2021",
+    id: 4,
+    quote: "Je demande que nous soyons mieux traités par notre ministère de tutelle.",
+    source: "Cridem",
+    year: "2013",
+    url: "https://m.cridem.org/C_Info.php?article=633373",
   },
 ];
 
@@ -171,37 +182,45 @@ function ConcertRow({ concert, index }) {
 
 // ── Composant citation presse ──────────────────────────────────
 function PressQuote({ item }) {
+  const Wrapper = item.url ? "a" : "div";
   return (
-    <div
-  className="flex flex-col gap-3 p-6 rounded-xl"
-  style={{
-    background: "rgba(43,62,130,0.15)",
-    border: "1px solid rgba(100,136,255,0.2)",
-    backdropFilter: "blur(12px)",
-  }}
->
-      <div
-        className="font-dm text-3xl leading-none"
-        style={{ color: "rgba(226,150,0,0.3)" }}
-      >
+    <Wrapper
+      {...(item.url ? { href: item.url, target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="flex flex-col gap-3 p-6 rounded-xl transition-all duration-200"
+      style={{
+        background: "rgba(43,62,130,0.15)",
+        border: "1px solid rgba(100,136,255,0.2)",
+        backdropFilter: "blur(12px)",
+        ...(item.url ? { cursor: "pointer" } : {}),
+      }}
+      onMouseEnter={item.url ? e => {
+        e.currentTarget.style.border = "1px solid rgba(100,136,255,0.5)";
+        e.currentTarget.style.background = "rgba(43,62,130,0.25)";
+      } : undefined}
+      onMouseLeave={item.url ? e => {
+        e.currentTarget.style.border = "1px solid rgba(100,136,255,0.2)";
+        e.currentTarget.style.background = "rgba(43,62,130,0.15)";
+      } : undefined}
+    >
+      <div className="font-dm text-3xl leading-none" style={{ color: "rgba(160,180,255,0.3)" }}>
         "
       </div>
-      <p
-        className="font-dm text-base leading-relaxed italic"
-        style={{ color: "rgba(239,222,205,0.75)" }}
-      >
+      <p className="font-dm text-base leading-relaxed italic" style={{ color: "rgba(239,222,205,0.75)" }}>
         {item.quote}
       </p>
       <div className="flex items-center gap-2 mt-1">
-        <div className="h-px flex-1" style={{ background: "rgba(226,150,0,0.15)" }} />
-        <span className="font-dm text-xs tracking-widest uppercase" style={{ color: "rgba(226,150,0,0.6)" }}>
+        <div className="h-px flex-1" style={{ background: "rgba(100,136,255,0.15)" }} />
+        <span className="font-dm text-xs tracking-widest uppercase" style={{ color: "rgba(160,180,255,0.6)" }}>
           {item.source}
         </span>
         <span className="font-dm text-xs" style={{ color: "rgba(239,222,205,0.2)" }}>
           {item.year}
         </span>
+        {item.url && (
+          <span className="font-dm text-xs" style={{ color: "rgba(160,180,255,0.4)" }}>→</span>
+        )}
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
@@ -294,20 +313,32 @@ export default function About() {
             <div className="flex justify-center gap-2 md:gap-3 flex-wrap">
               {BLOCKS.map(({ id, label }) => (
                 <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className={`
-                    font-bold text-[13px] tracking-[0.12em] uppercase
-                    px-5 py-2 rounded-full border
-                    transition-all duration-300
-                    ${activeBlock === id
-                      ? "text-[#e29600] border-[#e29600] bg-[#e29600]/10 shadow-[0_0_12px_rgba(226,150,0,0.2)]"
-                      : "text-[#efdecd]/50 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40 hover:bg-[#e29600]/5"
-                    }
-                  `}
-                >
-                  {label}
-                </button>
+  key={id}
+  onClick={() => scrollTo(id)}
+  className="font-bold text-[13px] tracking-[0.12em] uppercase px-5 py-2 rounded-full transition-all duration-200"
+  style={{
+    background: activeBlock === id ? "rgba(43,62,130,0.6)" : "rgba(43,62,130,0.2)",
+    border: activeBlock === id ? "1px solid rgba(100,136,255,0.6)" : "1px solid rgba(100,136,255,0.2)",
+    boxShadow: activeBlock === id ? "0 0 16px rgba(43,62,130,0.4)" : "none",
+    color: activeBlock === id ? "#a0b4ff" : "rgba(160,180,255,0.4)",
+  }}
+  onMouseEnter={e => {
+    if (activeBlock !== id) {
+      e.currentTarget.style.background = "rgba(43,62,130,0.35)";
+      e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+      e.currentTarget.style.color = "#a0b4ff";
+    }
+  }}
+  onMouseLeave={e => {
+    if (activeBlock !== id) {
+      e.currentTarget.style.background = "rgba(43,62,130,0.2)";
+      e.currentTarget.style.border = "1px solid rgba(100,136,255,0.2)";
+      e.currentTarget.style.color = "rgba(160,180,255,0.4)";
+    }
+  }}
+>
+  {label}
+</button>
               ))}
             </div>
 
@@ -336,26 +367,53 @@ export default function About() {
                 <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Bio</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 p-5 font-light"
+                style={{
+                  background: "rgba(43,62,130,0.15)",
+                  border: "1px solid rgba(100,136,255,0.2)",
+                  backdropFilter: "blur(12px)",
+                }}
+              >
                 Son aventure musicale commence en 1999 sous le pseudonyme d'Alias Chico. Son duo avec le rappeur
                 Papis Kimmi donne naissance à <em>Nebkhi Mauritanie</em>, un album qui rencontre un immense succès
                 national et fait connaître sa voix à travers toute la Mauritanie.
               </p>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
-                Désireux d'explorer de nouveaux horizons, il s'éloigne du rap en 2003 pour embrasser un univers
-                plus instrumental et vocal. Sa collaboration avec le guitariste Philippe Collucci mène à l'album
-                <em> Talibé</em> (2004), ouvrant les portes à des rencontres prestigieuses, dont la diva
-                mauritanienne Dimi Mint Abba. Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
-                le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
-                perfectionne sa guitare et affine sa plume.
-              </p>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
-                Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort <em>N'deysan</em> à Paris
-                en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
-                Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance en 2019 à son album
-                acclamé <em>Mots de tête</em> — une œuvre qui unit le patrimoine mauritanien à la modernité du
-                jazz, célébrant le dialogue des cultures et l'unité des peuples.
-              </p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light p-5 rounded-xl"
+   style={{
+     background: "rgba(43,62,130,0.15)",
+     border: "1px solid rgba(100,136,255,0.2)",
+     backdropFilter: "blur(12px)",
+   }}
+>
+  Désireux d'explorer de nouveaux horizons, il s'éloigne du rap en 2003 pour embrasser un univers
+  plus instrumental et vocal. Sa collaboration avec le guitariste Philippe Collucci mène à l'album
+  <em> Talibé</em> (2004), ouvrant les portes à des rencontres prestigieuses, dont les divas
+  mauritaniennes Dimi Mint Abba et Maalouma Mint El Meidah. Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
+  le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
+  perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera chaque grande
+  vacance tout le sahel par voix terrestre, de Nouakchott ou de Dakar à N'Djaména, guitare
+  en main, à la rencontre des peuples. Il s'installe de manière constante au Tchad en 2007 et crée
+  le groupe <em>ADA</em> avec le guitariste camerounais Alex Wandji. Il collabore régulièrement avec
+  le Centre Culturel Français, travaille aux côtés de la chanteuse tchadienne Mounira Mitchala et
+  participe aux <em>Voix du Sahel</em>, animées par le flûtiste nigérien Yancouba Moumini et le
+  guitariste franco-algérien Kamal Zekri.
+</p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light p-5 rounded-xl"
+   style={{
+     background: "rgba(43,62,130,0.15)",
+     border: "1px solid rgba(100,136,255,0.2)",
+     backdropFilter: "blur(12px)",
+   }}
+>
+  Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort <em>N'deysan</em> à Paris
+  en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
+  Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance à son album
+  acclamé <em>Mots de tête</em>, enregistré au Kenya avec son groupe lors d'un séjour entre 2010 et 2013 —
+  une œuvre qui unit le patrimoine mauritanien à la modernité du jazz, célébrant le dialogue des cultures
+  et l'unité des peuples. De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,
+  pianiste issu de l'école de musique Didier Lockwood à Melun, qui lui présentera tous les membres
+  de son groupe actuel.
+</p>
             </div>
 
             {/* ── CONCERTS ── */}
@@ -444,47 +502,39 @@ export default function About() {
     color: "#a0b4ff",
   }}
   onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#a0b4ff";
-  }}
+  e.currentTarget.style.border = "1px solid #e29600";
+  e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+}}
+onMouseLeave={e => {
+  e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+  e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+}}
 >
   ✉ Email
 </a>
                   <a
-  href="/bookme"
-  className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
-             font-dm text-sm font-bold tracking-widest uppercase
-             transition-all duration-200"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-    color: "#a0b4ff",
-  }}
-  onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#a0b4ff";
-  }}
->
-  ✦ Formulaire de contact
-</a>
+                    href="/bookme"
+                    className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
+                    font-dm text-sm font-bold tracking-widest uppercase
+                    transition-all duration-200"
+                    style={{
+                      background: "rgba(43,62,130,0.5)",
+                      backdropFilter: "blur(12px)",
+                      border: "1px solid rgba(100,136,255,0.4)",
+                      boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+                      color: "#a0b4ff",
+                    }}
+                   onMouseEnter={e => {
+  e.currentTarget.style.border = "1px solid #e29600";
+  e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+}}
+onMouseLeave={e => {
+  e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+  e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+}}
+                  >
+                    ✦ Formulaire de contact
+                  </a>
                 </div>
               </div>
             </div>
@@ -509,19 +559,17 @@ export default function About() {
       >
         {BLOCKS.map(({ id, label }) => (
           <button
-            key={id}
-            onClick={() => scrollTo(id)}
-            className={`
-              font-bold text-[11px] tracking-[0.1em] uppercase px-4 py-1.5 rounded-full
-              transition-all duration-200
-              ${activeBlock === id
-                ? "text-[#e29600] bg-[#e29600]/12"
-                : "text-[#efdecd]/40 hover:text-[#efdecd]/70"
-              }
-            `}
-          >
-            {label}
-          </button>
+  key={id}
+  onClick={() => scrollTo(id)}
+  className="font-bold text-[11px] tracking-[0.1em] uppercase px-4 py-1.5 rounded-full transition-all duration-200"
+  style={{
+    background: activeBlock === id ? "rgba(43,62,130,0.6)" : "transparent",
+    color: activeBlock === id ? "#a0b4ff" : "rgba(160,180,255,0.3)",
+    border: activeBlock === id ? "1px solid rgba(100,136,255,0.4)" : "1px solid transparent",
+  }}
+>
+  {label}
+</button>
         ))}
       </div>
 

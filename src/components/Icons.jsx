@@ -16,12 +16,6 @@ const ICONS = [
     color: "#E1306C",
   },
   {
-    icon: <FaFacebook />,
-    link: "https://www.facebook.com/barhany",
-    label: "Facebook",
-    color: "#1877F2",
-  },
-  {
     icon: <FaSpotify />,
     link: "https://open.spotify.com/intl-fr/artist/2n39AGJsmmS7qQBIBYl0lo?flow_ctx=88ff8059-0ae7-4cdf-8162-31a5449f1936%3A1792274945",
     label: "Spotify",
@@ -86,3 +80,4 @@ export default function Icons() {
     </>
   );
 }
+

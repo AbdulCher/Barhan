@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import barhanLogo from "../assets/barhanLogoSans.png";
 
 const NAV_LINKS = [
-  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#a04ff" },
   { label: "ABOUT",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
   { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
   { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
@@ -59,8 +59,8 @@ export default function Header() {
       <nav className="relative max-w-6xl mx-auto flex items-center justify-between py-3 px-4 sm:px-6">
 
         <Link to="/" aria-label="Barhan Music — Accueil">
-  <img src={barhanLogo} alt="Barhan Music" className="h-12 w-auto" />
-</Link>
+          <img src={barhanLogo} alt="Barhan Music" className="h-12 w-auto" />
+        </Link>
 
         <ul className="hidden md:flex items-center gap-0.5 lg:gap-1">
           {NAV_LINKS.map((link) => {
