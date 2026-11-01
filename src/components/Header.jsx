@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import barhanLogo from "../assets/barhanLogoSans.png";
+import barhanLogo from "../assets/barhanLogoSans.webp";
 
 const NAV_LINKS = [
   { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#a04ff" },

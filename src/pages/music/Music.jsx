@@ -5,8 +5,8 @@ import { albums } from "./Albums";
 import { tracks } from "../../data/Tracks";
 import Icons from "../../components/Icons";
 import Footer from "../../components/Footer";
-import BgColor from "../../assets/bgColor.jpg";
-import Coussinfin from "../../assets/coussinfin.jpg";
+import BgColor from "../../assets/bgColor.webp";
+import Coussinfin from "../../assets/coussinfin.webp";
 import { Helmet } from "react-helmet-async";
 
 function AlbumCard({ album, onListen }) {
@@ -25,12 +25,6 @@ function AlbumCard({ album, onListen }) {
           : "border-[#efdecd]/20 border-l-[#efdecd] hover:border-[#e29600]/50 hover:shadow-[0_0_20px_rgba(226,150,0,0.08)]"}
       `}
     >
-      <Helmet>
-  <title>Barhan Ndiaye — Musique & Discographie</title>
-  <meta name="description" content="Découvrez la discographie de Barhan Ndiaye : albums, extraits audio et univers musical entre jazz, blues et traditions africaines." />
-  <meta property="og:title" content="Barhan Ndiaye — Musique & Discographie" />
-  <meta property="og:url" content="https://www.barhan.fr/music" />
-</Helmet>
       <div
         className="absolute top-0 left-0 right-0 h-[2px] z-10 pointer-events-none"
         style={{
@@ -276,6 +270,13 @@ export default function Music() {
 
   return (
     <>
+      <Helmet>
+        <title>Barhan — Musique & Discographie</title>
+        <meta name="description" content="Découvrez la discographie de Barhan : albums, extraits audio et univers musical entre jazz, blues et traditions africaines." />
+        <meta property="og:title" content="Barhan — Musique & Discographie" />
+        <meta property="og:url" content="https://www.barhan.fr/music" />
+      </Helmet>
+
       {/* BG tissu */}
       <div
         className="fixed inset-0 z-0"

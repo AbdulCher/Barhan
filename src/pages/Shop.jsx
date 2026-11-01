@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Icons from "../components/Icons";
 import { PRODUCTS, CATEGORIES } from "./ShopData";
 import useCart from "../hooks/useCart";
-import Coussindesign from "../assets/coussindesign.jpg";
+import Coussindesign from "../assets/coussindesign.webp";
 
 function ProductPlaceholder({ category }) {
   const icons = {

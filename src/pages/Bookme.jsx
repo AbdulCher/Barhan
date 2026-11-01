@@ -2,8 +2,8 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Icons from "../components/Icons";
 import Footer from "../components/Footer";
-import BgColor from "../assets/bgColor.jpg";
-import PortraitHero from "../assets/portraitHero.jpg";
+import BgColor from "../assets/bgColor.webp";
+import PortraitHero from "../assets/portraitHero.webp";
 import { Helmet } from "react-helmet-async";
 
 const CONTACT = {
@@ -14,10 +14,10 @@ const CONTACT = {
 
 const ASSOCIATION = {
   nom: "Association Ndeysan",
-  adresse: "12 rue des Arts, 75011 Paris",
-  siret: "123 456 789 00012",
-  email: "asso@kennenmusic.fr",
-  tel: "+33 1 23 45 67 89",
+  adresse: "77 rue des Cités, 93300 Aubervilliers",
+  siret: "751 210 121 00016",
+  email: "ndaysanasso@gmail.com",
+  
 };
 
 const DOWNLOADS = [
@@ -222,9 +222,7 @@ export default function Bookme() {
                   <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><path d="M8 1C5.8 1 4 2.8 4 5c0 3 4 9 4 9s4-6 4-9c0-2.2-1.8-4-4-4z"/><circle cx="8" cy="5" r="1.5"/></svg>}>
                     {CONTACT.ville}
                   </InfoRow>
-                  <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><path d="M2 3h3l1.5 3.5-1.5 1a9 9 0 0 0 3.5 3.5l1-1.5L13 11v3a1 1 0 0 1-1 1C5.4 15 1 10.6 1 5a1 1 0 0 1 1-2z"/></svg>}>
-                    <a href={`tel:${CONTACT.tel}`} className="hover:text-[#e29600] transition-colors">{CONTACT.tel}</a>
-                  </InfoRow>
+                  
                   <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 4l7 5 7-5"/></svg>}>
                     <a href={`mailto:${CONTACT.email}`} className="hover:text-[#e29600] transition-colors">{CONTACT.email}</a>
                   </InfoRow>
@@ -249,9 +247,7 @@ export default function Bookme() {
                   <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 4l7 5 7-5"/></svg>}>
                     <a href={`mailto:${ASSOCIATION.email}`} className="hover:text-[#e29600] transition-colors">{ASSOCIATION.email}</a>
                   </InfoRow>
-                  <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><path d="M2 3h3l1.5 3.5-1.5 1a9 9 0 0 0 3.5 3.5l1-1.5L13 11v3a1 1 0 0 1-1 1C5.4 15 1 10.6 1 5a1 1 0 0 1 1-2z"/></svg>}>
-                    <a href={`tel:${ASSOCIATION.tel}`} className="hover:text-[#e29600] transition-colors">{ASSOCIATION.tel}</a>
-                  </InfoRow>
+                  
                   <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><rect x="1" y="1" width="14" height="14" rx="1.5"/><path d="M4 6h8M4 9h5"/></svg>}>
                     <span className="text-[#efdecd]">SIRET</span>{" "}{ASSOCIATION.siret}
                   </InfoRow>

@@ -17,7 +17,7 @@ const ICONS = [
   },
   {
     icon: <FaSpotify />,
-    link: "https://open.spotify.com/intl-fr/artist/2n39AGJsmmS7qQBIBYl0lo?flow_ctx=88ff8059-0ae7-4cdf-8162-31a5449f1936%3A1792274945",
+    link: "https://open.spotify.com/user/olva0z7obnc6sz6tmqjp0mciy?si=74b90630f25d41fc",
     label: "Spotify",
     color: "#1DB954",
   },

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
-import PartnerLogo from "../assets/chachalogo.png";
+import PartnerLogo from "../assets/chachalogo.webp";
 
 const NAV_LINKS = [
   { label: "HOME",    to: "/" },

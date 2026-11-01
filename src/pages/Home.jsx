@@ -3,7 +3,7 @@
 // ============================================================
 
 import { Helmet } from "react-helmet-async";
-import BgHeros from "../assets/bgHeros.jpg";
+import BgHeros from "../assets/bgHeros.webp";
 import Header from "../components/Header";
 import Icons from "../components/Icons";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import ClipSection from "../components/ClipSection";
 import Footer from "../components/Footer";
 import CarouselSection from "../components/CarouselSection";
 import TypewriterText from "../components/TypewriterText";
-import barhanLogo from "../assets/barhanLogoSans.png";
+import barhanLogo from "../assets/barhanLogoSans.webp";
 
 export default function Home() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);

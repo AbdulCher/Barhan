@@ -1,5 +1,5 @@
-import NdeysanCover from "../../assets/ndeysancover.jpg";
-import Motsdetetecover from "../../assets/motsdetetecover.jpg";
+import NdeysanCover from "../../assets/ndeysancover.webp";
+import Motsdetetecover from "../../assets/motsdetetecover.webp";
 
 export const albums = [
   {

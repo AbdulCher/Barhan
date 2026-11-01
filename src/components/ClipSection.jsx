@@ -3,8 +3,7 @@
 // ============================================================
 //
 // Placez votre vidéo dans : /public/assets/videos/clip.mp4
-// ============================================================
-import BarhanLogo from "../assets/barhanLogoSans.png";
+// ===========================================================
 
 export default function ClipSection() {
   return (
@@ -50,16 +49,16 @@ export default function ClipSection() {
   {/* Icône play centrée */}
   <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
     <div
-      className="w-16 h-16 rounded-full flex items-center justify-center"
+      className="w-20 h-20 rounded-full flex items-center justify-center"
       style={{
-        background: "rgba(57,2,2,0.6)",
+        background: "rgba(57,2,2,0.85)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         border: "1px solid rgba(226,150,0,0.4)",
         boxShadow: "0 0 24px rgba(57,2,2,0.6), inset 0 1px 0 rgba(226,150,0,0.15)",
       }}
     >
-      <svg viewBox="0 0 16 16" fill="#e29600" className="w-7 h-7 ml-1">
+      <svg viewBox="0 0 16 16" fill="#e29600" className="w-8 h-8 ml-1">
         <path d="M4 2l10 6-10 6V2z"/>
       </svg>
     </div>
@@ -87,7 +86,7 @@ export default function ClipSection() {
 
         {/* Bouton */}
         <button
-  onClick={() => window.open("https://www.youtube.com/@BarhanNdi", "_blank")}
+  onClick={() => window.open("https://www.youtube.com/@BarhanOfficiel", "_blank")}
   className="font-dm text-sm tracking-widest uppercase font-bold
              text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
   style={{

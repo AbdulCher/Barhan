@@ -3,16 +3,16 @@ import Icons from "../components/Icons";
 import Header from "../components/Header";
 import { albums as photos } from "./PhotosData";
 import Footer from "../components/Footer";
-import BgColor from "../assets/bgRed.jpg";
+import BgColor from "../assets/bgRed.webp";
 import { Helmet } from "react-helmet-async";
 
 
 // ── Données vidéos ─────────────────────────────────────────
 const GRID_VIDEOS = [
   { src: "https://www.youtube.com/embed/ZfxLbYIsAak",   title: "Vidéo 1" },
-  { src: "https://www.youtube.com/embed/k9ZxVGJBDPE",   title: "Vidéo 2" },
-  { src: "https://www.youtube.com/embed/Tmy0HGbHC58",   title: "Vidéo 3" },
-  { src: "https://www.youtube.com/embed/dcdkpD6EjWs",   title: "Vidéo 4" },
+  { src: "https://www.youtube.com/embed/iVM9RbDNcuk",   title: "Vidéo 2" },
+  { src: "https://www.youtube.com/embed/tuU_BduqJmk",   title: "Vidéo 3" },
+  { src: "https://www.youtube.com/embed/k9ZxVGJBDPE",   title: "Vidéo 4" },
 ];
 
 function getYouTubeId(src) {
@@ -155,7 +155,7 @@ function VideoCard({ src, title }) {
 
 // ── Page principale ────────────────────────────────────────
 export default function Medias() {
-  const [activeTab, setActiveTab] = useState('photos')
+  const [activeTab, setActiveTab] = useState('videos')
   const [currentIndex, setCurrentIndex] = useState(null);
   const [showNav] = useState(true)
   const n = photos.length;
@@ -236,8 +236,18 @@ export default function Medias() {
             showNav ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}>
             <button
+              onClick={() => setActiveTab('videos')}
+              className={`p-2 text-lg md:text-xl tracking-wide transition-colors duration-200 ${
+                activeTab === 'videos'
+                  ? 'border-b-2 border-[#e29600] uppercase font-bold text-[#e29600]'
+                  : 'text-[#efdecd]/40 hover:text-[#efdecd]'
+              }`}
+            >
+              Vidéos
+            </button>
+            <button
               onClick={() => setActiveTab('photos')}
-              className={`pb-4 text-sm md:text-lg font-bold uppercase transition-colors duration-200 ${
+              className={`pb-2 text-sm md:text-lg font-bold uppercase transition-colors duration-200 ${
                 activeTab === 'photos'
                   ? 'border-b-2 border-[#e29600] text-[#e29600] font-semibold'
                   : 'text-[#efdecd]/40 hover:text-[#efdecd]'
@@ -245,50 +255,9 @@ export default function Medias() {
             >
               Photos
             </button>
-            <button
-              onClick={() => setActiveTab('videos')}
-              className={`p-2 text-lg md:text-xl tracking-wide transition-colors duration-200 ${
-                activeTab === 'videos'
-                  ? 'border border-[#e29600] uppercase font-bold text-[#e29600]'
-                  : 'text-[#efdecd]/40 hover:text-[#efdecd]'
-              }`}
-            >
-              Vidéos
-            </button>
           </div>
 
           <Icons />
-
-          {/* Section Photos */}
-          {activeTab === 'photos' && (
-            <>
-              <p className="font-dm text-center text-[#efdecd]/40 text-xs tracking-widest uppercase">
-                {photos.length} photos — cliquez pour zoomer
-              </p>
-              <div className="columns-1 md:columns-3 gap-4 space-y-4">
-                {photos.map((photo, index) => (
-          <div
-  key={photo.id}
-  onClick={() => { if (window.innerWidth >= 640) openPhoto(index); }}
-  className="relative break-inside-avoid group overflow-hidden rounded-xl
-             border border-[#efdecd]/20 sm:cursor-pointer sm:hover:border-[#e29600] sm:hover:border-2 transition-all duration-300"
->
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300
-                                    flex items-end p-3 opacity-0 group-hover:opacity-100">
-                      <p className="font-dm text-[#efdecd] text-sm font-bold tracking-widest uppercase">
-                        {photo.alt}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
 
           {/* Section Vidéos */}
           {activeTab === 'videos' && (
@@ -310,6 +279,37 @@ export default function Medias() {
                   </svg>
                   Voir toutes les vidéos
                 </button>
+              </div>
+            </>
+          )}
+
+          {/* Section Photos */}
+          {activeTab === 'photos' && (
+            <>
+              <p className="font-dm text-center text-[#efdecd]/40 text-xs tracking-widest uppercase">
+                {photos.length} photos — cliquez pour zoomer
+              </p>
+              <div className="columns-1 md:columns-3 gap-4 space-y-4">
+                {photos.map((photo, index) => (
+                <div
+                  key={photo.id}
+                  onClick={() => { if (window.innerWidth >= 640) openPhoto(index); }}
+                  className="relative break-inside-avoid group overflow-hidden rounded-xl
+                  border border-[#efdecd]/20 sm:cursor-pointer sm:hover:border-[#e29600] sm:hover:border-2 transition-all duration-300"
+                >
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300
+                                    flex items-end p-3 opacity-0 group-hover:opacity-100">
+                      <p className="font-dm text-[#efdecd] text-sm font-bold tracking-widest uppercase">
+                        {photo.alt}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </>
           )}

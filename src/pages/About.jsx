@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Icons from "../components/Icons";
-import BgAbout from "../assets/bgAboutv.jpg";
+import BgAbout from "../assets/bgAboutv.webp";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -32,7 +32,7 @@ const CONCERTS = [
 
 // ── Citations presse ───────────────────────────────────────────
 
-const PRESS = [
+  const PRESS = [
   {
     id: 1,
     quote: "Une voix qui traverse les frontières et les époques.",
@@ -40,19 +40,19 @@ const PRESS = [
     year: "2009",
     url: "https://www.rfi.fr/fr/contenu/20091118-bakhan-voix-plurielle",
   },
-  {
+    {
     id: 2,
+    quote: "Fiche artiste de Barhan Ndiaye sur la plateforme de référence des cultures africaines.",
+    source: "Africultures",
+    year: "2024",
+    url: "https://africultures.com/personnes/?no=26627",
+  },
+  {
+    id: 3,
     quote: "Parcours et biographie de Barhan, artiste entre jazz, blues et traditions africaines.",
     source: "InfoConcert",
     year: "2024",
     url: "https://www.infoconcert.com/artiste/barhan-181922/concerts/presentation",
-  },
-    {
-    id: 3,
-    quote: "Référence des cultures africaines.",
-    source: "Africultures",
-    year: "2024",
-    url: "https://africultures.com/personnes/?no=26627",
   },
   {
     id: 4,
@@ -61,6 +61,8 @@ const PRESS = [
     year: "2013",
     url: "https://m.cridem.org/C_Info.php?article=633373",
   },
+  
+
 ];
 
 // ── Blocs bio ──────────────────────────────────────────────────
@@ -90,12 +92,12 @@ function ConcertRow({ concert, index }) {
       className="flex items-center gap-6 py-5 group"
       style={{ borderBottom: "1px solid rgba(239,222,205,0.07)" }}
     >
-    <Helmet>
-      <title>Barhan Ndiaye — Bio & Parcours</title>
-      <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
-      <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
-      <meta property="og:url" content="https://www.barhan.fr/about" />
-    </Helmet>
+      <Helmet>
+        <title>Barhan Ndiaye — Bio & Parcours</title>
+        <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
+        <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
+        <meta property="og:url" content="https://www.barhan.fr/about" />
+      </Helmet>
       {/* Numéro */}
       <span
         className="font-dm text-xs w-6 flex-shrink-0 text-right"
@@ -106,17 +108,17 @@ function ConcertRow({ concert, index }) {
 
       {/* Date */}
       <div
-  className="flex-shrink-0 px-3 py-1 rounded-md"
-  style={{
-    background: "rgba(43,62,130,0.2)",
-    border: "1px solid rgba(100,136,255,0.2)",
-    minWidth: "110px",
-  }}
->
-  <span className="font-dm text-xs font-bold tracking-wide" style={{ color: "#a0b4ff" }}>
-    {concert.date}
-  </span>
-</div>
+        className="flex-shrink-0 px-3 py-1 rounded-md"
+        style={{
+        background: "rgba(43,62,130,0.2)",
+        border: "1px solid rgba(100,136,255,0.2)",
+        minWidth: "110px",
+        }}
+      >
+        <span className="font-dm text-xs font-bold tracking-wide" style={{ color: "#a0b4ff" }}>
+          {concert.date}
+        </span>
+      </div>
 
       {/* Lieu + ville */}
       <div className="flex flex-col flex-1 min-w-0">
@@ -137,33 +139,33 @@ function ConcertRow({ concert, index }) {
       {/* Bouton billetterie */}
       {concert.link ? (
         <a
-  href={concert.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs font-bold tracking-widest uppercase
-             transition-all duration-200"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-    color: "#a0b4ff",
-  }}
-  onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#a0b4ff";
-  }}
->
-  Réserver →
-</a>
+          href={concert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs font-bold tracking-widest uppercase
+          transition-all duration-200"
+          style={{
+            background: "rgba(43,62,130,0.5)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(100,136,255,0.4)",
+            boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+            color: "#a0b4ff",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "#e29600";
+            e.currentTarget.style.border = "1px solid #e29600";
+            e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+            e.currentTarget.style.color = "#000000";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+            e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+            e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+            e.currentTarget.style.color = "#a0b4ff";
+          }}
+        >
+          Réserver →
+        </a>
       ) : (
         <span
   className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs tracking-widest uppercase"
@@ -223,6 +225,7 @@ function PressQuote({ item }) {
     </Wrapper>
   );
 }
+      
 
 // ── Page About ─────────────────────────────────────────────────
 export default function About() {
@@ -313,32 +316,20 @@ export default function About() {
             <div className="flex justify-center gap-2 md:gap-3 flex-wrap">
               {BLOCKS.map(({ id, label }) => (
                 <button
-  key={id}
-  onClick={() => scrollTo(id)}
-  className="font-bold text-[13px] tracking-[0.12em] uppercase px-5 py-2 rounded-full transition-all duration-200"
-  style={{
-    background: activeBlock === id ? "rgba(43,62,130,0.6)" : "rgba(43,62,130,0.2)",
-    border: activeBlock === id ? "1px solid rgba(100,136,255,0.6)" : "1px solid rgba(100,136,255,0.2)",
-    boxShadow: activeBlock === id ? "0 0 16px rgba(43,62,130,0.4)" : "none",
-    color: activeBlock === id ? "#a0b4ff" : "rgba(160,180,255,0.4)",
-  }}
-  onMouseEnter={e => {
-    if (activeBlock !== id) {
-      e.currentTarget.style.background = "rgba(43,62,130,0.35)";
-      e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-      e.currentTarget.style.color = "#a0b4ff";
-    }
-  }}
-  onMouseLeave={e => {
-    if (activeBlock !== id) {
-      e.currentTarget.style.background = "rgba(43,62,130,0.2)";
-      e.currentTarget.style.border = "1px solid rgba(100,136,255,0.2)";
-      e.currentTarget.style.color = "rgba(160,180,255,0.4)";
-    }
-  }}
->
-  {label}
-</button>
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className={`
+                    font-bold text-[13px] tracking-[0.12em] uppercase
+                    px-5 py-2 rounded-full border
+                    transition-all duration-300
+                    ${activeBlock === id
+                      ? "text-[#e29600] border-[#e29600] bg-[#e29600]/10 shadow-[0_0_12px_rgba(226,150,0,0.2)]"
+                      : "text-[#efdecd]/50 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40 hover:bg-[#e29600]/5"
+                    }
+                  `}
+                >
+                  {label}
+                </button>
               ))}
             </div>
 
@@ -367,53 +358,35 @@ export default function About() {
                 <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Bio</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 p-5 font-light"
-                style={{
-                  background: "rgba(43,62,130,0.15)",
-                  border: "1px solid rgba(100,136,255,0.2)",
-                  backdropFilter: "blur(12px)",
-                }}
-              >
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Son aventure musicale commence en 1999 sous le pseudonyme d'Alias Chico. Son duo avec le rappeur
                 Papis Kimmi donne naissance à <em>Nebkhi Mauritanie</em>, un album qui rencontre un immense succès
                 national et fait connaître sa voix à travers toute la Mauritanie.
               </p>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light p-5 rounded-xl"
-   style={{
-     background: "rgba(43,62,130,0.15)",
-     border: "1px solid rgba(100,136,255,0.2)",
-     backdropFilter: "blur(12px)",
-   }}
->
-  Désireux d'explorer de nouveaux horizons, il s'éloigne du rap en 2003 pour embrasser un univers
-  plus instrumental et vocal. Sa collaboration avec le guitariste Philippe Collucci mène à l'album
-  <em> Talibé</em> (2004), ouvrant les portes à des rencontres prestigieuses, dont les divas
-  mauritaniennes Dimi Mint Abba et Maalouma Mint El Meidah. Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
-  le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
-  perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera chaque grande
-  vacance tout le sahel par voix terrestre, de Nouakchott ou de Dakar à N'Djaména, guitare
-  en main, à la rencontre des peuples. Il s'installe de manière constante au Tchad en 2007 et crée
-  le groupe <em>ADA</em> avec le guitariste camerounais Alex Wandji. Il collabore régulièrement avec
-  le Centre Culturel Français, travaille aux côtés de la chanteuse tchadienne Mounira Mitchala et
-  participe aux <em>Voix du Sahel</em>, animées par le flûtiste nigérien Yancouba Moumini et le
-  guitariste franco-algérien Kamal Zekri.
-</p>
-              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light p-5 rounded-xl"
-   style={{
-     background: "rgba(43,62,130,0.15)",
-     border: "1px solid rgba(100,136,255,0.2)",
-     backdropFilter: "blur(12px)",
-   }}
->
-  Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort <em>N'deysan</em> à Paris
-  en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
-  Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance à son album
-  acclamé <em>Mots de tête</em>, enregistré au Kenya avec son groupe lors d'un séjour entre 2010 et 2013 —
-  une œuvre qui unit le patrimoine mauritanien à la modernité du jazz, célébrant le dialogue des cultures
-  et l'unité des peuples. De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,
-  pianiste issu de l'école de musique Didier Lockwood à Melun, qui lui présentera tous les membres
-  de son groupe actuel.
-</p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                Désireux d'explorer de nouveaux horizons, il s'éloigne du rap en 2003 pour embrasser un univers
+                plus instrumental et vocal. Sa collaboration avec le guitariste Philippe Collucci mène à l'album
+                <em> Talibé</em> (2004), ouvrant les portes à des rencontres prestigieuses, dont les divas
+                mauritaniennes Dimi Mint Abba et Maalouma Mint El Meidah. Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
+                le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
+                perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera chaque grande
+                vacance toute l'Afrique en voiture, de Nouakchott à N'Djaména ou de Dakar à N'Djaména, guitare
+                en main, à la rencontre des peuples. Il s'installe de manière constante au Tchad en 2007 et crée
+                le groupe <em>ADA</em> avec le guitariste camerounais Alex Wandji. Il collabore régulièrement avec
+                le Centre Culturel Français, travaille aux côtés de la chanteuse tchadienne Mounira Mitchala et
+                participe aux <em>Voix du Sahel</em>, animées par le flûtiste nigérien Yancouba Moumini et le
+                guitariste franco-algérien Kamal Zekri.
+              </p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort <em>N'deysan</em> à Paris
+                en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
+                Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance à son album
+                acclamé <em>Mots de tête</em>, enregistré au Kenya avec son groupe lors d'un séjour entre 2010 et 2013 —
+                une œuvre qui unit le patrimoine mauritanien à la modernité du jazz, célébrant le dialogue des cultures
+                et l'unité des peuples. De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,
+                pianiste issu de l'école de musique Didier Lockwood à Melun, qui lui présentera tous les membres
+                de son groupe actuel.
+              </p>
             </div>
 
             {/* ── CONCERTS ── */}
@@ -502,7 +475,7 @@ export default function About() {
     color: "#a0b4ff",
   }}
   onMouseEnter={e => {
-  e.currentTarget.style.border = "1px solid #e29600";
+  e.currentTarget.style.border = "2px solid #e29600";
   e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
 }}
 onMouseLeave={e => {
@@ -513,28 +486,28 @@ onMouseLeave={e => {
   ✉ Email
 </a>
                   <a
-                    href="/bookme"
-                    className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
-                    font-dm text-sm font-bold tracking-widest uppercase
-                    transition-all duration-200"
-                    style={{
-                      background: "rgba(43,62,130,0.5)",
-                      backdropFilter: "blur(12px)",
-                      border: "1px solid rgba(100,136,255,0.4)",
-                      boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-                      color: "#a0b4ff",
-                    }}
-                   onMouseEnter={e => {
-  e.currentTarget.style.border = "1px solid #e29600";
+  href="/bookme"
+  className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
+             font-dm text-sm font-bold tracking-widest uppercase
+             transition-all duration-200"
+  style={{
+    background: "rgba(43,62,130,0.5)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(100,136,255,0.4)",
+    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+    color: "#a0b4ff",
+  }}
+  onMouseEnter={e => {
+  e.currentTarget.style.border = "2px solid #e29600";
   e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
 }}
 onMouseLeave={e => {
   e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
   e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
 }}
-                  >
-                    ✦ Formulaire de contact
-                  </a>
+>
+  ✦ Formulaire de contact
+</a>
                 </div>
               </div>
             </div>
@@ -559,17 +532,19 @@ onMouseLeave={e => {
       >
         {BLOCKS.map(({ id, label }) => (
           <button
-  key={id}
-  onClick={() => scrollTo(id)}
-  className="font-bold text-[11px] tracking-[0.1em] uppercase px-4 py-1.5 rounded-full transition-all duration-200"
-  style={{
-    background: activeBlock === id ? "rgba(43,62,130,0.6)" : "transparent",
-    color: activeBlock === id ? "#a0b4ff" : "rgba(160,180,255,0.3)",
-    border: activeBlock === id ? "1px solid rgba(100,136,255,0.4)" : "1px solid transparent",
-  }}
->
-  {label}
-</button>
+            key={id}
+            onClick={() => scrollTo(id)}
+            className={`
+              font-bold text-[11px] tracking-[0.1em] uppercase px-4 py-1.5 rounded-full
+              transition-all duration-200
+              ${activeBlock === id
+                ? "text-[#e29600] bg-[#e29600]/12"
+                : "text-[#efdecd]/40 hover:text-[#efdecd]/70"
+              }
+            `}
+          >
+            {label}
+          </button>
         ))}
       </div>
 
