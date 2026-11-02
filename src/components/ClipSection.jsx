@@ -2,10 +2,16 @@
 // CLIP SECTION — vidéo locale + typographie Bebas + DM Sans
 // ============================================================
 //
-// Placez votre vidéo dans : /public/assets/videos/clip.mp4
+// Le lecteur YouTube (lourd) n'est chargé qu'au clic sur play.
 // ===========================================================
 
+import { useState } from "react";
+
+const VIDEO_ID = "zVOEU0MiWiw";
+
 export default function ClipSection() {
+  const [playing, setPlaying] = useState(false);
+
   return (
 <section className="relative w-full bg-transparent py-20 flex justify-center overflow-hidden">
       {/* Halo rouge central */}
@@ -38,55 +44,63 @@ export default function ClipSection() {
           </h2>
         </div>
 
-        {/* Vidéo locale */}
-<div
-  className="relative w-full aspect-video overflow-hidden rounded-2xl"
-  style={{
-    boxShadow: "0 0 0 1px rgba(57,2,2,0.5), 0 20px 60px rgba(57,2,2,0.45), 0 4px 20px rgba(0,0,0,0.8)",
-    border: "1px solid rgba(226,150,0,0.25)",
-  }}
->
-  {/* Icône play centrée */}
-  <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-    <div
-      className="w-20 h-20 rounded-full flex items-center justify-center"
-      style={{
-        background: "rgba(57,2,2,0.85)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid rgba(226,150,0,0.4)",
-        boxShadow: "0 0 24px rgba(57,2,2,0.6), inset 0 1px 0 rgba(226,150,0,0.15)",
-      }}
-    >
-      <svg viewBox="0 0 16 16" fill="#e29600" className="w-8 h-8 ml-1">
-        <path d="M4 2l10 6-10 6V2z"/>
-      </svg>
-    </div>
-  </div>
+        {/* Vidéo YouTube — chargée seulement au clic (miniature avant) */}
+        <div
+          className="relative w-full aspect-video overflow-hidden rounded-2xl"
+          style={{
+            boxShadow: "0 0 0 1px rgba(57,2,2,0.5), 0 20px 60px rgba(57,2,2,0.45), 0 4px 20px rgba(0,0,0,0.8)",
+            border: "1px solid rgba(226,150,0,0.25)",
+          }}
+        >
+          {playing ? (
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`}
+              title="Barhan — Clip Officiel"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              className="relative w-full h-full cursor-pointer"
+              aria-label="Lire le clip officiel"
+            >
+              <img
+                src={`https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`}
+                alt="Barhan — Clip Officiel"
+                width="480"
+                height="360"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
 
-  {/* Vidéo YouTube */}
-<div
-  className="relative w-full aspect-video overflow-hidden rounded-2xl"
-  style={{
-    boxShadow: "0 0 0 1px rgba(57,2,2,0.5), 0 20px 60px rgba(57,2,2,0.45), 0 4px 20px rgba(0,0,0,0.8)",
-    border: "1px solid rgba(226,150,0,0.25)",
-  }}
->
-  <iframe
-    className="w-full h-full"
-    src="https://www.youtube.com/embed/zVOEU0MiWiw"
-    title="Barhan — Clip Officiel"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  />
-</div>
-</div>
-  {/* ✅ Icône play centrée */}
+              {/* Icône play centrée */}
+              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center"
+                  style={{
+                    background: "rgba(57,2,2,0.6)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(226,150,0,0.4)",
+                    boxShadow: "0 0 24px rgba(57,2,2,0.6), inset 0 1px 0 rgba(226,150,0,0.15)",
+                  }}
+                >
+                  <svg viewBox="0 0 16 16" fill="#e29600" className="w-7 h-7 ml-1">
+                    <path d="M4 2l10 6-10 6V2z"/>
+                  </svg>
+                </div>
+              </div>
+            </button>
+          )}
+        </div>
 
         {/* Bouton */}
         <button
-  onClick={() => window.open("https://www.youtube.com/@BarhanOfficiel", "_blank")}
+  onClick={() => window.open("https://www.youtube.com/@BarhanNdi", "_blank")}
   className="font-dm text-sm tracking-widest uppercase font-bold
              text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
   style={{

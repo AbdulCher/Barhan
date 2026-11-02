@@ -104,28 +104,28 @@ export default function Footer() {
             <Link
               to="/bookme"
               className="mt-2 flex items-center gap-2
-           font-dm text-xs tracking-widest uppercase font-bold
-           text-[#efdecd] px-5 py-2.5 rounded-full transition-all duration-200"
-style={{
-  background: "rgba(43,62,130,0.5)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  border: "1px solid rgba(100,136,255,0.4)",
-  boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-}}
-onMouseEnter={e => {
-  e.currentTarget.style.background = "#e29600";
-  e.currentTarget.style.border = "1px solid #e29600";
-  e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-  e.currentTarget.style.color = "#000000";
-}}
-onMouseLeave={e => {
-  e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-  e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-  e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-  e.currentTarget.style.color = "#efdecd";
+              font-dm text-xs tracking-widest uppercase font-bold
+              text-[#efdecd] px-5 py-2.5 rounded-full transition-all duration-200"
+              style={{
+                background: "rgba(43,62,130,0.5)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(100,136,255,0.4)",
+                boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "#e29600";
+                e.currentTarget.style.border = "1px solid #e29600";
+                e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+                e.currentTarget.style.color = "#000000";
+              }}
+              onMouseLeave={e => {
+              e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+              e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+              e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+              e.currentTarget.style.color = "#efdecd";
 
-}}
+              }}
             >
               Réserver
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5">

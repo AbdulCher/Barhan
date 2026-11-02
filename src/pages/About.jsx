@@ -4,31 +4,23 @@ import BgAbout from "../assets/bgAboutv.webp";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
+import { CONCERTS } from "../data/Concerts";
 
-// ── Données concerts — à mettre à jour régulièrement ──────────
-const CONCERTS = [
-  {
-    id: 1,
-    date: "15 Nov 2026",
-    venue: "Le Café de la Danse",
-    city: "Paris, France",
-    link: null, // mettre l'URL billetterie ici
-  },
-  {
-    id: 2,
-    date: "08 Déc 2026",
-    venue: "Festival Jazz à Vienne",
-    city: "Vienne, France",
-    link: null,
-  },
-  {
-    id: 3,
-    date: "20 Jan 2027",
-    venue: "Institut du Monde Arabe",
-    city: "Paris, France",
-    link: null,
-  },
-];
+// ── Concerts : les dates sont dans src/data/Concerts.js ──────
+const MOIS = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+
+function formatDate(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${String(d).padStart(2, "0")} ${MOIS[m - 1]} ${y}`;
+}
+
+// Date du jour au format "AAAA-MM-JJ" (un concert reste « À venir » le jour même)
+function today() {
+  const t = new Date();
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+}
+
+const PAST_PREVIEW = 8; // nombre de concerts passés affichés avant « Voir tout »
 
 // ── Citations presse ───────────────────────────────────────────
 
@@ -86,18 +78,12 @@ const BLOCKS = [
 ];
 
 // ── Composant ligne de concert ─────────────────────────────────
-function ConcertRow({ concert, index }) {
+function ConcertRow({ concert, index, past = false }) {
   return (
     <div
       className="flex items-center gap-6 py-5 group"
-      style={{ borderBottom: "1px solid rgba(239,222,205,0.07)" }}
+      style={{ borderBottom: "1px solid rgba(239,222,205,0.07)", opacity: past ? 0.75 : 1 }}
     >
-      <Helmet>
-        <title>Barhan Ndiaye — Bio & Parcours</title>
-        <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
-        <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
-        <meta property="og:url" content="https://www.barhan.fr/about" />
-      </Helmet>
       {/* Numéro */}
       <span
         className="font-dm text-xs w-6 flex-shrink-0 text-right"
@@ -110,13 +96,13 @@ function ConcertRow({ concert, index }) {
       <div
         className="flex-shrink-0 px-3 py-1 rounded-md"
         style={{
-        background: "rgba(43,62,130,0.2)",
-        border: "1px solid rgba(100,136,255,0.2)",
+        background: past ? "rgba(239,222,205,0.05)" : "rgba(43,62,130,0.2)",
+        border: past ? "1px solid rgba(239,222,205,0.12)" : "1px solid rgba(100,136,255,0.2)",
         minWidth: "110px",
         }}
       >
-        <span className="font-dm text-xs font-bold tracking-wide" style={{ color: "#a0b4ff" }}>
-          {concert.date}
+        <span className="font-dm text-xs font-bold tracking-wide" style={{ color: past ? "rgba(239,222,205,0.55)" : "#a0b4ff" }}>
+          {formatDate(concert.date)}
         </span>
       </div>
 
@@ -133,11 +119,14 @@ function ConcertRow({ concert, index }) {
           style={{ color: "rgba(239,222,205,0.35)" }}
         >
           {concert.city}
+          {concert.note && (
+            <span style={{ color: "rgba(226,150,0,0.55)" }}> · {concert.note}</span>
+          )}
         </span>
       </div>
 
-      {/* Bouton billetterie */}
-      {concert.link ? (
+      {/* Bouton billetterie (rien pour un concert passé) */}
+      {past ? null : concert.link ? (
         <a
           href={concert.link}
           target="_blank"
@@ -234,6 +223,14 @@ export default function About() {
   const [showNav, setShowNav] = useState(false);
   const isScrollingTo = useRef(false);
 
+  // Tri automatique des concerts selon la date du jour
+  const now = today();
+  const upcoming = CONCERTS.filter((c) => c.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+  const past = CONCERTS.filter((c) => c.date < now).sort((a, b) => b.date.localeCompare(a.date));
+  const [concertTab, setConcertTab] = useState(upcoming.length > 0 ? "upcoming" : "past");
+  const [showAllPast, setShowAllPast] = useState(false);
+  const pastShown = showAllPast ? past : past.slice(0, PAST_PREVIEW);
+
   // IntersectionObserver : suit la section visible
   useEffect(() => {
     const observers = [];
@@ -278,6 +275,13 @@ export default function About() {
 
   return (
     <>
+      <Helmet>
+        <title>Barhan Ndiaye — Bio & Parcours</title>
+        <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
+        <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
+        <meta property="og:url" content="https://www.barhan.fr/about" />
+      </Helmet>
+
       {/* BG fixe global */}
       <div
         className="fixed inset-0 z-0"
@@ -402,16 +406,64 @@ export default function About() {
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
 
-              {CONCERTS.length > 0 ? (
-                <div className="flex flex-col">
-                  {CONCERTS.map((concert, i) => (
-                    <ConcertRow key={concert.id} concert={concert} index={i} />
-                  ))}
-                </div>
-              ) : (
-                <p className="font-dm text-base text-[#efdecd]/40 text-center py-8">
-                  Aucune date annoncée pour le moment.
-                </p>
+              {/* Onglets À venir / Passés */}
+              <div className="flex justify-center gap-2">
+                {[
+                  { id: "upcoming", label: "À venir", count: upcoming.length },
+                  { id: "past", label: "Passés", count: past.length },
+                ].map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => setConcertTab(t.id)}
+                    className={`font-bold text-[12px] tracking-[0.12em] uppercase px-4 py-1.5 rounded-full border
+                      transition-all duration-300 ${
+                      concertTab === t.id
+                        ? "text-[#e29600] border-[#e29600] bg-[#e29600]/10"
+                        : "text-[#efdecd]/50 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40"
+                    }`}
+                  >
+                    {t.label} ({t.count})
+                  </button>
+                ))}
+              </div>
+
+              {concertTab === "upcoming" && (
+                upcoming.length > 0 ? (
+                  <div className="flex flex-col">
+                    {upcoming.map((concert, i) => (
+                      <ConcertRow key={concert.date + concert.venue} concert={concert} index={i} />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="font-dm text-base text-[#efdecd]/40 text-center py-8">
+                    Aucune date annoncée pour le moment.
+                  </p>
+                )
+              )}
+
+              {concertTab === "past" && (
+                past.length > 0 ? (
+                  <>
+                    <div className="flex flex-col">
+                      {pastShown.map((concert, i) => (
+                        <ConcertRow key={concert.date + concert.venue} concert={concert} index={i} past />
+                      ))}
+                    </div>
+                    {past.length > PAST_PREVIEW && (
+                      <button
+                        onClick={() => setShowAllPast((v) => !v)}
+                        className="self-center font-dm text-xs font-bold tracking-widest uppercase
+                                   text-[#e29600]/80 hover:text-[#e29600] transition-colors duration-200"
+                      >
+                        {showAllPast ? "Réduire" : `Voir tout (${past.length})`}
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <p className="font-dm text-base text-[#efdecd]/40 text-center py-8">
+                    Les concerts passés apparaîtront ici.
+                  </p>
+                )
               )}
 
               <p className="font-dm text-xs text-center" style={{ color: "rgba(239,222,205,0.25)" }}>

@@ -1,0 +1,69 @@
+// ============================================================
+// CONCERTS — le seul fichier à modifier pour ajouter une date
+// ============================================================
+//
+// Pour ajouter un concert : copiez un bloc { ... }, collez-le dans la liste
+// (n'importe où, l'ordre n'a pas d'importance) et changez les infos.
+//
+// - date  : au format "AAAA-MM-JJ"  (ex. "2026-11-15" pour le 15 novembre 2026)
+// - venue : nom de la salle ou du festival
+// - city  : ville, pays
+// - link  : lien billetterie (ou null s'il n'y en a pas)
+// - note  : petite précision facultative (ex. "Première partie de …", "Festival")
+//           supprimez la ligne si inutile
+//
+// Le site range tout seul chaque concert dans « À venir » ou « Passés »
+// selon la date du jour. Rien d'autre à faire.
+//
+// ⚠ Les deux concerts passés ci-dessous sont des EXEMPLES à remplacer
+//   par vos vraies dates avant la mise en ligne.
+
+export const CONCERTS = [
+  // ── À venir ────────────────────────────────────────────────
+  {
+    date: "2026-11-15",
+    venue: "Le Café de la Danse",
+    city: "Paris, France",
+    link: null,
+  },
+  {
+    date: "2026-12-08",
+    venue: "Festival Jazz à Vienne",
+    city: "Vienne, France",
+    link: null,
+  },
+  {
+    date: "2027-01-20",
+    venue: "Institut du Monde Arabe",
+    city: "Paris, France",
+    link: null,
+  },
+
+  // ── Passés (EXEMPLES à remplacer) ─────────────────────────
+  {
+    date: "2025-06-21",
+    venue: "La Gare_Le Gore",
+    city: "Ville, Pays",
+    note: "Fête de la Musique",
+  },
+  {
+    date: "2024-10-12",
+    venue: "Nom de la salle",
+    city: "Ville, Pays",
+  },
+  {
+    date: "2024-10-12",
+    venue: "Nom de la salle",
+    city: "Ville, Pays",
+  },
+  {
+    date: "2024-10-12",
+    venue: "Nom de la salle",
+    city: "Ville, Pays",
+  },
+  {
+    date: "2024-10-12",
+    venue: "Nom de la salle",
+    city: "Ville, Pays",
+  },
+];
