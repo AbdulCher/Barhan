@@ -279,7 +279,7 @@ export default function About() {
         <title>Barhan Ndiaye — Bio & Parcours</title>
         <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
         <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
-        <meta property="og:url" content="https://www.barhan.fr/about" />
+        <meta property="og:url" content="https://www.barhanmusic.com/about" />
       </Helmet>
 
       {/* BG fixe global */}
@@ -515,7 +515,7 @@ export default function About() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-  href="mailto:contact@barhan.fr"
+  href="mailto:contact@barhanmusic.com"
   className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl
              font-dm text-sm font-bold tracking-widest uppercase
              transition-all duration-200"

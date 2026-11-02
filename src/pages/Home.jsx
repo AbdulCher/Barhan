@@ -25,7 +25,7 @@ export default function Home() {
         <meta name="description" content="Site officiel de Barhan Ndiaye, musicien et compositeur mauritanien installé à Paris. Jazz, blues et traditions africaines." />
         <meta property="og:title" content="Barhan Ndiaye — Musicien & Compositeur" />
         <meta property="og:description" content="Site officiel de Barhan Ndiaye, musicien entre traditions africaines, jazz et blues." />
-        <meta property="og:url" content="https://www.barhan.fr/" />
+        <meta property="og:url" content="https://www.barhanmusic.com/" />
       </Helmet>
 
       {/* BG fixe global */}

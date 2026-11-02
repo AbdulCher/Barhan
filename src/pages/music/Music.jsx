@@ -274,7 +274,7 @@ export default function Music() {
         <title>Barhan — Musique & Discographie</title>
         <meta name="description" content="Découvrez la discographie de Barhan : albums, extraits audio et univers musical entre jazz, blues et traditions africaines." />
         <meta property="og:title" content="Barhan — Musique & Discographie" />
-        <meta property="og:url" content="https://www.barhan.fr/music" />
+        <meta property="og:url" content="https://www.barhanmusic.com/music" />
       </Helmet>
 
       {/* BG tissu */}

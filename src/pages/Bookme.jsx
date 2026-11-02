@@ -171,7 +171,7 @@ export default function Bookme() {
         <title>Barhan Ndiaye — Réservation & Contact</title>
         <meta name="description" content="Réservez Barhan Ndiaye pour votre concert, festival ou événement privé. Fiches techniques et formulaire de contact disponibles." />
         <meta property="og:title" content="Barhan Ndiaye — Réservation & Contact" />
-        <meta property="og:url" content="https://www.barhan.fr/bookme" />
+        <meta property="og:url" content="https://www.barhanmusic.com/bookme" />
       </Helmet>
       {/* BG Color par dessus à 60% */}
       <div
