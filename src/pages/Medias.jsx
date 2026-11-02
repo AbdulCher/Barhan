@@ -10,9 +10,9 @@ import { Helmet } from "react-helmet-async";
 // ── Données vidéos ─────────────────────────────────────────
 const GRID_VIDEOS = [
   { src: "https://www.youtube.com/embed/ZfxLbYIsAak",   title: "Vidéo 1" },
-  { src: "https://www.youtube.com/embed/iVM9RbDNcuk",   title: "Vidéo 2" },
-  { src: "https://www.youtube.com/embed/tuU_BduqJmk",   title: "Vidéo 3" },
   { src: "https://www.youtube.com/embed/k9ZxVGJBDPE",   title: "Vidéo 4" },
+  { src: "https://www.youtube.com/embed/tuU_BduqJmk",   title: "Vidéo 3" },
+  { src: "https://www.youtube.com/embed/iVM9RbDNcuk",   title: "Vidéo 2" },
 ];
 
 function getYouTubeId(src) {

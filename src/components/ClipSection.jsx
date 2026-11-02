@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 
-const VIDEO_ID = "zVOEU0MiWiw";
+const VIDEO_ID = "Tmy0HGbHC58";
 
 export default function ClipSection() {
   const [playing, setPlaying] = useState(false);
@@ -100,8 +100,8 @@ export default function ClipSection() {
 
         {/* Bouton */}
         <button
-  onClick={() => window.open("https://www.youtube.com/@BarhanNdi", "_blank")}
-  className="font-dm text-sm tracking-widest uppercase font-bold
+          onClick={() => window.open("https://www.youtube.com/@BarhanOfficiel", "_blank")}
+          className="font-dm text-sm tracking-widest uppercase font-bold
              text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
   style={{
     background: "rgba(43,62,130,0.5)",
