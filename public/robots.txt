@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.barhan.com/sitemap.xml
+Sitemap: https://www.barhanmusic.com/sitemap.xml

@@ -382,12 +382,13 @@ export default function About() {
                 guitariste franco-algérien Kamal Zekri.
               </p>
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
-                Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort <em>N'deysan</em> à Paris
+                Installé en France, finaliste du Prix Découvertes RFI en 2009 sous le nom de Bakhan, il sort <em>N'deysan</em> à Paris
                 en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
                 Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance à son album
                 acclamé <em>Mots de tête</em>, enregistré au Kenya avec son groupe lors d'un séjour entre 2010 et 2013 —
                 une œuvre qui unit le patrimoine mauritanien à la modernité du jazz, célébrant le dialogue des cultures
-                et l'unité des peuples. De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,
+                et l'unité des peuples. C'est avec la sortie de cet album que Bakhan devient Barhan.
+                De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,
                 pianiste issu de l'école de musique Didier Lockwood à Melun, qui lui présentera tous les membres
                 de son groupe actuel.
               </p>
@@ -415,11 +416,11 @@ export default function About() {
                   <button
                     key={t.id}
                     onClick={() => setConcertTab(t.id)}
-                    className={`font-bold text-[12px] tracking-[0.12em] uppercase px-4 py-1.5 rounded-full border
+                    className={`font-bold text-[12px] tracking-[0.12em] uppercase px-4 py-1.5 rounded-full border-b
                       transition-all duration-300 ${
                       concertTab === t.id
-                        ? "text-[#e29600] border-[#e29600] bg-[#e29600]/10"
-                        : "text-[#efdecd]/50 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40"
+                        ? "text-[#e29600] border-b-[#e29600] bg-[#e29600]/10"
+                        : "text-[#efdecd]/50 border-b-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-b-[#e29600]/40"
                     }`}
                   >
                     {t.label} ({t.count})
