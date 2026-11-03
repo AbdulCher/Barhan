@@ -9,24 +9,24 @@ export default function MusicModal({ album, onClose }) {
     >
       <div
 
-  className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:flex-row"
-  style={{
-    maxWidth: "920px",
-    maxHeight: "90vh",
-    overflowY: "auto",
-    background: "rgba(12,6,3,0.88)",
-    border: "1px solid rgba(226,150,0,0.15)",
-    boxShadow: "0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(226,150,0,0.08)",
-  }}
-  onClick={e => e.stopPropagation()}
->
-        {/* Ligne dorée en haut */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none z-10"
-          style={{
-            background: "linear-gradient(to right, transparent, #e29600 30%, #e29600 70%, transparent)",
-          }}
-        />
+        className="relative w-full mx-4 rounded-2xl overflow-hidden flex flex-col sm:flex-row"
+        style={{
+          maxWidth: "920px",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          background: "rgba(12,6,3,0.88)",
+          border: "1px solid rgba(226,150,0,0.15)",
+          boxShadow: "0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(226,150,0,0.08)",
+        }}
+          onClick={e => e.stopPropagation()}
+      >
+      {/* Ligne dorée en haut */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to right, transparent, #e29600 30%, #e29600 70%, transparent)",
+        }}
+      />
 
         {/* Bouton fermer */}
      <button
@@ -135,8 +135,8 @@ export default function MusicModal({ album, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl
-                           font-dm text-xs font-bold tracking-widest uppercase
-                           transition-all duration-200 hover:scale-[1.03]"
+                font-dm text-xs font-bold tracking-widest uppercase
+                transition-all duration-200 hover:scale-[1.03]"
                 style={{
                   background: "rgba(226,150,0,0.1)",
                   border: "1px solid rgba(226,150,0,0.28)",
