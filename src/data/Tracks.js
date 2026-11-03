@@ -6,23 +6,37 @@
 export const tracks = [
   {
     id: 1,
+    title: "Kaay",
+    artist: "Barhan",
+    src: "/audio/kaay.mp3",
+    cover: "/audio/covers/motsdetetecover.webp",
+  },
+  {
+    id: 2,
     title: "Klaam",
     artist: "Barhan",
     src: "/audio/klaam.mp3",
     cover: "/audio/covers/motsdetetecover.webp", // optionnel
   },
   {
-    id: 2,
+    id: 3,
     title: "Leyletna",
     artist: "Barhan",
     src: "/audio/leyletna.mp3",
     cover: "/audio/covers/motsdetetecover.webp", // optionnel
   },
   {
-    id: 3,
-    title: "Morceau 3",
+    id: 4,
+    title: "Démocratie",
     artist: "Barhan",
-    src: "/audio/morceau3.mp3",
-    cover: "/audio/covers/cover3.webp",
+    src: "/audio/democratie.mp3",
+    cover: "/audio/covers/ndeysancover.webp",
+  },
+  {
+    id: 5,
+    title: "Yo lélé",
+    artist: "Barhan",
+    src: "/audio/yolele.mp3",
+    cover: "/audio/covers/ndeysancover.webp", // optionnel
   },
 ];
