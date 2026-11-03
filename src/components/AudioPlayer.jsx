@@ -206,8 +206,8 @@ export default function AudioPlayer() {
             </div>
           )}
           <div className="flex flex-col overflow-hidden" aria-live="polite">
-            <span className="font-bebas text-[#ffc23d] text-sm tracking-widest truncate"
-              style={{ textShadow: "0 0 8px rgba(255,194,61,0.45)" }}>
+            <span className="font-bebas text-[#e29600]/85 text-sm tracking-widest truncate"
+              style={{ textShadow: "0 0 8px rgba(226,150,0,0.3)" }}>
               {track.title}
             </span>
             <span className="font-dm text-[#efdecd]/60 text-xs truncate">
@@ -228,20 +228,20 @@ export default function AudioPlayer() {
               <span aria-hidden="true">⏮</span>
             </button>
 
-            {/* Bouton play — cercle néon jaune */}
+            {/* Bouton play — cercle néon rouge */}
             <button
               onClick={togglePlay}
               className="w-10 h-10 rounded-full flex items-center justify-center
                          transition-all duration-200 hover:scale-110"
               style={{
                 background: isPlaying
-                  ? "rgba(226,150,0,0.95)"
-                  : "rgba(226,150,0,0.15)",
-                border: "1px solid rgba(255,194,61,0.7)",
+                  ? "rgba(180,0,0,0.9)"
+                  : "rgba(140,0,0,0.3)",
+                border: "1px solid rgba(255,26,26,0.6)",
                 boxShadow: isPlaying
-                  ? "0 0 12px rgba(255,194,61,0.6), inset 0 0 8px rgba(255,230,150,0.25)"
-                  : "0 0 6px rgba(255,194,61,0.2)",
-                color: isPlaying ? "#1a1000" : "#ffc23d",
+                  ? "0 0 12px rgba(255,26,26,0.6), inset 0 0 8px rgba(255,0,0,0.2)"
+                  : "0 0 6px rgba(255,26,26,0.2)",
+                color: "#ff6666",
               }}
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
@@ -271,14 +271,14 @@ export default function AudioPlayer() {
 
         {/* Volume */}
         <div className="hidden sm:flex items-center gap-2 w-[120px]">
-          <span className="text-[#ffc23d]/60 text-sm" aria-hidden="true">🔈</span>
+          <span className="text-[#e29600]/50 text-sm" aria-hidden="true">🔈</span>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div
               className="absolute left-0 top-0 h-full rounded-full"
               style={{
                 width: `${volume * 100}%`,
-                background: "linear-gradient(to right, #a86f00, #ffc23d)",
-                boxShadow: "0 0 4px rgba(255,194,61,0.5)",
+                background: "linear-gradient(to right, rgba(226,150,0,0.45), rgba(226,150,0,0.85))",
+                boxShadow: "0 0 4px rgba(226,150,0,0.3)",
               }}
             />
             <input
