@@ -62,23 +62,23 @@ export default function CarouselSection({ albums, onAlbumClick }) {
 
         {/* Bouton gauche */}
         <button
-  onClick={prev}
-  aria-label="Précédent"
-  className="absolute left-2 md:left-4 z-30 w-10 h-10 rounded-full
-  flex items-center justify-center transition-all duration-200 hover:scale-110"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.4)",
-    color: "#a0b4ff",
-  }}
->
-  <svg className="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M10 3L5 8l5 5" />
-  </svg>
-</button>
+          onClick={prev}
+          aria-label="Précédent"
+          className="absolute left-2 md:left-4 z-30 w-10 h-10 rounded-full
+          flex items-center justify-center transition-all duration-200 hover:scale-110"
+          style={{
+            background: "rgba(43,62,130,0.5)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(100,136,255,0.4)",
+            boxShadow: "0 0 16px rgba(43,62,130,0.4)",
+            color: "#a0b4ff",
+          }}
+        >
+          <svg className="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M10 3L5 8l5 5" />
+          </svg>
+        </button>
 
         {/* Cartes */}
         {/* ✅ Fix 3 : hauteur adaptative selon l'écran */}
@@ -133,23 +133,23 @@ export default function CarouselSection({ albums, onAlbumClick }) {
 
         {/* Bouton droite */}
         <button
-  onClick={next}
-  aria-label="Suivant"
-  className="absolute right-2 md:right-4 z-30 w-10 h-10 rounded-full
-  flex items-center justify-center transition-all duration-200 hover:scale-110"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.4)",
-    color: "#a0b4ff",
-  }}
->
-  <svg className="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M6 3l5 5-5 5" />
-  </svg>
-</button>
+          onClick={next}
+          aria-label="Suivant"
+          className="absolute right-2 md:right-4 z-30 w-10 h-10 rounded-full
+          flex items-center justify-center transition-all duration-200 hover:scale-110"
+          style={{
+            background: "rgba(43,62,130,0.5)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(100,136,255,0.4)",
+            boxShadow: "0 0 16px rgba(43,62,130,0.4)",
+            color: "#a0b4ff",
+          }}
+        >
+          <svg className="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M6 3l5 5-5 5" />
+          </svg>
+        </button>
 
       </div>
 

@@ -21,21 +21,21 @@
 export const CONCERTS = [
   // ── À venir ────────────────────────────────────────────────
   {
-    date: "2026-11-15",
-    venue: "Le Café de la Danse",
+    date: "2027-04-17",
+    venue: "A venir",
     city: "Paris, France",
     link: null,
   },
   {
-    date: "2026-12-08",
-    venue: "Festival Jazz à Vienne",
-    city: "Vienne, France",
+    date: "2027-06-21",
+    venue: "A venir",
+    city: null,
     link: null,
   },
   {
-    date: "2027-01-20",
-    venue: "Institut du Monde Arabe",
-    city: "Paris, France",
+    date: "2027-07-20",
+    venue: "A venir",
+    city: null,
     link: null,
   },
 

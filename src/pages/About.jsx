@@ -34,7 +34,7 @@ const PAST_PREVIEW = 8; // nombre de concerts passés affichés avant « Voir to
   },
     {
     id: 2,
-    quote: "Fiche artiste de Barhan Ndiaye sur la plateforme de référence des cultures africaines.",
+    quote: "Fiche artiste de Barhan sur la plateforme de référence des cultures africaines.",
     source: "Africultures",
     year: "2024",
     url: "https://africultures.com/personnes/?no=26627",
@@ -46,15 +46,6 @@ const PAST_PREVIEW = 8; // nombre de concerts passés affichés avant « Voir to
     year: "2024",
     url: "https://www.infoconcert.com/artiste/barhan-181922/concerts/presentation",
   },
-  {
-    id: 4,
-    quote: "Je demande que nous soyons mieux traités par notre ministère de tutelle.",
-    source: "Cridem",
-    year: "2013",
-    url: "https://m.cridem.org/C_Info.php?article=633373",
-  },
-  
-
 ];
 
 // ── Blocs bio ──────────────────────────────────────────────────
@@ -157,15 +148,15 @@ function ConcertRow({ concert, index, past = false }) {
         </a>
       ) : (
         <span
-  className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs tracking-widest uppercase"
-  style={{
-    background: "rgba(43,62,130,0.2)",
-    border: "1px solid rgba(100,136,255,0.15)",
-    color: "rgba(160,180,255,0.35)",
-  }}
->
-  Bientôt
-</span>
+        className="flex-shrink-0 px-4 py-2 rounded-full font-dm text-xs tracking-widest uppercase"
+        style={{
+          background: "rgba(43,62,130,0.2)",
+          border: "1px solid rgba(100,136,255,0.15)",
+          color: "rgba(160,180,255,0.35)",
+        }}
+      >
+        Bientôt
+      </span>
       )}
     </div>
   );
@@ -276,9 +267,9 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>Barhan Ndiaye — Bio & Parcours</title>
-        <meta name="description" content="Découvrez le parcours de Barhan Ndiaye, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
-        <meta property="og:title" content="Barhan Ndiaye — Bio & Parcours" />
+        <title>Barhan — Bio & Parcours</title>
+        <meta name="description" content="Découvrez le parcours de Barhan, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
+        <meta property="og:title" content="Barhan — Bio & Parcours" />
         <meta property="og:url" content="https://www.barhanmusic.com/about" />
       </Helmet>
 
@@ -371,16 +362,23 @@ export default function About() {
                 Désireux d'explorer de nouveaux horizons, il s'éloigne du rap en 2003 pour embrasser un univers
                 plus instrumental et vocal. Sa collaboration avec le guitariste Philippe Collucci mène à l'album
                 <em> Talibé</em> (2004), ouvrant les portes à des rencontres prestigieuses, dont les divas
-                mauritaniennes Dimi Mint Abba et Maalouma Mint El Meidah. Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
+                mauritaniennes Dimi Mint Abba et Maalouma Mint El Meidah. 
+              </p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
                 le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
-                perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera chaque grande
-                vacance toute l'Afrique en voiture, de Nouakchott à N'Djaména ou de Dakar à N'Djaména, guitare
-                en main, à la rencontre des peuples. Il s'installe de manière constante au Tchad en 2007 et crée
+                perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera plusieurs fois l'Afrique de l'Ouest, 
+                de la Mauritanie au Sénégal, en passant par le Mali et le Burkina Faso, pour se rendre à N'Djaména au Tchad, 
+                guitare en main, à la rencontre des peuples. 
+              </p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                Il s'installe de manière constante au Tchad en 2007 et crée
                 le groupe <em>ADA</em> avec le guitariste camerounais Alex Wandji. Il collabore régulièrement avec
                 le Centre Culturel Français, travaille aux côtés de la chanteuse tchadienne Mounira Mitchala et
                 participe aux <em>Voix du Sahel</em>, animées par le flûtiste nigérien Yancouba Moumini et le
                 guitariste franco-algérien Kamal Zekri.
               </p>
+              
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Installé en France, finaliste du Prix Découvertes RFI en 2009 sous le nom de Bakhan, il sort <em>N'deysan</em> à Paris
                 en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,

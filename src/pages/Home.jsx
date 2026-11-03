@@ -75,7 +75,7 @@ export default function Home() {
             <h1 className="leading-none">
               <img
                 src={barhanLogo}
-                alt="Barhan Ndiaye"
+                alt="Barhan"
                 className="h-32 w-auto"
                 width="400"
                 height="128"

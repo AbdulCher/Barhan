@@ -28,64 +28,66 @@ export default function MusicModal({ album, onClose }) {
         }}
       />
 
-        {/* Bouton fermer */}
+      {/* Bouton fermer */}
      <button
-  onClick={onClose}
-  className="absolute top-6 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center
-             transition-all duration-200 hover:scale-110"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-    color: "#a0b4ff",
-    fontSize: "16px",
-  }}
-  onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#a0b4ff";
-  }}
-  aria-label="Fermer"
->
-  ✕
-</button>
-        {/* Colonne gauche — Pochette carrée */}
-        <div className="flex-shrink-0 relative self-stretch flex items-center w-full sm:w-[380px] p-4">
-  <div className="relative w-full" style={{ paddingBottom: "100%" }}>
-    <img
-      src={album.cover}
-      alt={album.title}
-      className="absolute inset-0 w-full h-full object-cover"
-      style={{ display: "block" }}
-    />
-    <div
-      className="absolute inset-y-0 right-0 w-16 pointer-events-none"
-      style={{
-        background: "linear-gradient(to right, transparent, rgba(12,6,3,0.88))",
-      }}
-    />
-  </div>
-</div>
-        {/* Colonne droite — Contenu */}
-<div className="flex-1 flex flex-col justify-between px-7 py-8 min-w-0 overflow-y-auto" style={{ paddingBottom: "2rem" }}>          {/* En-tête */}
-          <div className="flex flex-col gap-1 mb-5">
-            <p className="font-dm text-xs tracking-[0.22em] uppercase"
-               style={{ color: "rgba(226,150,0,0.65)" }}>
-              {album.year}
-            </p>
-            <h2 className="font-bebas text-4xl tracking-[0.15em] text-[#efdecd] leading-none">
-              {album.title}
-            </h2>
-          </div>
+        onClick={onClose}
+        className="absolute top-6 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center
+        transition-all duration-200 hover:scale-110"
+        style={{
+          background: "rgba(43,62,130,0.5)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(100,136,255,0.4)",
+          boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+          color: "#a0b4ff",
+          fontSize: "16px",
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = "#e29600";
+          e.currentTarget.style.border = "1px solid #e29600";
+          e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+          e.currentTarget.style.color = "#000000";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+          e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+          e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+          e.currentTarget.style.color = "#a0b4ff";
+        }}
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
+
+      {/* Colonne gauche — Pochette carrée */}
+      <div className="flex-shrink-0 relative self-stretch flex items-center w-full sm:w-[380px] p-4">
+        <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+          <img
+            src={album.cover}
+            alt={album.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ display: "block" }}
+          />
+          <div
+            className="absolute inset-y-0 right-0 w-16 pointer-events-none"
+            style={{
+              background: "linear-gradient(to right, transparent, rgba(12,6,3,0.88))",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Colonne droite — Contenu */}
+      <div className="flex-1 flex flex-col justify-between px-7 py-8 min-w-0 overflow-y-auto" style={{ paddingBottom: "2rem" }}>          {/* En-tête */}
+        <div className="flex flex-col gap-1 mb-5">
+          <p className="font-dm text-xs tracking-[0.22em] uppercase"
+            style={{ color: "rgba(226,150,0,0.65)" }}>
+            {album.year}
+          </p>
+          <h2 className="font-bebas text-4xl tracking-[0.15em] text-[#efdecd] leading-none">
+            {album.title}
+          </h2>
+        </div>
 
           {/* Description */}
           <p className="font-dm text-sm leading-relaxed flex-1"

@@ -13,7 +13,7 @@ export const PRODUCTS = [
     price: 15,
     image: null, // "/assets/shop/cd-ndeysan.jpg"
     description: "Premier album de Barhan, 10 titres.",
-    bandcampUrl: "https://bandcamp.com",
+    bandcampUrl: "https://Barhan.bandcamp.com/",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const PRODUCTS = [
     price: 15,
     image: null,
     description: "Second album, fusion soul et hip-hop.",
-    bandcampUrl: "https://bandcamp.com",
+    bandcampUrl: "https://Barhan.bandcamp.com/",
   },
 
   // ── Vinyles ─────────────────────────────────────────────

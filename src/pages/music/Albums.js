@@ -9,7 +9,7 @@ export const albums = [
     cover: NdeysanCover,
     description: "Premier album de Barhan, Ndeysan plonge l'auditeur dans un voyage entre l'Afrique de l'Ouest et les sonorités urbaines. Un projet brut et sincère, né d'influences croisées.",
     musicians: [
-      { role: "Chant & écriture", name: "Barhan" },
+      { role: "Chant & écriture", name: "BARHAN" },
       { role: "Production", name: "KENNEN MUSIC" },
       { role: "Guitare", name: "Julien Pestre" },
       { role: "Guitare", name: "Abdoulaye TRAORE Bademba" },
@@ -18,8 +18,8 @@ export const albums = [
       { role: "Batterie", name: "Jean Baptiste GBADOE" },
       { role: "Percussions", name: "Vincent COUPRIE" },
     ],
-    spotify: "https://open.spotify.com/",
-    buy: "https://example.com/",
+    spotify: "https://open.spotify.com/user/olva0z7obnc6sz6tmqjp0mciy?si=74b90630f25d41fc&nd=1&dlsi=218d2399f7894a44",
+    buy: "https://Barhan.bandcamp.com/",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const albums = [
     cover: Motsdetetecover,
     description: "Mots de Tête marque une évolution dans l'univers de Barhan. Les textes s'affirment, les arrangements s'enrichissent, entre rap, soul et rythmes africains.",
     musicians: [
-      { role: "Chant & écriture", name: "Barhan" },
+      { role: "Chant & écriture", name: "BARHAN" },
       { role: "Production", name: "KENNEN MUSIC" },
       { role: "Saxophone", name: "Don OUKO" },
       { role: "Piano", name: "Zacharia MUNGA" },
@@ -36,7 +36,7 @@ export const albums = [
       { role: "Batterie", name: "Thierry DE OLIVEIRA" },
     ],
     spotify: "https://open.spotify.com/",
-    buy: "https://example.com/",
+    buy: "https://Barhan.bandcamp.com/",
   },
   {
     id: 3,
@@ -45,11 +45,11 @@ export const albums = [
     cover: Motsdetetecover,
     description: "Le troisième chapitre de Barhan. Un album plus personnel, plus direct, qui explore de nouveaux territoires sonores tout en restant ancré dans ses racines.",
     musicians: [
-      { role: "Chant & écriture", name: "Barhan" },
+      { role: "Chant & écriture", name: "BARHAN" },
       { role: "Production", name: "Nom du producteur" },
       { role: "Clavier", name: "Nom du claviériste" },
     ],
     spotify: "https://open.spotify.com/",
-    buy: "https://example.com/",
+    buy: "https://Barhan.bandcamp.com/",
   },
 ];

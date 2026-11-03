@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import MusicModal from "./MusicModal";
 import { albums } from "./Albums";
@@ -256,17 +256,22 @@ export default function Music() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(null);
 
+  // L'état « en cours » vient toujours du lecteur (AudioPlayer) :
+  // il reste juste même si on met en pause ou change de morceau depuis le lecteur.
+  useEffect(() => {
+    const onState = (e) => setPlayingIndex(e.detail.isPlaying ? e.detail.index : null);
+    window.addEventListener("player-state", onState);
+    window.dispatchEvent(new CustomEvent("request-player-state"));
+    return () => window.removeEventListener("player-state", onState);
+  }, []);
+
   const handlePlayTrack = (index) => {
-  if (playingIndex === index) {
-    // Même track → on arrête
-    setPlayingIndex(null);
-    window.dispatchEvent(new CustomEvent("pause-track"));
-  } else {
-    // Nouveau track → on lance
-    setPlayingIndex(index);
-    window.dispatchEvent(new CustomEvent("play-track", { detail: { index } }));
-  }
-};
+    if (playingIndex === index) {
+      window.dispatchEvent(new CustomEvent("pause-track"));
+    } else {
+      window.dispatchEvent(new CustomEvent("play-track", { detail: { index } }));
+    }
+  };
 
   return (
     <>

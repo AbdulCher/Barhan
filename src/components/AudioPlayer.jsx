@@ -2,6 +2,13 @@
 // AUDIO PLAYER — lecteur persistant en bas de page
 // À intégrer dans App.jsx en dehors des routes
 // ============================================================
+//
+// Communication avec le reste du site (événements window) :
+//  - "play-track"  { index }        → lance le morceau n° index
+//  - "pause-track"                  → met en pause
+//  - "player-state" { index, isPlaying } ← envoyé par le lecteur à chaque
+//                                       changement (utilisé par Music.jsx)
+//  - "request-player-state"         → demande au lecteur de renvoyer son état
 
 import { useState, useRef, useEffect } from "react";
 import { tracks } from "../data/Tracks";
@@ -13,10 +20,47 @@ export default function AudioPlayer() {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.8);
   const audioRef = useRef(null);
+  const stateRef = useRef({ index: 0, isPlaying: false });
 
   const track = tracks[currentIndex];
 
-  // Met à jour la progression
+  // ── Actions ────────────────────────────────────────────────
+  const togglePlay = () => setIsPlaying((p) => !p);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % tracks.length);
+    setIsPlaying(true);
+  };
+
+  const handlePrev = () => {
+    const audio = audioRef.current;
+    // Après 3 s de lecture, « précédent » revient au début du morceau
+    if (audio && audio.currentTime > 3) {
+      audio.currentTime = 0;
+      return;
+    }
+    setCurrentIndex((prev) => (prev - 1 + tracks.length) % tracks.length);
+    setIsPlaying(true);
+  };
+
+  // ── Lecture / pause : l'état isPlaying pilote toujours le son ──
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.play().catch(() => setIsPlaying(false)); // ex. lecture bloquée par le navigateur
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying, currentIndex]);
+
+  // Nouveau morceau → on repart de zéro
+  useEffect(() => {
+    setProgress(0);
+    setDuration(0);
+  }, [currentIndex]);
+
+  // ── Progression + enchaînement automatique ────────────────
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -25,73 +69,51 @@ export default function AudioPlayer() {
       setProgress(audio.currentTime);
       setDuration(audio.duration || 0);
     };
+    const onEnded = () => {
+      setCurrentIndex((prev) => (prev + 1) % tracks.length);
+      setIsPlaying(true);
+    };
 
     audio.addEventListener("timeupdate", updateProgress);
     audio.addEventListener("loadedmetadata", updateProgress);
-    audio.addEventListener("ended", handleNext);
-
+    audio.addEventListener("ended", onEnded);
     return () => {
       audio.removeEventListener("timeupdate", updateProgress);
       audio.removeEventListener("loadedmetadata", updateProgress);
-      audio.removeEventListener("ended", handleNext);
+      audio.removeEventListener("ended", onEnded);
     };
-  }, [currentIndex]);
+  }, []);
 
-  // Change le volume
-  // Écoute l'événement play-track depuis les TrackCards
-useEffect(() => {
-  const playHandler = (e) => {
-    setCurrentIndex(e.detail.index);
-    setIsPlaying(true);
-  };
-  const pauseHandler = () => {
-    setIsPlaying(false);
-    audioRef.current?.pause();
-  };
-  window.addEventListener("play-track", playHandler);
-  window.addEventListener("pause-track", pauseHandler);
-  return () => {
-    window.removeEventListener("play-track", playHandler);
-    window.removeEventListener("pause-track", pauseHandler);
-  };
-}, []);
+  // ── Volume ────────────────────────────────────────────────
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
   }, [volume]);
 
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
+  // ── Prévient le reste du site de l'état du lecteur ─────────
+  useEffect(() => {
+    stateRef.current = { index: currentIndex, isPlaying };
+    window.dispatchEvent(new CustomEvent("player-state", { detail: stateRef.current }));
+  }, [currentIndex, isPlaying]);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % tracks.length);
-    setIsPlaying(true);
-  };
+  // ── Écoute les ordres venant des TrackCards (page Music) ────
+  useEffect(() => {
+    const playHandler = (e) => {
+      setCurrentIndex(e.detail.index);
+      setIsPlaying(true);
+    };
+    const pauseHandler = () => setIsPlaying(false);
+    const stateRequest = () =>
+      window.dispatchEvent(new CustomEvent("player-state", { detail: stateRef.current }));
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + tracks.length) % tracks.length);
-    setIsPlaying(true);
-  };
-
-  // Quand l'index change, relance la lecture
-  // Quand l'index change, attend canplay avant de lancer
-useEffect(() => {
-  const audio = audioRef.current;
-  if (!audio) return;
-  audio.load();
-  const onCanPlay = () => {
-    if (isPlaying) audio.play().catch(() => {});
-  };
-  audio.addEventListener("canplay", onCanPlay, { once: true });
-  return () => audio.removeEventListener("canplay", onCanPlay);
-}, [currentIndex]);
+    window.addEventListener("play-track", playHandler);
+    window.addEventListener("pause-track", pauseHandler);
+    window.addEventListener("request-player-state", stateRequest);
+    return () => {
+      window.removeEventListener("play-track", playHandler);
+      window.removeEventListener("pause-track", pauseHandler);
+      window.removeEventListener("request-player-state", stateRequest);
+    };
+  }, []);
 
   const handleSeek = (e) => {
     const audio = audioRef.current;
@@ -113,6 +135,8 @@ useEffect(() => {
 
   return (
     <div
+      role="region"
+      aria-label="Lecteur audio"
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{
         background: "linear-gradient(135deg, #1a0000 0%, #2d0505 40%, #0d0d0d 100%)",
@@ -143,27 +167,34 @@ useEffect(() => {
           type="range"
           min={0}
           max={duration || 100}
+          step="any"
           value={progress}
           onChange={handleSeek}
+          aria-label="Position dans le morceau"
+          aria-valuetext={`${formatTime(progress)} sur ${formatTime(duration)}`}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
         />
       </div>
 
       <div className="flex items-center gap-4 px-4 py-3">
-        <audio ref={audioRef} src={track.src} />
+        {/* preload="none" : le MP3 n'est téléchargé qu'au clic sur lecture */}
+        <audio ref={audioRef} src={track.src} preload="none" />
 
         {/* Pochette + infos */}
         <div className="flex items-center gap-3 w-[140px] sm:w-[200px] min-w-0">
           {track.cover ? (
             <img
               src={track.cover}
-              alt={track.title}
+              alt=""
+              width="40"
+              height="40"
               className="w-10 h-10 rounded-md object-cover"
               style={{ boxShadow: "0 0 8px rgba(255,51,0,0.3)" }}
             />
           ) : (
             /* Placeholder pochette avec néon */
             <div
+              aria-hidden="true"
               className="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
               style={{
                 background: "rgba(140,0,0,0.3)",
@@ -174,27 +205,27 @@ useEffect(() => {
               <span className="text-[#ff4444] text-xs">♪</span>
             </div>
           )}
-          <div className="flex flex-col overflow-hidden">
+          <div className="flex flex-col overflow-hidden" aria-live="polite">
             <span className="font-bebas text-[#ff4444] text-sm tracking-widest truncate"
               style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
               {track.title}
             </span>
-            <span className="font-dm text-[#efdecd]/40 text-xs truncate">
+            <span className="font-dm text-[#efdecd]/60 text-xs truncate">
               {track.artist}
             </span>
           </div>
         </div>
 
         {/* Contrôles centraux */}
-<div className="flex-1 flex flex-col items-center gap-1">
+        <div className="flex-1 flex flex-col items-center gap-1">
             {/* Boutons */}
           <div className="flex items-center gap-5">
             <button
               onClick={handlePrev}
-              className="text-[#efdecd]/40 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
-              aria-label="Précédent"
+              className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
+              aria-label="Morceau précédent"
             >
-              ⏮
+              <span aria-hidden="true">⏮</span>
             </button>
 
             {/* Bouton play — cercle néon rouge */}
@@ -214,25 +245,25 @@ useEffect(() => {
               }}
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
-              {isPlaying ? "⏸" : "▶"}
+              <span aria-hidden="true">{isPlaying ? "⏸" : "▶"}</span>
             </button>
 
             <button
               onClick={handleNext}
-              className="text-[#efdecd]/40 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
-              aria-label="Suivant"
+              className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
+              aria-label="Morceau suivant"
             >
-              ⏭
+              <span aria-hidden="true">⏭</span>
             </button>
           </div>
 
           {/* Temps */}
-          <div className="flex items-center gap-2">
-            <span className="font-dm text-[10px] text-[#efdecd]/30 w-8 text-right">
+          <div className="flex items-center gap-2" aria-hidden="true">
+            <span className="font-dm text-[10px] text-[#efdecd]/60 w-8 text-right">
               {formatTime(progress)}
             </span>
-            <span className="font-dm text-[10px] text-[#efdecd]/20">·</span>
-            <span className="font-dm text-[10px] text-[#efdecd]/30 w-8">
+            <span className="font-dm text-[10px] text-[#efdecd]/40">·</span>
+            <span className="font-dm text-[10px] text-[#efdecd]/60 w-8">
               {formatTime(duration)}
             </span>
           </div>
@@ -240,7 +271,7 @@ useEffect(() => {
 
         {/* Volume */}
         <div className="hidden sm:flex items-center gap-2 w-[120px]">
-          <span className="text-[#ff4444]/50 text-sm">🔈</span>
+          <span className="text-[#ff4444]/50 text-sm" aria-hidden="true">🔈</span>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div
               className="absolute left-0 top-0 h-full rounded-full"
@@ -257,6 +288,8 @@ useEffect(() => {
               step={0.01}
               value={volume}
               onChange={(e) => setVolume(parseFloat(e.target.value))}
+              aria-label="Volume"
+              aria-valuetext={`${Math.round(volume * 100)} %`}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
           </div>
