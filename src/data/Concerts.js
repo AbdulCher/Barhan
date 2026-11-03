@@ -41,29 +41,30 @@ export const CONCERTS = [
 
   // ── Passés (EXEMPLES à remplacer) ─────────────────────────
   {
-    date: "2025-06-21",
-    venue: "La Gare_Le Gore",
-    city: "Ville, Pays",
+    date: "2025-07-25",
+    venue: "Décroissance Festival",
+    city: "Saint-Maixent-l'Ecole, France",
+    
+  },
+  {
+    date: "2025-06-07",
+    venue: "Festival International de Musique",
+    city: "Belfort, France",
+  },
+  {
+    date: "2024-10-12",
+    venue: "Mirador Festival",
+    city: "Luxembourg, Luxembourg",
     note: "Fête de la Musique",
   },
   {
-    date: "2024-10-12",
-    venue: "Nom de la salle",
-    city: "Ville, Pays",
+    date: "2023-12-08",
+    venue: "La Gare_Le Gore",
+    city: "Paris, France",
   },
   {
-    date: "2024-10-12",
-    venue: "Nom de la salle",
-    city: "Ville, Pays",
-  },
-  {
-    date: "2024-10-12",
-    venue: "Nom de la salle",
-    city: "Ville, Pays",
-  },
-  {
-    date: "2024-10-12",
-    venue: "Nom de la salle",
-    city: "Ville, Pays",
+    date: "2021-09-17",
+    venue: "Les TropiKantes Festival",
+    city: "Paris, France",
   },
 ];

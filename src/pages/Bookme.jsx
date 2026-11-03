@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const CONTACT = {
   ville: "Paris, France",
   tel: "+33 6 12 34 56 78",
-  email: "contact@barhan.com",
+  email: "barhan.nd@gmail.com",
 };
 
 const ASSOCIATION = {

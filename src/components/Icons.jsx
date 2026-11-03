@@ -29,7 +29,7 @@ const ICONS = [
   },
   {
     icon: <FaYoutube />,
-    link: "https://www.youtube.com/@BarhanNdi",
+    link: "https://www.youtube.com/@BarhanOfficiel",
     label: "YouTube",
     color: "#FF0000",
   },

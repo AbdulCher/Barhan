@@ -10,7 +10,7 @@ export const albums = [
     description: "Premier album de Barhan, Ndeysan plonge l'auditeur dans un voyage entre l'Afrique de l'Ouest et les sonorités urbaines. Un projet brut et sincère, né d'influences croisées.",
     musicians: [
       { role: "Chant & écriture", name: "Barhan" },
-      { role: "Production", name: "Barhan N DIAYE" },
+      { role: "Production", name: "KENNEN MUSIC" },
       { role: "Guitare", name: "Julien Pestre" },
       { role: "Guitare", name: "Abdoulaye TRAORE Bademba" },
       { role: "Basse", name: "Dembel DIOP Super Diamono" },
@@ -29,7 +29,7 @@ export const albums = [
     description: "Mots de Tête marque une évolution dans l'univers de Barhan. Les textes s'affirment, les arrangements s'enrichissent, entre rap, soul et rythmes africains.",
     musicians: [
       { role: "Chant & écriture", name: "Barhan" },
-      { role: "Production", name: "Barhan N DIAYE" },
+      { role: "Production", name: "KENNEN MUSIC" },
       { role: "Saxophone", name: "Don OUKO" },
       { role: "Piano", name: "Zacharia MUNGA" },
       { role: "Basse", name: "Tovohery ANDRIANARISOA" },
