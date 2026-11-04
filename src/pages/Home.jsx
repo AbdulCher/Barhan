@@ -21,10 +21,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Barhan Ndiaye — Musicien & Compositeur</title>
-        <meta name="description" content="Site officiel de Barhan Ndiaye, musicien et compositeur mauritanien installé à Paris. Jazz, blues et traditions africaines." />
-        <meta property="og:title" content="Barhan Ndiaye — Musicien & Compositeur" />
-        <meta property="og:description" content="Site officiel de Barhan Ndiaye, musicien entre traditions africaines, jazz et blues." />
+        <title>Barhan — Musicien & Compositeur</title>
+        <meta name="description" content="Site officiel de Barhan, musicien et compositeur mauritanien installé à Paris. Jazz, blues et traditions africaines." />
+        <meta property="og:title" content="Barhan — Musicien & Compositeur" />
+        <meta property="og:description" content="Site officiel de Barhan, musicien entre traditions africaines, jazz et blues." />
         <meta property="og:url" content="https://www.barhanmusic.com/" />
       </Helmet>
 

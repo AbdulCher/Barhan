@@ -61,7 +61,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="font-dm text-sm text-[#efdecd]/70 leading-relaxed max-w-[220px]">
-              Artiste aux sonorités métissées, entre Afrique de l'Ouest, soul et hip-hop. Basé à Paris.
+              Artiste aux sonorités métissées, entre Afrique de l'Ouest, blues, jazz, soul et hip-hop. Basé à Paris.
             </p>
             <Icons />
           </div>
@@ -77,7 +77,7 @@ export default function Footer() {
                   key={link.to}
                   to={link.to}
                   className="font-dm text-sm text-[#efdecd]/80 hover:text-[#e29600]
-                             transition-colors duration-200"
+                  transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -91,13 +91,9 @@ export default function Footer() {
               Contact
             </p>
             <div className="flex flex-col gap-2 items-center sm:items-end">
-              <a href="mailto:contact@barhan.com"
+              <a href="mailto:barhan.nd@gmail.com"
                  className="font-dm text-sm text-[#efdecd]/80 hover:text-[#e29600] transition-colors duration-200">
-                contact@barhan.com
-              </a>
-              <a href="tel:+33612345678"
-                 className="font-dm text-sm text-[#efdecd]/80 hover:text-[#e29600] transition-colors duration-200">
-                +33 6 12 34 56 78
+                barhan.nd@gmail.com
               </a>
               <p className="font-dm text-sm text-[#efdecd]/80">Paris, France</p>
             </div>
@@ -142,55 +138,54 @@ export default function Footer() {
         {/* Barre du bas */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
 
-  {/* Copyright */}
-  <div className="w-full sm:w-[280px] flex justify-center sm:justify-start">
-    <p className="font-dm text-xs text-[#e29600]/70 tracking-wide">
-      © {YEAR} Barhan — Tous droits réservés
-    </p>
-  </div>
-
-  {/* Logo partenaire */}
-  <a
-  href={PARTNER.url}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="group flex flex-col items-center gap-2 cursor-pointer shrink-0"
-  aria-label={`Visiter le site ${PARTNER.name}`}
->
-  <span className="font-dm text-[11px] tracking-[0.2em] uppercase text-[#e29600]/60 group-hover:text-[#6488ff] transition-colors duration-300">
-    Réalisé par ChachaDev
-  </span>
-  <div
-    className="flex items-center justify-center px-4 py-2 rounded-lg bg-black
-      border-2 border-white/20 group-hover:border-[#6488ff] transition-all duration-300"
-  >
-    <img
-      src={PARTNER.logo}
-      alt={PARTNER.name}
-      className="h-8 w-auto object-contain opacity-70 group-hover:opacity-100
-                 filter grayscale group-hover:grayscale-0 transition-all duration-300"
-    />
-  </div>
-</a>
-
-  {/* Liens légaux */}
-  <div className="w-full sm:w-[280px] flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3 sm:gap-6">
-    {LEGAL_LINKS.map((link) => (
-      <Link
-        key={link.to}
-        to={link.to}
-        className="font-dm text-xs text-[#e29600]/60 hover:text-[#e29600] transition-colors duration-200"
-      >
-        {link.label}
-      </Link>
-    ))}
-  </div>
-
-</div>
-
+        {/* Copyright */}
+        <div className="w-full sm:w-[280px] flex justify-center sm:justify-start">
+          <p className="font-dm text-xs text-[#6488ff] tracking-wide">
+            © {YEAR} Barhan — Tous droits réservés
+          </p>
         </div>
 
-      
+        {/* Logo partenaire */}
+        <a
+          href={PARTNER.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex flex-col items-center gap-2 cursor-pointer shrink-0"
+          aria-label={`Visiter le site ${PARTNER.name}`}
+        >
+          <span className="font-dm text-[11px] tracking-[0.2em] uppercase text-[#6488ff] group-hover:text-[#e29600] transition-colors duration-300">
+            Réalisé par ChachaDev
+          </span>
+          <div
+            className="flex items-center justify-center px-4 py-2 rounded-lg bg-black
+            border border-[#6488ff] group-hover:border-[#e29600] transition-all duration-300"
+          >
+            <img
+              src={PARTNER.logo}
+              alt={PARTNER.name}
+              className="h-8 w-auto object-contain opacity-70 group-hover:opacity-100
+              "
+            />
+          </div>
+        </a>
+
+        {/* Liens légaux */}
+        <div className="w-full sm:w-[280px] flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3 sm:gap-6">
+          {LEGAL_LINKS.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="font-dm text-xs text-[#6488ff]/60 hover:text-[#e29600] transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+     
     </footer>
   );
 }

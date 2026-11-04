@@ -572,8 +572,8 @@ export default function About() {
       {/* Barre de navigation sticky */}
       <div
         className={`fixed top-20 left-1/2 -translate-x-1/2 z-40 flex gap-1 px-3 py-2 rounded-full
-                    transition-all duration-500
-                    ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+        transition-all duration-500
+        ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
         style={{
           background: "rgba(8,3,1,0.82)",
           backdropFilter: "blur(20px)",

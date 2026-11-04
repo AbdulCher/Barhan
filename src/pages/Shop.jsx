@@ -46,8 +46,8 @@ function ProductCard({ product, onAdd }) {
       />
 
       <span className="absolute top-3 right-3 z-10 font-dm text-[10px] font-bold
-                       tracking-widest uppercase px-2.5 py-1 rounded-full
-                       bg-black/70 border border-[#efdecd]/10 text-[#efdecd]/50">
+        tracking-widest uppercase px-2.5 py-1 rounded-full
+        bg-black/70 border border-[#efdecd]/10 text-[#efdecd]/50">
         {product.category}
       </span>
 
@@ -100,11 +100,11 @@ function ProductCard({ product, onAdd }) {
           <button
             onClick={handleAdd}
             className={`font-dm flex items-center gap-2 text-xs font-bold tracking-widest uppercase
-                        px-4 py-2 rounded-full transition-all duration-300
-                        ${added
-                          ? "bg-green-600/80 text-white border border-green-500/50"
-                          : "bg-[#390202] hover:bg-[#e29600] text-[#efdecd] hover:text-[#efdecd] border border-transparent"
-                        }`}
+            px-4 py-2 rounded-full transition-all duration-300
+            ${added
+              ? "bg-green-600/80 text-white border border-green-500/50"
+              : "bg-[#390202] hover:bg-[#e29600] text-[#efdecd] hover:text-[#efdecd] border border-transparent"
+            }`}
           >
             {added ? (
               <>
@@ -141,9 +141,9 @@ function CartDrawer({ cart, onClose }) {
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50" onClick={onClose} />
 
       <div className="fixed top-0 right-0 h-full w-full max-w-[420px] z-50
-                      bg-black border-l border-[#390202]/40
-                      flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.8)]
-                      animate-[slideInRight_0.3s_ease]">
+        bg-black border-l border-[#390202]/40
+        flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.8)]
+        animate-[slideInRight_0.3s_ease]">
 
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#efdecd]/10">
           <div>
@@ -155,8 +155,8 @@ function CartDrawer({ cart, onClose }) {
           <button
             onClick={onClose}
             className="w-9 h-9 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
-                       flex items-center justify-center text-[#efdecd]/50 hover:text-[#efdecd]
-                       transition-all duration-200"
+            flex items-center justify-center text-[#efdecd]/50 hover:text-[#efdecd]
+            transition-all duration-200"
           >
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
               <path d="M3 3l10 10M13 3L3 13"/>
@@ -174,10 +174,10 @@ function CartDrawer({ cart, onClose }) {
             items.map((item) => (
               <div key={item.key}
                 className="flex items-center gap-4 bg-[#efdecd]/5 border border-[#efdecd]/10
-                           rounded-xl p-4 transition-all duration-200">
+                rounded-xl p-4 transition-all duration-200">
 
                 <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-[#efdecd]/5
-                                flex items-center justify-center">
+                  flex items-center justify-center">
                   {item.image
                     ? <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                     : <span className="text-2xl">{item.category === "CD" ? "💿" : item.category === "Vinyle" ? "🎵" : "👕"}</span>
@@ -196,15 +196,15 @@ function CartDrawer({ cart, onClose }) {
                   <button
                     onClick={() => updateQty(item.key, item.qty - 1)}
                     className="w-7 h-7 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
-                               flex items-center justify-center text-[#efdecd]/60 hover:text-[#efdecd]
-                               font-bold text-sm transition-all duration-200"
+                    flex items-center justify-center text-[#efdecd]/60 hover:text-[#efdecd]
+                    font-bold text-sm transition-all duration-200"
                   >−</button>
                   <span className="font-dm text-sm text-[#efdecd] w-4 text-center">{item.qty}</span>
                   <button
                     onClick={() => updateQty(item.key, item.qty + 1)}
                     className="w-7 h-7 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
-                               flex items-center justify-center text-[#efdecd]/60 hover:text-[#efdecd]
-                               font-bold text-sm transition-all duration-200"
+                    flex items-center justify-center text-[#efdecd]/60 hover:text-[#efdecd]
+                    font-bold text-sm transition-all duration-200"
                   >+</button>
                 </div>
 
@@ -230,10 +230,10 @@ function CartDrawer({ cart, onClose }) {
             <button
               onClick={handleOrder}
               className="font-dm w-full flex items-center justify-center gap-2
-                         text-sm font-bold tracking-widest uppercase
-                         text-[#efdecd] hover:text-[#efdecd] bg-[#390202] hover:bg-[#e29600]
-                         py-4 rounded-full transition-all duration-200
-                         shadow-[0_4px_20px_rgba(57,2,2,0.4)]"
+              text-sm font-bold tracking-widest uppercase
+              text-[#efdecd] hover:text-[#efdecd] bg-[#390202] hover:bg-[#e29600]
+              py-4 rounded-full transition-all duration-200
+              shadow-[0_4px_20px_rgba(57,2,2,0.4)]"
             >
               Commander sur Bandcamp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
@@ -243,7 +243,7 @@ function CartDrawer({ cart, onClose }) {
             <button
               onClick={clearCart}
               className="font-dm text-xs text-[#efdecd]/20 hover:text-[#efdecd]/50
-                         tracking-widest uppercase transition-colors duration-200 text-center"
+              tracking-widest uppercase transition-colors duration-200 text-center"
             >
               Vider le panier
             </button>
@@ -327,11 +327,11 @@ export default function Shop() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`font-dm text-xs font-bold tracking-widest uppercase
-                            px-5 py-2.5 rounded-full border transition-all duration-200
-                            ${activeCategory === cat
-                              ? "bg-[#e29600] text-black border-[#e29600] shadow-[0_4px_16px_rgba(226,150,0,0.3)]"
-                              : "text-[#efdecd]/50 border-[#efdecd]/15 hover:border-[#efdecd]/40 hover:text-[#efdecd]"
-                            }`}
+                px-5 py-2.5 rounded-full border transition-all duration-200
+                ${activeCategory === cat
+                  ? "bg-[#e29600] text-black border-[#e29600] shadow-[0_4px_16px_rgba(226,150,0,0.3)]"
+                  : "text-[#efdecd]/50 border-[#efdecd]/15 hover:border-[#efdecd]/40 hover:text-[#efdecd]"
+                }`}
               >
                 {cat}
               </button>

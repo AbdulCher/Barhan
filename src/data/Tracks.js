@@ -6,25 +6,27 @@
 export const tracks = [
   {
     id: 1,
-    title: "Kaay",
-    artist: "Barhan",
-    src: "/audio/kaay.mp3",
-    cover: "/audio/covers/motsdetetecover.webp",
-  },
-  {
-    id: 2,
     title: "Klaam",
     artist: "Barhan",
     src: "/audio/klaam.mp3",
     cover: "/audio/covers/motsdetetecover.webp", // optionnel
   },
+  
   {
-    id: 3,
+    id: 2,
     title: "Leyletna",
     artist: "Barhan",
     src: "/audio/leyletna.mp3",
     cover: "/audio/covers/motsdetetecover.webp", // optionnel
   },
+  {
+    id: 3,
+    title: "Kaay",
+    artist: "Barhan",
+    src: "/audio/kaay.mp3",
+    cover: "/audio/covers/motsdetetecover.webp",
+  },
+
   {
     id: 4,
     title: "Démocratie",

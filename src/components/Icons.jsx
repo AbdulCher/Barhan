@@ -6,6 +6,7 @@ import {
   FaYoutube,
   FaSpotify,
   FaBandcamp,
+  FaItunes,
 } from "react-icons/fa";
 
 const ICONS = [
@@ -14,6 +15,12 @@ const ICONS = [
     link: "https://www.instagram.com/barhan.music/",
     label: "Instagram",
     color: "#E1306C",
+  },
+  {
+    icon: <FaItunes />,
+    link: "https://barhan.itunes.com",
+    label: "iTunes",
+    color: "#1DA0C3",
   },
   {
     icon: <FaSpotify />,

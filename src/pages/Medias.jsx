@@ -9,10 +9,9 @@ import { Helmet } from "react-helmet-async";
 
 // ── Données vidéos ─────────────────────────────────────────
 const GRID_VIDEOS = [
-  { src: "https://www.youtube.com/embed/ZfxLbYIsAak",   title: "Vidéo 1" },
   { src: "https://www.youtube.com/embed/tuU_BduqJmk",   title: "Vidéo 3" },
-
   { src: "https://www.youtube.com/embed/dcdkpD6EjWs",   title: "Vidéo 2" },
+  { src: "https://www.youtube.com/embed/ZfxLbYIsAak",   title: "Vidéo 1" },
   { src: "https://www.youtube.com/embed/k9ZxVGJBDPE",   title: "Vidéo 4" },
 ];
 
@@ -272,7 +271,7 @@ export default function Medias() {
                 <button
                   onClick={() => window.open("https://www.youtube.com/@BarhanNdi", "_blank")}
                   className="font-dm flex items-center gap-2 text-sm font-bold tracking-widest uppercase
-                  text-[#efdecd] bg-[#390202] hover:bg-[#e29600] hover:text-[#efdecd]
+                  text-[#efdecd] bg-[#390202] hover:bg-[#e29600] hover:text-[#000000]
                   px-5 py-2 rounded-full transition-all duration-200"
                 >
                   <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">

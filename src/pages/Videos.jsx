@@ -55,7 +55,7 @@ function VideoCard({ src, title }) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center
-                         transition-all duration-200 shadow-lg group-hover:scale-110"
+              transition-all duration-200 shadow-lg group-hover:scale-110"
               style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
             >
               <svg viewBox="0 0 16 16" fill="#e00303" className="w-6 h-6 ml-1">
@@ -115,10 +115,10 @@ export default function Videos() {
 
           {/* Bouton */}
           <button
-            onClick={() => window.open("https://www.youtube.com/@BarhanNdi", "_blank")}
+            onClick={() => window.open("https://www.youtube.com/@BarhanOfficiel", "_blank")}
             className="font-dm flex items-center gap-2 text-sm font-bold tracking-widest uppercase
-                       text-black bg-[#2b3e82] hover:bg-[#e15408] hover:text-white
-                       px-5 py-2 rounded-full transition-all duration-200"
+            text-black bg-[#2b3e82] hover:bg-[#e15408] hover:text-black
+            px-5 py-2 rounded-full transition-all duration-200"
           >
             <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
               <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm-1 4.5l4.5 2.5-4.5 2.5V5.5z"/>

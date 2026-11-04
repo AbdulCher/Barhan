@@ -168,9 +168,9 @@ export default function Bookme() {
         }}
       />
       <Helmet>
-        <title>Barhan Ndiaye — Réservation & Contact</title>
-        <meta name="description" content="Réservez Barhan Ndiaye pour votre concert, festival ou événement privé. Fiches techniques et formulaire de contact disponibles." />
-        <meta property="og:title" content="Barhan Ndiaye — Réservation & Contact" />
+        <title>Barhan — Réservation & Contact</title>
+        <meta name="description" content="Réservez Barhan pour votre concert, festival ou événement privé. Fiches techniques et formulaire de contact disponibles." />
+        <meta property="og:title" content="Barhan — Réservation & Contact" />
         <meta property="og:url" content="https://www.barhanmusic.com/bookme" />
       </Helmet>
       {/* BG Color par dessus à 60% */}
@@ -333,30 +333,29 @@ export default function Bookme() {
                     className={`${inputClass} resize-none`} />
                 </Field>
                 <button
-                  type="submit"
-                  
-className="font-dm self-center flex items-center gap-2
-           text-[12px] font-bold tracking-widest uppercase
-           text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
-style={{
-  background: "rgba(43,62,130,0.5)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  border: "1px solid rgba(100,136,255,0.4)",
-  boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-}}
-onMouseEnter={e => {
-  e.currentTarget.style.background = "#e29600";
-  e.currentTarget.style.border = "1px solid #e29600";
-  e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-  e.currentTarget.style.color = "#000000";
-}}
-onMouseLeave={e => {
-  e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-  e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-  e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-  e.currentTarget.style.color = "#efdecd";
-}}
+                  type="submit"     
+                  className="font-dm self-center flex items-center gap-2
+                  text-[12px] font-bold tracking-widest uppercase
+                  text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
+                  style={{
+                    background: "rgba(43,62,130,0.5)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(100,136,255,0.4)",
+                    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = "#e29600";
+                    e.currentTarget.style.border = "1px solid #e29600";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+                    e.currentTarget.style.color = "#000000";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+                    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+                    e.currentTarget.style.color = "#efdecd";
+                  }}
                 >
                   Envoyer la demande
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">

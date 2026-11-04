@@ -206,8 +206,8 @@ export default function AudioPlayer() {
             </div>
           )}
           <div className="flex flex-col overflow-hidden" aria-live="polite">
-            <span className="font-bebas text-[#e29600]/85 text-sm tracking-widest truncate"
-              style={{ textShadow: "0 0 8px rgba(226,150,0,0.3)" }}>
+            <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate"
+              style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
               {track.title}
             </span>
             <span className="font-dm text-[#efdecd]/60 text-xs truncate">
@@ -271,14 +271,14 @@ export default function AudioPlayer() {
 
         {/* Volume */}
         <div className="hidden sm:flex items-center gap-2 w-[120px]">
-          <span className="text-[#e29600]/50 text-sm" aria-hidden="true">🔈</span>
+          <span className="text-[#ff4444]/50 text-sm" aria-hidden="true">🔈</span>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div
               className="absolute left-0 top-0 h-full rounded-full"
               style={{
                 width: `${volume * 100}%`,
-                background: "linear-gradient(to right, rgba(226,150,0,0.45), rgba(226,150,0,0.85))",
-                boxShadow: "0 0 4px rgba(226,150,0,0.3)",
+                background: "linear-gradient(to right, #8c0000, #ff1a1a)",
+                boxShadow: "0 0 4px rgba(255,26,26,0.5)",
               }}
             />
             <input

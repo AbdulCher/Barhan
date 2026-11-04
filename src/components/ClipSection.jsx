@@ -13,22 +13,22 @@ export default function ClipSection() {
   const [playing, setPlaying] = useState(false);
 
   return (
-<section className="relative w-full bg-transparent py-20 flex justify-center overflow-hidden">
+    <section className="relative w-full bg-transparent py-20 flex justify-center overflow-hidden">
       {/* Halo rouge central */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-  background:
-    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(57,2,2,0.35) 0%, transparent 75%)",
-}}
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(57,2,2,0.35) 0%, transparent 75%)",
+        }}
       />
       {/* Halo bordeaux bas */}
       <div
         className="absolute bottom-0 left-0 right-0 h-48 z-0 pointer-events-none"
         style={{
-  background:
-    "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(57,2,2,0.2) 0%, transparent 80%)",
-}}
+          background:
+            "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(57,2,2,0.2) 0%, transparent 80%)",
+      }}
       />
 
       {/* Contenu */}
@@ -102,29 +102,29 @@ export default function ClipSection() {
         <button
           onClick={() => window.open("https://www.youtube.com/@BarhanOfficiel", "_blank")}
           className="font-dm text-sm tracking-widest uppercase font-bold
-             text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-  }}
-  onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#efdecd";
-  }}
->
-  Voir plus sur YouTube
-</button>
+          text-[#efdecd] px-5 py-2 rounded-full transition-all duration-200"
+          style={{
+            background: "rgba(43,62,130,0.5)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(100,136,255,0.4)",
+            boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "#e29600";
+            e.currentTarget.style.border = "1px solid #e29600";
+            e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+            e.currentTarget.style.color = "#000000";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+            e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+            e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+            e.currentTarget.style.color = "#efdecd";
+          }}
+        >
+          Voir plus sur YouTube
+        </button>
       </div>
     </section>
   );
