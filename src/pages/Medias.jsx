@@ -223,7 +223,7 @@ export default function Medias() {
 
           {/* En-tête */}
           <div className="flex flex-col items-center gap-3 mt-10">
-            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/40 uppercase">
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
               Galerie
             </p>
             <h2 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
@@ -240,7 +240,7 @@ export default function Medias() {
               className={`p-2 text-lg md:text-xl tracking-wide transition-colors duration-200 ${
                 activeTab === 'videos'
                   ? 'border-b-2 border-[#e29600] uppercase font-bold text-[#e29600]'
-                  : 'text-[#efdecd]/40 hover:text-[#efdecd]'
+                  : 'text-[#efdecd]/60 hover:text-[#efdecd]'
               }`}
             >
               Vidéos
@@ -250,7 +250,7 @@ export default function Medias() {
               className={`pb-2 text-sm md:text-lg font-bold uppercase transition-colors duration-200 ${
                 activeTab === 'photos'
                   ? 'border-b-2 border-[#e29600] text-[#e29600] font-semibold'
-                  : 'text-[#efdecd]/40 hover:text-[#efdecd]'
+                  : 'text-[#efdecd]/60 hover:text-[#efdecd]'
               }`}
             >
               Photos
@@ -286,7 +286,7 @@ export default function Medias() {
           {/* Section Photos */}
           {activeTab === 'photos' && (
             <>
-              <p className="font-dm text-center text-[#efdecd]/40 text-xs tracking-widest uppercase">
+              <p className="font-dm text-center text-[#efdecd]/60 text-xs tracking-widest uppercase">
                 {photos.length} photos — cliquez pour zoomer
               </p>
               <div className="columns-1 md:columns-3 gap-4 space-y-4">

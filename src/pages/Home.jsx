@@ -69,7 +69,7 @@ export default function Home() {
 
           {/* Contenu centré */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 -mt-10">
-            <p className="font-bold pb-8 p-2 text-base tracking-[0.35em] text-[#efdecd]/50 uppercase h-4" aria-live="polite">
+            <p className="font-bold pb-8 p-2 text-base tracking-[0.35em] text-[#efdecd]/80 uppercase h-4" aria-live="polite">
               <TypewriterText phrases={["Musicien & Compositeur", "Kennen Music", "Paris, France"]} />
             </p>
             <h1 className="leading-none">

@@ -325,7 +325,7 @@ export default function Music() {
 
           {/* ── En-tête ── */}
           <div className="flex flex-col items-center gap-3 mb-16 mt-10">
-            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/50 uppercase">
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
               Discographie
             </p>
             <h2 className="font-bebas mt-3 text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
@@ -351,7 +351,7 @@ export default function Music() {
           {/* ── Section Extraits ── */}
           <div className="mt-24">
             <div className="flex flex-col items-center gap-3 mb-10">
-              <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/50 uppercase">
+              <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
                 Écouter
               </p>
               <h2 className="font-bebas mt-3 text-[32px] tracking-[0.20em] text-[#e29600] leading-none">

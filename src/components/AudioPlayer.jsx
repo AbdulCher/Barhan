@@ -176,12 +176,12 @@ export default function AudioPlayer() {
         />
       </div>
 
-      <div className="flex items-center gap-4 px-4 py-3">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-3">
         {/* preload="none" : le MP3 n'est téléchargé qu'au clic sur lecture */}
         <audio ref={audioRef} src={track.src} preload="none" />
 
         {/* Pochette + infos */}
-        <div className="flex items-center gap-3 w-[140px] sm:w-[200px] min-w-0">
+<div className="flex items-center gap-3 min-w-0">
           {track.cover ? (
             <img
               src={track.cover}
@@ -205,7 +205,7 @@ export default function AudioPlayer() {
               <span className="text-[#ff4444] text-xs">♪</span>
             </div>
           )}
-          <div className="flex flex-col overflow-hidden" aria-live="polite">
+<div className="hidden sm:flex flex-col overflow-hidden" aria-live="polite">
             <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate"
               style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
               {track.title}
@@ -217,7 +217,7 @@ export default function AudioPlayer() {
         </div>
 
         {/* Contrôles centraux */}
-        <div className="flex-1 flex flex-col items-center gap-1">
+<div className="flex flex-col items-center gap-1">
             {/* Boutons */}
           <div className="flex items-center gap-5">
             <button
@@ -225,7 +225,9 @@ export default function AudioPlayer() {
               className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
               aria-label="Morceau précédent"
             >
-              <span aria-hidden="true">⏮</span>
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 text-[#6488ff]/60"> 
+              <path d="M3 2h2v12H3zM14 2v12L6 8z" />
+            </svg>            
             </button>
 
             {/* Bouton play — cercle néon rouge */}
@@ -245,7 +247,15 @@ export default function AudioPlayer() {
               }}
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
-              <span aria-hidden="true">{isPlaying ? "⏸" : "▶"}</span>
+              {isPlaying ? (
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6">
+                  <path d="M4 2h3v12H4zM9 2h3v12H9z" />
+                </svg>
+                ) : (
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 ml-0.5 text-[#6488ff]/60">
+                  <path d="M4 2l10 6-10 6z" />
+                </svg>
+              )}            
             </button>
 
             <button
@@ -253,7 +263,9 @@ export default function AudioPlayer() {
               className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
               aria-label="Morceau suivant"
             >
-              <span aria-hidden="true">⏭</span>
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 text-[#6488ff]/60">
+                <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
+              </svg>
             </button>
           </div>
 
@@ -268,16 +280,25 @@ export default function AudioPlayer() {
             </span>
           </div>
         </div>
-
+{/* Titre + artiste à droite — téléphone uniquement */}
+<div className="flex sm:hidden flex-col items-end text-right overflow-hidden min-w-0" aria-live="polite">
+  <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate max-w-full"
+    style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
+    {track.title}
+  </span>
+  <span className="font-dm text-[#efdecd]/60 text-xs truncate max-w-full">
+    {track.artist}
+  </span>
+</div>
         {/* Volume */}
-        <div className="hidden sm:flex items-center gap-2 w-[120px]">
+<div className="hidden sm:flex items-center gap-2 w-[120px] justify-self-end">
           <span className="text-[#ff4444]/50 text-sm" aria-hidden="true">🔈</span>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div
               className="absolute left-0 top-0 h-full rounded-full"
               style={{
                 width: `${volume * 100}%`,
-                background: "linear-gradient(to right, #8c0000, #ff1a1a)",
+                background: "linear-gradient(to right, #6488ff, #ff1a1a)",
                 boxShadow: "0 0 4px rgba(255,26,26,0.5)",
               }}
             />

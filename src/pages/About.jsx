@@ -300,7 +300,7 @@ export default function About() {
           />
 
           <div className="relative z-10 flex flex-col items-center gap-6">
-            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/50 uppercase">
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
               Artiste
             </p>
             <h2 className="font-bebas text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
@@ -319,7 +319,7 @@ export default function About() {
                     transition-all duration-300
                     ${activeBlock === id
                       ? "text-[#e29600] border-[#e29600] bg-[#e29600]/10 shadow-[0_0_12px_rgba(226,150,0,0.2)]"
-                      : "text-[#efdecd]/50 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40 hover:bg-[#e29600]/5"
+                      : "text-[#efdecd]/60 border-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-[#e29600]/40 hover:bg-[#e29600]/5"
                     }
                   `}
                 >

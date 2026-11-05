@@ -202,7 +202,7 @@ export default function Bookme() {
 
           {/* En-tête */}
           <div className="flex flex-col items-center gap-3 mt-10">
-            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/40 uppercase">
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
               Réservation & Contact
             </p>
             <h2 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
@@ -237,7 +237,7 @@ export default function Bookme() {
             <div className="bg-black/60 border border-[#efdecd]/10 border-l-[3px] border-l-[#390202] rounded-2xl p-8 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 <p className="font-dm text-xs tracking-[0.2em] text-[#e29600] uppercase">Association</p>
-                <h3 className="font-bebas text-xl tracking-[0.18em] text-[#efdecd] leading-none mb-2">
+                <h3 className="font-bebas text-xl tracking-[0.18em] text-[#efdecd]/80 leading-none mb-2">
                   {ASSOCIATION.nom.toUpperCase()}
                 </h3>
                 <div className="flex flex-col gap-4">
@@ -249,7 +249,7 @@ export default function Bookme() {
                   </InfoRow>
                   
                   <InfoRow icon={<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4"><rect x="1" y="1" width="14" height="14" rx="1.5"/><path d="M4 6h8M4 9h5"/></svg>}>
-                    <span className="text-[#efdecd]">SIRET</span>{" "}{ASSOCIATION.siret}
+                    <span className="text-[#efdecd]/80">SIRET</span>{" "}{ASSOCIATION.siret}
                   </InfoRow>
                 </div>
               </div>
@@ -261,7 +261,7 @@ export default function Bookme() {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1 mb-2">
               <p className="font-dm text-xs tracking-[0.18em] text-[#e29600] uppercase">Documents</p>
-              <h3 className="font-bebas text-xl mt-2 tracking-[0.18em] text-[#efdecd]">Fiches techniques</h3>
+              <h3 className="font-bebas text-xl mt-2 tracking-[0.18em] text-[#efdecd]/80">Fiches techniques</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {DOWNLOADS.map((item) => (
@@ -274,19 +274,19 @@ export default function Bookme() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-1">
               <p className="font-dm text-xs tracking-[0.18em] text-[#e29600] uppercase">Formulaire</p>
-              <h3 className="font-bebas text-xl mt-2 tracking-[0.18em] text-[#efdecd]">Faire une demande</h3>
+              <h3 className="font-bebas text-xl mt-2 tracking-[0.18em] text-[#efdecd]/80">Faire une demande</h3>
             </div>
 
             {sent ? (
               <div className="bg-black/60 border border-[#e29600]/40 rounded-2xl p-10 flex flex-col items-center gap-4 text-center">
                 <div className="w-14 h-14 rounded-full bg-[#e29600]/10 border border-[#e29600]/30
-                                flex items-center justify-center text-[#e29600]">
+                      flex items-center justify-center text-[#e29600]">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
-                <p className="font-bebas text-2xl tracking-widest text-[#efdecd]">Message envoyé !</p>
-                <p className="font-dm text-sm text-[#efdecd]/40">Nous reviendrons vers vous dans les plus brefs délais.</p>
+                <p className="font-bebas text-2xl tracking-widest text-[#efdecd]/80">Message envoyé !</p>
+                <p className="font-dm text-sm text-[#efdecd]/80">Nous reviendrons vers vous dans les plus brefs délais.</p>
                 <button
                   onClick={() => setSent(false)}
                   className="font-dm mt-2 text-xs tracking-widest uppercase text-[#e29600] hover:text-[#efdecd] transition-colors"

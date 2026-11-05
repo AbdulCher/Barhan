@@ -3,11 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import barhanLogo from "../assets/barhanLogoSans.webp";
 
 const NAV_LINKS = [
-  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#a04ff" },
-  { label: "ABOUT",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
-  { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
-  { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
-  { label: "BOOK ME",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#a0b4ff" },
+  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "ABOUT",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "BOOK ME",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
 ];
 
     

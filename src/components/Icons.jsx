@@ -18,13 +18,13 @@ const ICONS = [
   },
   {
     icon: <FaItunes />,
-    link: "https://barhan.itunes.com",
+    link: "https://music.apple.com/tr/artist/barhan/1501600830?l=tr",
     label: "iTunes",
     color: "#1DA0C3",
   },
   {
     icon: <FaSpotify />,
-    link: "https://open.spotify.com/user/olva0z7obnc6sz6tmqjp0mciy?si=74b90630f25d41fc",
+    link: "https://open.spotify.com/intl-fr/artist/2n39AGJsmmS7qQBIBYl0lo",
     label: "Spotify",
     color: "#1DB954",
   },
