@@ -17,11 +17,12 @@ function getPosition(index, activeIndex, total) {
 // et on utilise des % ou des valeurs CSS variables via style
 function getPositionStyle(pos) {
   switch (pos) {
-    case "center":    return { transform: "translateX(0) scale(1)",        zIndex: 20, opacity: 1 };
-    case "left":      return { transform: "translateX(-95%) scale(0.78)",  zIndex: 10, opacity: 0.55 };
-    case "right":     return { transform: "translateX(95%) scale(0.78)",   zIndex: 10, opacity: 0.55 };
-    case "far-left":  return { transform: "translateX(-120%) scale(0.60)", zIndex: 0,  opacity: 0.15 };
-    case "far-right": return { transform: "translateX(120%) scale(0.60)",  zIndex: 0,  opacity: 0.15 };
+// "dim" = transparence appliquée à la pochette seulement (le titre reste lisible)
+    case "center":    return { transform: "translateX(0) scale(1)",        zIndex: 20, dim: 1 };
+    case "left":      return { transform: "translateX(-95%) scale(0.78)",  zIndex: 10, dim: 0.55 };
+    case "right":     return { transform: "translateX(95%) scale(0.78)",   zIndex: 10, dim: 0.55 };
+    case "far-left":  return { transform: "translateX(-120%) scale(0.60)", zIndex: 0,  dim: 0.15 };
+    case "far-right": return { transform: "translateX(120%) scale(0.60)",  zIndex: 0,  dim: 0.15 };
     default:          return { opacity: 0, pointerEvents: "none" };
   }
 }
@@ -48,7 +49,7 @@ export default function CarouselSection({ albums, onAlbumClick }) {
 
       {/* En-tête */}
       <div className="relative z-10 flex flex-col items-center gap-3 mb-12">
-        <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/40 uppercase">
+        <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
           Discographie
         </p>
         <h2 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
@@ -86,7 +87,7 @@ export default function CarouselSection({ albums, onAlbumClick }) {
           {albums.map((album, index) => {
             const pos = getPosition(index, activeIndex, n);
             const isFar = pos === "far-left" || pos === "far-right";
-            const posStyle = getPositionStyle(pos);
+            const { dim = 1, ...posStyle } = getPositionStyle(pos);
 
             return (
               <div
@@ -106,9 +107,10 @@ export default function CarouselSection({ albums, onAlbumClick }) {
                 <div className="relative w-[220px] sm:w-[260px] md:w-[310px]">
                   <img
                     src={album.cover}
-                    alt={album.title}
+                    alt=""
                     className="w-full h-[220px] sm:h-[260px] md:h-[310px] object-cover rounded-2xl
                                shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+                    style={{ opacity: dim, transition: "opacity 500ms" }}
                     draggable={false}
                   />
                 </div>
@@ -117,7 +119,7 @@ export default function CarouselSection({ albums, onAlbumClick }) {
                 <div className="mt-4 text-center">
                   <h3 className={`font-bebas tracking-widest transition-all duration-300 ${
                     pos === "center" ? "text-[#efdecd] text-2xl" : "text-[#efdecd]/80 text-xl"
-                  }`}>
+                  } ${isFar ? "invisible" : ""}`}>
                     {album.title}
                   </h3>
                   {album.year && pos === "center" && (
@@ -154,16 +156,22 @@ export default function CarouselSection({ albums, onAlbumClick }) {
       </div>
 
       {/* Dots */}
-      <div className="flex justify-center gap-2 mt-10">
-        {albums.map((_, i) => (
+      {/* Zone cliquable de 25 px (taille minimale au doigt), le point reste petit */}
+      <div className="flex justify-center mt-10">
+        {albums.map((album, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
-            aria-label={`Album ${i + 1}`}
-            className={`h-[5px] rounded-full transition-all duration-300 ${
-              i === activeIndex ? "w-6 bg-[#e15408]" : "w-[5px] bg-white/25 hover:bg-white/50"
-            }`}
-          />
+            aria-label={`Album ${i + 1} : ${album.title}`}
+            aria-current={i === activeIndex ? "true" : undefined}
+            className="group p-[10px] flex items-center justify-center"
+          >
+            <span
+              className={`block h-[5px] rounded-full transition-all duration-300 ${
+                i === activeIndex ? "w-6 bg-[#e15408]" : "w-[5px] bg-white/25 group-hover:bg-white/50"
+              }`}
+            />
+          </button>
         ))}
       </div>
 

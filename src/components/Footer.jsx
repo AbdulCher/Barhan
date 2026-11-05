@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="w-full sm:w-[280px] flex justify-center sm:justify-start">
-          <p className="font-dm text-xs text-[#e29600]/70 tracking-wide">
+          <p className="font-dm text-xs text-[#e29600]/80 tracking-wide">
             © {YEAR} Barhan — Tous droits réservés
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function Footer() {
             <Link
               key={link.to}
               to={link.to}
-              className="font-dm text-xs text-[#e29600]/70 hover:text-[#e29600] transition-colors duration-200"
+              className="font-dm text-xs text-[#e29600]/80 hover:text-[#e29600] transition-colors duration-200"
             >
               {link.label}
             </Link>
