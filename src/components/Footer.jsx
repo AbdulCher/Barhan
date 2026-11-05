@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="w-full sm:w-[280px] flex justify-center sm:justify-start">
-          <p className="font-dm text-xs text-[#6488ff] tracking-wide">
+          <p className="font-dm text-xs text-[#e29600]/70 tracking-wide">
             © {YEAR} Barhan — Tous droits réservés
           </p>
         </div>
@@ -153,9 +153,9 @@ export default function Footer() {
           className="group flex flex-col items-center gap-2 cursor-pointer shrink-0"
           aria-label={`Visiter le site ${PARTNER.name}`}
         >
-          <span className="font-dm text-[11px] tracking-[0.2em] uppercase text-[#6488ff] group-hover:text-[#e29600] transition-colors duration-300">
-            Réalisé par ChachaDev
-          </span>
+          <span className="font-dm text-[12px] tracking-[0.2em] uppercase text-[#6488ff] group-hover:text-[#e29600] transition-colors duration-300">
+              ChachaDev
+            </span>
           <div
             className="flex items-center justify-center px-4 py-2 rounded-lg bg-black
             border border-[#6488ff] group-hover:border-[#e29600] transition-all duration-300"
@@ -167,6 +167,7 @@ export default function Footer() {
               "
             />
           </div>
+          
         </a>
 
         {/* Liens légaux */}
@@ -175,7 +176,7 @@ export default function Footer() {
             <Link
               key={link.to}
               to={link.to}
-              className="font-dm text-xs text-[#6488ff]/60 hover:text-[#e29600] transition-colors duration-200"
+              className="font-dm text-xs text-[#e29600]/70 hover:text-[#e29600] transition-colors duration-200"
             >
               {link.label}
             </Link>

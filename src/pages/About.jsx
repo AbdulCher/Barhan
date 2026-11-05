@@ -367,8 +367,8 @@ export default function About() {
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Sa quête d'excellence le conduit ensuite au Sénégal, où il intègre
                 le Département des Arts Scéniques du Conservatoire National de Dakar — il y apprivoise le piano,
-                perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera plusieurs fois l'Afrique de l'Ouest, 
-                de la Mauritanie au Sénégal, en passant par le Mali et le Burkina Faso, pour se rendre à N'Djaména au Tchad, 
+                perfectionne sa guitare et affine sa plume. Inscrit à l'ENA, Barhan traversera plusieurs fois l'Afrique, 
+                de la Mauritanie au Tchad, en passant par le Mali, le Burkina Faso, le Niger, le Nigeria et le Cameroun pour se rendre à N'Djaména, 
                 guitare en main, à la rencontre des peuples. 
               </p>
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
@@ -381,9 +381,9 @@ export default function About() {
               
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Installé en France, finaliste du Prix Découvertes RFI en 2009 sous le nom de Bakhan, il sort <em>N'deysan</em> à Paris
-                en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone,
-                Ella Fitzgerald ou Oscar Brown Jr. Ce métissage organique donne naissance à son album
-                acclamé <em>Mots de tête</em>, enregistré au Kenya avec son groupe lors d'un séjour entre 2010 et 2013 —
+                en 2011. Il s'imprègne ensuite du jazz et du blues des années 60, réinterprétant Nina Simone, Ray Charles,
+                Ella Fitzgerald, Oscar Brown Jr. ou Jacques Brel et Edith Piaf. Ce métissage organique donne naissance à son album
+                acclamé <em>Mots de tête</em>, enregistré à Nairobi au Kenya en 2018 —
                 une œuvre qui unit le patrimoine mauritanien à la modernité du jazz, célébrant le dialogue des cultures
                 et l'unité des peuples. C'est avec la sortie de cet album que Bakhan devient Barhan.
                 De retour à Paris en 2019, Barhan fait la rencontre de Paul Sany,

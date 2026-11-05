@@ -24,7 +24,7 @@ export const tracks = [
     title: "Kaay",
     artist: "Barhan",
     src: "/audio/kaay.mp3",
-    cover: "/audio/covers/motsdetetecover.webp",
+    cover: "/audio/covers/ndeysancover.webp",
   },
 
   {
