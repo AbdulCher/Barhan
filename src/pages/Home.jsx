@@ -71,8 +71,13 @@ export default function Home() {
             <div className="w-px h-16 bg-gradient-to-t from-transparent to-[#ddb183]/90" />
           </div>
 
+          {/* Panneau d'annonces — téléphone, tablette et petit ordinateur : collé sous le Header */}
+          <div className="min-[1240px]:hidden absolute z-20 top-24 inset-x-0 px-4 flex justify-center">
+            <AnnouncementBoard />
+          </div>
+
           {/* Contenu centré */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 -mt-10">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 pt-44 min-[1240px]:pt-0 min-[1240px]:-mt-10">
             <h1 className="leading-none">
               {/* Texte lu par Google et les lecteurs d'écran, le logo reste l'affichage */}
               <span className="sr-only">Barhan, musicien et compositeur mauritanien installé à Paris</span>
@@ -87,15 +92,12 @@ export default function Home() {
             <Icons />
           </div>
 
-          {/* Panneau d'annonces (textes dans src/data/Announcements.js)
-              Ordinateur : le bord DROIT du panneau s'arrête là où commence le rouge de l'image
-              (environ 36 % de la largeur de l'écran). 460px = largeur du panneau.
-              → Pour ajuster : changez 36vw (plus grand = plus à droite).
-              max(2rem, …) évite que le panneau sorte de l'écran sur les petits ordinateurs.
-              Téléphone : centré en bas de l'écran. */}
-          <div className="absolute z-20 inset-x-0 bottom-16 px-4 flex justify-center
-            md:px-0 md:right-auto md:bottom-auto md:top-20
-            md:left-[max(2rem,calc(38vw-400px))]">
+          {/* Panneau d'annonces — grand écran (textes dans src/data/Announcements.js)
+              À gauche du logo, centré en hauteur.
+              560px = 460px (largeur du panneau) + 100px (espace jusqu'au centre).
+              → Pour l'éloigner du logo : augmentez 560px (ex. 600px). */}
+          <div className="hidden min-[1240px]:flex absolute z-20 top-40 -translate-y-1/2
+                          left-[calc(50%-560px)]">
             <AnnouncementBoard />
           </div>
         </section>
