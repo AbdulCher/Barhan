@@ -17,7 +17,7 @@ import AnnouncementBoard from "../components/AnnouncementBoard";
 import barhanLogo from "../assets/barhanLogoSans.webp";
 // Photo de la section Présentation : remplacez par votre portrait
 // (ex. import PortraitPhoto from "../assets/barhanPortrait.webp";)
-import PortraitPhoto from "../assets/portraitphoto.jpg";
+import PortraitPhoto from "../assets/portraitphoto.webp";
 
 export default function Home() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
