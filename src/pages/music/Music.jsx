@@ -16,13 +16,13 @@ function AlbumCard({ album, onListen }) {
     <div
       className={`
         relative flex flex-col
-        bg-transparent hover:bg-transparent
-        backdrop-blur-sm
-        border-2 border-l-[4px] rounded-2xl overflow-hidden
+        bg-black/45 backdrop-blur-md
+        border border-l-[3px] rounded-2xl overflow-hidden
+        shadow-[0_18px_45px_rgba(0,0,0,0.5)]
         transition-all duration-500
         ${open
-          ? "border-[#390202] shadow-[0_0_30px_rgba(57,2,2,0.12)]"
-          : "border-[#efdecd]/20 border-l-[#efdecd] hover:border-[#e29600]/50 hover:shadow-[0_0_20px_rgba(226,150,0,0.08)]"}
+          ? "border-[#e29600]/45 border-l-[#e29600] shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_30px_rgba(226,150,0,0.12)]"
+          : "border-[#efdecd]/12 border-l-[#e29600]/70 hover:border-[#e29600]/45 hover:border-l-[#e29600] hover:shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_24px_rgba(226,150,0,0.1)]"}
       `}
     >
       <div
@@ -55,13 +55,14 @@ function AlbumCard({ album, onListen }) {
           className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
           style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.85))" }}
         />
-        <span className="absolute bottom-3 left-4 font-dm text-xs tracking-[0.18em] text-[#efdecd]/50 uppercase">
+        <span className="absolute bottom-3 left-4 font-dm text-xs font-bold tracking-[0.18em] text-[#e29600] uppercase">
           {album.year}
         </span>
       </div>
 
-      <div className="relative z-10 flex flex-col p-8 gap-4 bg-[#efdecd]/20">
-        <h3 className="font-bold text-xl text-[#efdecd] uppercase">
+      <div className="relative z-10 flex flex-col p-8 gap-4 border-t border-[#efdecd]/10
+        bg-gradient-to-b from-[#2a100a]/80 via-[#170806]/85 to-[#0e0605]/90">
+        <h3 className="font-bold text-xl tracking-wide text-[#efdecd] uppercase">
           {album.title}
         </h3>
 
@@ -71,17 +72,17 @@ function AlbumCard({ album, onListen }) {
           }`}
         >
           <div className="flex flex-col gap-5 pt-1">
-            <p className="font-dm text-sm leading-loose text-[#efdecd]/70">
+            <p className="font-dm text-sm leading-loose text-[#efdecd]/80">
               {album.description}
             </p>
             {album.musicians?.length > 0 && (
               <div className="flex flex-col gap-2 border-t border-[#efdecd]/10 pt-4">
-                <p className="font-dm text-xs tracking-[0.18em] text-[#e29600]/70 uppercase mb-1">
+                <p className="font-dm text-xs tracking-[0.18em] text-[#e29600] uppercase mb-1">
                   Musiciens
                 </p>
                 {album.musicians.map((m, i) => (
                   <div key={i} className="flex justify-between items-center">
-                    <span className="font-dm text-sm text-[#efdecd]/40">{m.role}</span>
+                    <span className="font-dm text-sm text-[#efdecd]/65">{m.role}</span>
                     <span className="font-dm text-sm font-bold text-[#efdecd]/80">{m.name}</span>
                   </div>
                 ))}
@@ -114,12 +115,25 @@ function AlbumCard({ album, onListen }) {
 
           <button
             onClick={() => onListen(album)}
-            className="font-dm flex items-center gap-2 text-xs font-bold tracking-widest uppercase
-              text-[#efdecd] hover:text-[#efdecd] bg-black/30 hover:bg-[#390202] border-2 border-[#efdecd]/20 hover:border-[#e29600]
-              px-4 py-2 rounded-full transition-all duration-200
-              shadow-[0_4px_16px_rgba(57,2,2,0.3)]"
+            aria-label={`Écouter l'album ${album.title}`}
+            className="group/listen font-dm flex items-center gap-2.5 text-xs font-bold tracking-widest uppercase
+              text-[#efdecd] pl-1.5 pr-4 py-1.5 rounded-full
+              bg-black/40 border border-[#e29600]/60
+              hover:bg-[#e29600]/15 hover:border-[#e29600]
+              shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-200"
           >
-            ▶ Écouter
+            {/* Pastille ronde avec l'icône lecture */}
+            <span
+              aria-hidden="true"
+              className="w-7 h-7 rounded-full flex items-center justify-center
+                bg-[#e29600] text-black shadow-[0_0_12px_rgba(226,150,0,0.35)]
+                transition-transform duration-200 group-hover/listen:scale-110"
+            >
+              <svg viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 ml-0.5">
+                <path d="M4 2l10 6-10 6z" />
+              </svg>
+            </span>
+            Écouter
           </button>
         </div>
       </div>

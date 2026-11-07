@@ -25,13 +25,22 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Nom du site affiché par Google au-dessus du lien -->
-    <script type="application/ld+json">
+       <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
+      "@type": "Person",
       "name": "Barhan",
-      "alternateName": ["Barhan Music", "barhanmusic.com"],
-      "url": "https://www.barhanmusic.com/"
+      "alternateName": ["Barhan Ndiaye", "Bakhan", "Alias Chico"],
+      "jobTitle": "Musicien, chanteur et compositeur",
+      "description": "Chanteur et compositeur mauritanien installé à Paris.",
+      "nationality": { "@type": "Country", "name": "Mauritanie" },
+      "homeLocation": { "@type": "Place", "name": "Paris, France" },
+      "knowsAbout": ["Musique mauritanienne", "Musique africaine", "Jazz", "Blues", "Soul"],
+      "url": "https://www.barhanmusic.com/",
+      "image": "https://www.barhanmusic.com/og-image.jpg",
+      "sameAs": [
+        "https://www.youtube.com/@BarhanNdi"
+      ]
     }
     </script>
 
@@ -62,10 +71,20 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,700;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body style="background-color: #080301; margin: 0;">
     <div id="root"></div>
+    <form name="reservation" …></form>
+    <form name="reservation" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nom" />
+  <input type="email" name="email" />
+  <input type="tel" name="tel" />
+  <input type="text" name="type" />
+  <input type="text" name="date" />
+  <textarea name="message"></textarea>
+  <input name="bot-field" />
+</form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

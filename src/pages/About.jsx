@@ -60,7 +60,7 @@ const BLOCKS = [
   },
   {
     id: "press",
-    label: "Press",
+    label: "Presse",
   },
   {
     id: "contact",
@@ -78,7 +78,7 @@ function ConcertRow({ concert, index, past = false }) {
       {/* Numéro */}
       <span
         className="font-dm text-xs w-6 flex-shrink-0 text-right"
-        style={{ color: "rgba(226,150,0,0.3)" }}
+        style={{ color: "rgba(226,150,0,0.8)" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -107,11 +107,11 @@ function ConcertRow({ concert, index, past = false }) {
         </span>
         <span
           className="font-dm text-xs truncate mt-0.5"
-          style={{ color: "rgba(239,222,205,0.35)" }}
+          style={{ color: "rgba(239,222,205,0.65)" }}
         >
           {concert.city}
           {concert.note && (
-            <span style={{ color: "rgba(226,150,0,0.55)" }}> · {concert.note}</span>
+            <span style={{ color: "rgba(226,150,0,0.85)" }}> · {concert.note}</span>
           )}
         </span>
       </div>
@@ -152,7 +152,7 @@ function ConcertRow({ concert, index, past = false }) {
         style={{
           background: "rgba(43,62,130,0.2)",
           border: "1px solid rgba(100,136,255,0.15)",
-          color: "rgba(160,180,255,0.35)",
+          color: "rgba(160,180,255,0.75)",
         }}
       >
         Bientôt
@@ -184,7 +184,7 @@ function PressQuote({ item }) {
         e.currentTarget.style.background = "rgba(43,62,130,0.15)";
       } : undefined}
     >
-      <div className="font-dm text-3xl leading-none" style={{ color: "rgba(160,180,255,0.3)" }}>
+      <div aria-hidden="true" className="font-dm text-3xl leading-none" style={{ color: "rgba(160,180,255,0.3)" }}>
         "
       </div>
       <p className="font-dm text-base leading-relaxed italic" style={{ color: "rgba(239,222,205,0.75)" }}>
@@ -192,14 +192,14 @@ function PressQuote({ item }) {
       </p>
       <div className="flex items-center gap-2 mt-1">
         <div className="h-px flex-1" style={{ background: "rgba(100,136,255,0.15)" }} />
-        <span className="font-dm text-xs tracking-widest uppercase" style={{ color: "rgba(160,180,255,0.6)" }}>
+        <span className="font-dm text-xs tracking-widest uppercase" style={{ color: "rgba(160,180,255,0.8)" }}>
           {item.source}
         </span>
-        <span className="font-dm text-xs" style={{ color: "rgba(239,222,205,0.2)" }}>
+        <span className="font-dm text-xs" style={{ color: "rgba(239,222,205,0.6)" }}>
           {item.year}
         </span>
         {item.url && (
-          <span className="font-dm text-xs" style={{ color: "rgba(160,180,255,0.4)" }}>→</span>
+          <span aria-hidden="true" className="font-dm text-xs" style={{ color: "rgba(160,180,255,0.7)" }}>→</span>
         )}
       </div>
     </Wrapper>
@@ -267,9 +267,9 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>Barhan — Bio & Parcours</title>
-        <meta name="description" content="Découvrez le parcours de Barhan, musicien mauritanien entre jazz, blues et traditions africaines. Concerts, presse et contact." />
-        <meta property="og:title" content="Barhan — Bio & Parcours" />
+        <title>Barhan — Biographie du musicien mauritanien | Concerts & presse</title>
+        <meta name="description" content="Biographie de Barhan (ex-Bakhan), chanteur et compositeur mauritanien installé à Paris : de Nouakchott à Dakar, N'Djaména et Nairobi, entre traditions, jazz et blues. Concerts, presse et contact." />
+        <meta property="og:title" content="Barhan — Biographie du musicien mauritanien" />
         <meta property="og:url" content="https://www.barhanmusic.com/about" />
       </Helmet>
 
@@ -300,12 +300,12 @@ export default function About() {
           />
 
           <div className="relative z-10 flex flex-col items-center gap-6">
-            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">
-              Artiste
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/70 uppercase text-center">
+              Musicien mauritanien · Paris
             </p>
-            <h2 className="font-bebas text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
+            <h1 className="font-bebas text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
               BARHAN
-            </h2>
+            </h1>
 
             {/* Navigation hero */}
             <div className="flex justify-center gap-2 md:gap-3 flex-wrap">
@@ -353,6 +353,10 @@ export default function About() {
                 <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Bio</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                <strong className="font-bold text-[#efdecd]">Barhan</strong> (Barhan Ndiaye, connu auparavant sous le nom
+                de Bakhan) est un chanteur et compositeur mauritanien installé à Paris.
+              </p>
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Son aventure musicale commence en 1999 sous le pseudonyme d'Alias Chico. Son duo avec le rappeur
                 Papis Kimmi donne naissance à <em>Nebkhi Mauritanie</em>, un album qui rencontre un immense succès
@@ -418,7 +422,7 @@ export default function About() {
                       transition-all duration-300 ${
                       concertTab === t.id
                         ? "text-[#e29600] border-b-[#e29600] bg-[#e29600]/10"
-                        : "text-[#efdecd]/50 border-b-[#efdecd]/20 hover:text-[#efdecd]/80 hover:border-b-[#e29600]/40"
+                        : "text-[#efdecd]/70 border-b-[#efdecd]/20 hover:text-[#efdecd] hover:border-b-[#e29600]/40"
                     }`}
                   >
                     {t.label} ({t.count})
@@ -434,7 +438,7 @@ export default function About() {
                     ))}
                   </div>
                 ) : (
-                  <p className="font-dm text-base text-[#efdecd]/40 text-center py-8">
+                  <p className="font-dm text-base text-[#efdecd]/60 text-center py-8">
                     Aucune date annoncée pour le moment.
                   </p>
                 )
@@ -459,17 +463,17 @@ export default function About() {
                     )}
                   </>
                 ) : (
-                  <p className="font-dm text-base text-[#efdecd]/40 text-center py-8">
+                  <p className="font-dm text-base text-[#efdecd]/60 text-center py-8">
                     Les concerts passés apparaîtront ici.
                   </p>
                 )
               )}
 
-              <p className="font-dm text-xs text-center" style={{ color: "rgba(239,222,205,0.25)" }}>
+              <p className="font-dm text-xs text-center" style={{ color: "rgba(239,222,205,0.65)" }}>
                 Pour organiser un concert privé ou une résidence artistique —{" "}
                 <button
                   onClick={() => scrollTo("contact")}
-                  className="underline underline-offset-2 hover:text-[#e29600]/60 transition-colors duration-200"
+                  className="underline underline-offset-2 hover:text-[#e29600] transition-colors duration-200"
                 >
                   nous contacter
                 </button>
@@ -485,7 +489,7 @@ export default function About() {
             >
               <div className="flex items-center gap-4">
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
-                <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Press</h3>
+                <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Presse</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
 
@@ -509,7 +513,7 @@ export default function About() {
               </div>
 
               <div className="flex flex-col gap-4">
-                <p className="font-dm text-base leading-relaxed" style={{ color: "rgba(239,222,205,0.6)" }}>
+                <p className="font-dm text-base leading-relaxed" style={{ color: "rgba(239,222,205,0.75)" }}>
                   Pour toute demande de booking, interview, collaboration ou événement privé :
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -590,7 +594,7 @@ export default function About() {
               transition-all duration-200
               ${activeBlock === id
                 ? "text-[#e29600] bg-[#e29600]/12"
-                : "text-[#efdecd]/40 hover:text-[#efdecd]/70"
+                : "text-[#efdecd]/70 hover:text-[#efdecd]"
               }
             `}
           >
@@ -602,6 +606,7 @@ export default function About() {
       {/* Bouton retour haut */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Revenir en haut de la page"
         className={`fixed bottom-24 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center
           transition-all duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         style={{
@@ -610,7 +615,7 @@ export default function About() {
           border: "4px solid rgba(226,150,0,0.3)",
         }}
       >
-        <svg viewBox="0 0 16 16" fill="none" stroke="#e29600" strokeWidth="1.5" className="w-5 h-5">
+        <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="#e29600" strokeWidth="1.5" className="w-5 h-5">
           <path d="M3 10l5-5 5 5" />
         </svg>
       </button>
