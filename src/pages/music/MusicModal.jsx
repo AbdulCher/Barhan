@@ -120,8 +120,8 @@ export default function MusicModal({ album, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl
-                           font-dm text-xs font-bold tracking-widest uppercase
-                           transition-all duration-200 hover:scale-[1.03]"
+                font-dm text-xs font-bold tracking-widest uppercase
+                transition-all duration-200 hover:scale-[1.03]"
                 style={{
                   background: "rgba(29,185,84,0.12)",
                   border: "1px solid rgba(29,185,84,0.28)",

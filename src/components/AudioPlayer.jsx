@@ -181,14 +181,14 @@ export default function AudioPlayer() {
         <audio ref={audioRef} src={track.src} preload="none" />
 
         {/* Pochette + infos */}
-<div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center gap-3 min-w-0">
           {track.cover ? (
             <img
               src={track.cover}
               alt=""
               width="40"
               height="40"
-              className="w-10 h-10 rounded-md object-cover"
+              className="w-8 h-8 rounded-md object-cover"
               style={{ boxShadow: "0 0 8px rgba(255,51,0,0.3)" }}
             />
           ) : (
@@ -205,7 +205,7 @@ export default function AudioPlayer() {
               <span className="text-[#ff4444] text-xs">♪</span>
             </div>
           )}
-<div className="hidden sm:flex flex-col overflow-hidden" aria-live="polite">
+          <div className="hidden sm:flex flex-col overflow-hidden" aria-live="polite">
             <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate"
               style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
               {track.title}
@@ -217,7 +217,7 @@ export default function AudioPlayer() {
         </div>
 
         {/* Contrôles centraux */}
-<div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-1">
             {/* Boutons */}
           <div className="flex items-center gap-5">
             <button
@@ -233,8 +233,8 @@ export default function AudioPlayer() {
             {/* Bouton play — cercle néon rouge */}
             <button
               onClick={togglePlay}
-              className="w-10 h-10 rounded-full flex items-center justify-center
-                         transition-all duration-200 hover:scale-110"
+              className="w-6 h-6 rounded-full flex items-center justify-center
+              transition-all duration-200 hover:scale-110"
               style={{
                 background: isPlaying
                   ? "rgba(180,0,0,0.9)"
@@ -248,11 +248,13 @@ export default function AudioPlayer() {
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
               {isPlaying ? (
-                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6">
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
+                  className="w-6 h-6">
                   <path d="M4 2h3v12H4zM9 2h3v12H9z" />
                 </svg>
                 ) : (
-                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 ml-0.5 text-[#6488ff]/60">
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
+                  className="w-6 h-6 ml-0.5 text-[#6488ff]/60">
                   <path d="M4 2l10 6-10 6z" />
                 </svg>
               )}            
@@ -263,8 +265,9 @@ export default function AudioPlayer() {
               className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
               aria-label="Morceau suivant"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 text-[#6488ff]/60">
-                <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
+                  className="w-6 h-6 text-[#6488ff]/60">
+                  <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
               </svg>
             </button>
           </div>
@@ -280,18 +283,18 @@ export default function AudioPlayer() {
             </span>
           </div>
         </div>
-{/* Titre + artiste à droite — téléphone uniquement */}
-<div className="flex sm:hidden flex-col items-end text-right overflow-hidden min-w-0" aria-live="polite">
-  <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate max-w-full"
-    style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
-    {track.title}
-  </span>
-  <span className="font-dm text-[#efdecd]/60 text-xs truncate max-w-full">
-    {track.artist}
-  </span>
-</div>
+        {/* Titre + artiste à droite — téléphone uniquement */}
+        <div className="flex sm:hidden flex-col items-end text-right overflow-hidden min-w-0" aria-live="polite">
+          <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate max-w-full"
+            style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
+            {track.title}
+          </span>
+          <span className="font-dm text-[#efdecd]/60 text-xs truncate max-w-full">
+            {track.artist}
+          </span>
+        </div>
         {/* Volume */}
-<div className="hidden sm:flex items-center gap-2 w-[120px] justify-self-end">
+        <div className="hidden sm:flex items-center gap-2 w-[120px] justify-self-end">
           <span className="text-[#ff4444]/50 text-sm" aria-hidden="true">🔈</span>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div

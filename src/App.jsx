@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/music" element={<Music />} />
         <Route path="/medias" element={<Medias />} />
         <Route path="/bookme" element={<Bookme />} />
-        {/* <Route path="/shop" element={<Shop />} /> */}
+        <Route path="/shop" element={<Shop />} /> 
       </Routes>
       <AudioPlayer />
     </>

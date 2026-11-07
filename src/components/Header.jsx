@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
   { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
   { label: "BOOK ME",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "SHOP",   to: "/shop",   color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
 ];
 
     
