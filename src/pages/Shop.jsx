@@ -7,6 +7,7 @@ import useCart from "../hooks/useCart";
 import Coussindesign from "../assets/coussindesign.webp";
 import NdeysanCover from "../assets/ndeysancover.webp";
 import MotsdeteteCover from "../assets/motsdetetecover.webp";
+import { Link } from "react-router-dom";
 
 // ── Images des produits (id du produit → image) ───────────────
 // Pour ajouter une photo : importez-la en haut du fichier puis
@@ -40,8 +41,8 @@ function Disc({ type }) {
     <div
       aria-hidden="true"
       className="absolute top-[5%] left-[30%] w-[90%] aspect-square rounded-full
-                 transition-transform duration-700 ease-out
-                 group-hover:translate-x-[18%] group-hover:rotate-[60deg]"
+      transition-transform duration-700 ease-out
+      group-hover:translate-x-[18%] group-hover:rotate-[60deg]"
       style={{
         background: isVinyl
           ? "radial-gradient(circle, #e29600 0 15%, #2a1405 15.5% 17%, transparent 17.5%), repeating-radial-gradient(circle, #141414 0 2px, #070707 2px 4px)"
@@ -66,11 +67,11 @@ function ProductCard({ product, onAdd }) {
 
   return (
     <div className="relative flex flex-col rounded-2xl overflow-hidden group
-         bg-[#140907] border border-[#efdecd]/10
-         shadow-[0_20px_50px_rgba(0,0,0,0.55)]
-         hover:-translate-y-1 hover:border-[#e29600]/40
-         hover:shadow-[0_24px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(226,150,0,0.08)]
-         transition-all duration-300">
+      bg-[#140907] border border-[#efdecd]/10
+      shadow-[0_20px_50px_rgba(0,0,0,0.55)]
+      hover:-translate-y-1 hover:border-[#e29600]/40
+      hover:shadow-[0_24px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(226,150,0,0.08)]
+      transition-all duration-300">
 
       <span className="absolute top-3 left-3 z-10 font-dm text-[10px] font-bold
         tracking-widest uppercase px-2.5 py-1 rounded-full
@@ -125,11 +126,11 @@ function ProductCard({ product, onAdd }) {
                 aria-pressed={selectedSize === s}
                 aria-label={`Taille ${s}`}
                 className={`font-dm text-xs font-bold tracking-widest w-10 h-10 rounded-lg border
-                            transition-all duration-200
-                            ${selectedSize === s
-                              ? "border-[#e29600] text-[#e29600] bg-[#e29600]/10"
-                              : "border-[#efdecd]/15 text-[#efdecd]/70 hover:border-[#efdecd]/40"
-                            }`}
+                transition-all duration-200
+                ${selectedSize === s
+                  ? "border-[#e29600] text-[#e29600] bg-[#e29600]/10"
+                  : "border-[#efdecd]/15 text-[#efdecd]/70 hover:border-[#efdecd]/40"
+                }`}
               >
                 {s}
               </button>
@@ -210,23 +211,35 @@ function CartDrawer({ cart, onClose }) {
     }
   };
 
+  // Bloquer le défilement de la page derrière la fenêtre
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
   return (
-    <>
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50" onClick={onClose} aria-hidden="true" />
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-6">
+      {/* Fond sombre (clic = fermer) */}
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Mon panier"
-        className="fixed top-0 right-0 h-full w-full max-w-[420px] z-50
-        bg-black border-l border-[#390202]/40
-        flex flex-col shadow-[-20px_0_60px_rgba(0,0,0,0.8)]
-        animate-[slideInRight_0.3s_ease]"
+        className="relative w-full max-w-[920px] max-h-[92vh] flex flex-col
+        rounded-2xl overflow-hidden bg-[#0e0605] border border-[#e29600]/20
+        shadow-[0_30px_100px_rgba(0,0,0,0.85)]
+        animate-[cartIn_0.25s_ease-out]"
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#efdecd]/10">
+        <style>{`@keyframes cartIn { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }`}</style>
+
+        {/* En-tête */}
+        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-[#efdecd]/10 shrink-0"
+          style={{ background: "linear-gradient(180deg, #1d0c08, #0e0605)" }}>
           <div>
-            <h2 className="font-bebas text-2xl tracking-widest text-[#efdecd]">Mon Panier</h2>
-            <p className="font-dm text-xs text-[#efdecd]/60 tracking-widest uppercase">
+            <h2 className="font-bebas text-3xl tracking-widest text-[#efdecd] leading-none">Mon Panier</h2>
+            <p className="font-dm text-xs text-[#efdecd]/60 tracking-widest uppercase mt-1">
               {totalItems} article{totalItems > 1 ? "s" : ""}
             </p>
           </div>
@@ -243,158 +256,179 @@ function CartDrawer({ cart, onClose }) {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-6 py-4 flex flex-col gap-4">
-          {items.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-              <span className="text-5xl" aria-hidden="true">🛍️</span>
-              <p className="font-dm text-sm text-[#efdecd]/60 tracking-wide">Votre panier est vide</p>
+        {items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center gap-4 text-center py-20 px-6">
+            <span className="text-5xl" aria-hidden="true">🛍️</span>
+            <p className="font-dm text-sm text-[#efdecd]/60 tracking-wide">Votre panier est vide</p>
+            <button
+              onClick={onClose}
+              className="font-dm text-xs font-bold tracking-widest uppercase px-5 py-2.5 rounded-full
+              border border-[#e29600]/70 text-[#e29600] hover:bg-[#e29600] hover:text-black transition-all duration-200"
+            >
+              Continuer mes achats
+            </button>
+          </div>
+        ) : (
+          /* Deux colonnes sur ordinateur, une seule sur téléphone ; tout défile si besoin */
+          <div className="flex-1 overflow-y-auto md:overflow-hidden md:grid md:grid-cols-[1fr_340px]">
+
+            {/* Colonne gauche : articles */}
+            <div className="px-6 sm:px-8 py-6 flex flex-col gap-4 md:overflow-y-auto">
+              {items.map((item) => {
+                const image = PRODUCT_IMAGES[item.id];
+                const name = `${item.category} ${item.title}${item.size ? `, taille ${item.size}` : ""}`;
+                return (
+                  <div key={item.key}
+                    className="flex items-center gap-3 sm:gap-4 bg-[#efdecd]/[0.04] border border-[#efdecd]/10
+                    rounded-xl p-3 sm:p-4 transition-all duration-200">
+
+                    <div className="w-16 h-16 rounded-md overflow-hidden shrink-0 bg-[#efdecd]/5
+                      flex items-center justify-center shadow-[0_6px_16px_rgba(0,0,0,0.5)]">
+                      {image
+                        ? <img src={image} alt="" width="64" height="64" className="w-full h-full object-cover" />
+                        : <span className="text-2xl" aria-hidden="true">{CATEGORY_ICONS[item.category] ?? "🛍️"}</span>
+                      }
+                    </div>
+
+                    {/* Sur téléphone, les quantités passent sous le titre */}
+                    <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bebas text-lg tracking-widest text-[#efdecd] truncate leading-none">{item.title}</p>
+                      <p className="font-dm text-xs text-[#efdecd]/60 uppercase mt-1">
+                        {item.category}{item.size ? ` · Taille ${item.size}` : ""}
+                      </p>
+                      <p className="font-dm text-sm text-[#e29600] font-bold mt-1">{item.price} €</p>
+                    </div>
+
+                    <div className="flex items-center gap-1 shrink-0">
+                      <button
+                        onClick={() => updateQty(item.key, item.qty - 1)}
+                        aria-label={`Retirer un exemplaire : ${name}`}
+                        className="w-8 h-8 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
+                        flex items-center justify-center text-[#efdecd]/70 hover:text-[#efdecd]
+                        font-bold text-sm transition-all duration-200"
+                      >−</button>
+                      <span className="font-dm text-sm text-[#efdecd] w-6 text-center" aria-label={`Quantité : ${item.qty}`}>{item.qty}</span>
+                      <button
+                        onClick={() => updateQty(item.key, Math.min(item.qty + 1, 10))}
+                        aria-label={`Ajouter un exemplaire : ${name}`}
+                        className="w-8 h-8 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
+                        flex items-center justify-center text-[#efdecd]/70 hover:text-[#efdecd]
+                        font-bold text-sm transition-all duration-200"
+                      >+</button>
+                    </div>
+                    </div>
+
+                    <button
+                      onClick={() => removeItem(item.key)}
+                      aria-label={`Supprimer du panier : ${name}`}
+                      className="w-8 h-8 flex items-center justify-center text-[#efdecd]/50 hover:text-red-400 transition-colors duration-200 shrink-0"
+                    >
+                      <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+                        <path d="M3 3l10 10M13 3L3 13"/>
+                      </svg>
+                    </button>
+                  </div>
+                );
+              })}
+
+              <button
+                onClick={clearCart}
+                className="self-start font-dm text-xs text-[#efdecd]/60 hover:text-[#efdecd]
+                tracking-widest uppercase transition-colors duration-200 py-2"
+              >
+                Vider le panier
+              </button>
             </div>
-          ) : (
-            items.map((item) => {
-              const image = PRODUCT_IMAGES[item.id];
-              const name = `${item.category} ${item.title}${item.size ? `, taille ${item.size}` : ""}`;
-              return (
-                <div key={item.key}
-                  className="flex items-center gap-4 bg-[#efdecd]/5 border border-[#efdecd]/10
-                  rounded-xl p-4 transition-all duration-200">
 
-                  <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-[#efdecd]/5
-                    flex items-center justify-center">
-                    {image
-                      ? <img src={image} alt="" width="56" height="56" className="w-full h-full object-cover" />
-                      : <span className="text-2xl" aria-hidden="true">{CATEGORY_ICONS[item.category] ?? "🛍️"}</span>
-                    }
-                  </div>
+            {/* Colonne droite : livraison + total + payer */}
+            <div className="px-6 sm:px-8 py-6 flex flex-col gap-5 border-t md:border-t-0 md:border-l border-[#efdecd]/10
+              bg-[#140907] md:overflow-y-auto">
 
-                  <div className="flex-1 min-w-0">
-                    <p className="font-bebas text-base tracking-widest text-[#efdecd] truncate">{item.title}</p>
-                    <p className="font-dm text-xs text-[#efdecd]/60 uppercase">
-                      {item.category}{item.size ? ` · Taille ${item.size}` : ""}
-                    </p>
-                    <p className="font-dm text-sm text-[#e29600] font-bold">{item.price} €</p>
-                  </div>
-
-                  <div className="flex items-center gap-1 shrink-0">
-                    <button
-                      onClick={() => updateQty(item.key, item.qty - 1)}
-                      aria-label={`Retirer un exemplaire : ${name}`}
-                      className="w-8 h-8 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
-                      flex items-center justify-center text-[#efdecd]/70 hover:text-[#efdecd]
-                      font-bold text-sm transition-all duration-200"
-                    >−</button>
-                    <span className="font-dm text-sm text-[#efdecd] w-5 text-center" aria-label={`Quantité : ${item.qty}`}>{item.qty}</span>
-                    <button
-                      onClick={() => updateQty(item.key, Math.min(item.qty + 1, 10))}
-                      aria-label={`Ajouter un exemplaire : ${name}`}
-                      className="w-8 h-8 rounded-full border border-[#efdecd]/15 hover:border-[#efdecd]/40
-                      flex items-center justify-center text-[#efdecd]/70 hover:text-[#efdecd]
-                      font-bold text-sm transition-all duration-200"
-                    >+</button>
-                  </div>
-
-                  <button
-                    onClick={() => removeItem(item.key)}
-                    aria-label={`Supprimer du panier : ${name}`}
-                    className="w-8 h-8 flex items-center justify-center text-[#efdecd]/50 hover:text-red-400 transition-colors duration-200 shrink-0"
+              <fieldset className="flex flex-col gap-2">
+                <legend className="font-dm text-xs text-[#efdecd]/70 uppercase tracking-widest mb-2">
+                  Livraison
+                </legend>
+                {SHIPPING_ZONES.map((z) => (
+                  <label
+                    key={z.id}
+                    className={`flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl border cursor-pointer
+                      transition-all duration-200 ${zoneId === z.id
+                        ? "border-[#e29600] bg-[#e29600]/10"
+                        : "border-[#efdecd]/15 hover:border-[#efdecd]/30"}`}
                   >
-                    <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-                      <path d="M3 3l10 10M13 3L3 13"/>
-                    </svg>
-                  </button>
-                </div>
-              );
-            })
-          )}
-        </div>
-
-        {items.length > 0 && (
-          <div className="px-6 py-6 border-t border-[#efdecd]/10 flex flex-col gap-4">
-
-            {/* Zone de livraison */}
-            <fieldset className="flex flex-col gap-2">
-              <legend className="font-dm text-xs text-[#efdecd]/70 uppercase tracking-widest mb-2">
-                Livraison
-              </legend>
-              {SHIPPING_ZONES.map((z) => (
-                <label
-                  key={z.id}
-                  className={`flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl border cursor-pointer
-                    transition-all duration-200 ${zoneId === z.id
-                      ? "border-[#e29600] bg-[#e29600]/10"
-                      : "border-[#efdecd]/15 hover:border-[#efdecd]/30"}`}
-                >
-                  <span className="flex items-center gap-3">
-                    <input
-                      type="radio"
-                      name="zone"
-                      value={z.id}
-                      checked={zoneId === z.id}
-                      onChange={() => setZoneId(z.id)}
-                      className="accent-[#e29600]"
-                    />
-                    <span className="font-dm text-sm text-[#efdecd]">
-                      {z.label}
-                      <span className="block text-[11px] text-[#efdecd]/60">{z.delay}</span>
+                    <span className="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        name="zone"
+                        value={z.id}
+                        checked={zoneId === z.id}
+                        onChange={() => setZoneId(z.id)}
+                        className="accent-[#e29600]"
+                      />
+                      <span className="font-dm text-sm text-[#efdecd]">
+                        {z.label}
+                        <span className="block text-[11px] text-[#efdecd]/60">{z.delay}</span>
+                      </span>
                     </span>
-                  </span>
-                  <span className="font-dm text-sm text-[#efdecd]/80">{z.price} €</span>
-                </label>
-              ))}
-            </fieldset>
+                    <span className="font-dm text-sm text-[#efdecd]/80">{z.price} €</span>
+                  </label>
+                ))}
+              </fieldset>
 
-            <div className="flex flex-col gap-1 font-dm text-sm">
-              <div className="flex justify-between text-[#efdecd]/70">
-                <span>Articles</span><span>{totalPrice} €</span>
+              <div className="flex flex-col gap-1 font-dm text-sm">
+                <div className="flex justify-between text-[#efdecd]/70">
+                  <span>Articles</span><span>{totalPrice} €</span>
+                </div>
+                <div className="flex justify-between text-[#efdecd]/70">
+                  <span>Livraison</span><span>{zone.price} €</span>
+                </div>
+                <div className="flex items-center justify-between mt-3 pt-3 border-t border-dashed border-[#efdecd]/15">
+                  <span className="text-[#efdecd]/80 uppercase tracking-widest">Total TTC</span>
+                  <span className="font-bebas text-3xl text-[#e29600] tracking-wide leading-none">{grandTotal} €</span>
+                </div>
               </div>
-              <div className="flex justify-between text-[#efdecd]/70">
-                <span>Livraison</span><span>{zone.price} €</span>
-              </div>
-              <div className="flex items-center justify-between mt-2">
-                <span className="text-[#efdecd]/80 uppercase tracking-widest">Total TTC</span>
-                <span className="font-bebas text-2xl text-[#e29600] tracking-wide">{grandTotal} €</span>
-              </div>
-            </div>
 
-            {error && (
-              <p role="alert" className="font-dm text-sm text-red-300 bg-red-900/30 border border-red-500/30 rounded-lg px-3 py-2">
-                {error}
-              </p>
-            )}
-
-            <button
-              onClick={handleCheckout}
-              disabled={loading}
-              className="font-dm w-full flex items-center justify-center gap-2
-              text-sm font-bold tracking-widest uppercase
-              text-[#efdecd] hover:text-black bg-[#390202] hover:bg-[#e29600]
-              disabled:opacity-60 disabled:cursor-wait
-              py-4 rounded-full transition-all duration-200
-              shadow-[0_4px_20px_rgba(57,2,2,0.4)]"
-            >
-              {loading ? "Redirection…" : "Payer"}
-              {!loading && (
-                <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-                  <path d="M2 8h12M9 3l5 5-5 5"/>
-                </svg>
+              {error && (
+                <p role="alert" className="font-dm text-sm text-red-300 bg-red-900/30 border border-red-500/30 rounded-lg px-3 py-2">
+                  {error}
+                </p>
               )}
-            </button>
-            <p className="font-dm text-[11px] text-[#efdecd]/60 text-center flex items-center justify-center gap-1.5">
-              <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5">
-                <rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/>
-              </svg>
-              Paiement sécurisé par Stripe · Carte, Apple Pay, Google Pay
-            </p>
-            <button
-              onClick={clearCart}
-              className="font-dm text-xs text-[#efdecd]/60 hover:text-[#efdecd]
-              tracking-widest uppercase transition-colors duration-200 text-center py-2"
-            >
-              Vider le panier
-            </button>
+
+              <button
+                onClick={handleCheckout}
+                disabled={loading}
+                className="font-dm w-full flex items-center justify-center gap-2
+                text-sm font-bold tracking-widest uppercase
+                text-white hover:text-black bg-[#8f5d00] hover:bg-[#f0a81a]
+                disabled:opacity-60 disabled:cursor-wait
+                py-4 rounded-full transition-all duration-200
+                shadow-[0_8px_24px_rgba(226,150,0,0.25)]"
+              >
+                {loading ? "Redirection…" : `Payer ${grandTotal} €`}
+                {!loading && (
+                  <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+                    <path d="M2 8h12M9 3l5 5-5 5"/>
+                  </svg>
+                )}
+              </button>
+              <p className="font-dm text-[11px] text-[#efdecd]/60 text-center flex items-center justify-center gap-1.5 -mt-2">
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5">
+                  <rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/>
+                </svg>
+                Paiement sécurisé par Stripe · Carte, Apple Pay, Google Pay
+              </p>
+              <p className="font-dm text-[11px] text-[#efdecd]/60 text-center">
+                En payant, vous acceptez nos{" "}
+                <Link to="/cgv" onClick={onClose} className="text-[#e29600] underline underline-offset-2 hover:text-[#efdecd]">
+                  conditions générales de vente
+                </Link>.
+              </p>
+            </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

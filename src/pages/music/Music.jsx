@@ -329,7 +329,7 @@ export default function Music() {
               Discographie
             </p>
             <h2 className="font-bebas mt-3 text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
-              MUSIC
+              MUSIQUE
             </h2>
           </div>
 

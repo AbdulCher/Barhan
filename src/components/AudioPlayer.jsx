@@ -159,8 +159,8 @@ export default function AudioPlayer() {
           className="absolute left-0 top-0 h-full transition-all duration-100"
           style={{
             width: `${progressPct}%`,
-            background: "linear-gradient(to right, #8c0000, #ff3300)",
-            boxShadow: "0 0 6px rgba(255,51,0,0.6)",
+            background: "linear-gradient(to right, #3d0000, #9a1a00)",
+            boxShadow: "0 0 4px rgba(154,26,0,0.35)",
           }}
         />
         <input
@@ -219,42 +219,44 @@ export default function AudioPlayer() {
         {/* Contrôles centraux */}
         <div className="flex flex-col items-center gap-1">
             {/* Boutons */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
+              className="w-10 h-10 flex items-center justify-center rounded-full
+                         text-[#6488ff]/60 hover:text-[#a0b4ff] hover:bg-white/5
+                         transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label="Morceau précédent"
             >
-            <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6 text-[#6488ff]/60"> 
-              <path d="M3 2h2v12H3zM14 2v12L6 8z" />
-            </svg>            
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
+                <path d="M3 2h2v12H3zM14 2v12L6 8z" />
+              </svg>
             </button>
 
             {/* Bouton play — cercle néon rouge */}
             <button
               onClick={togglePlay}
-              className="w-6 h-6 rounded-full flex items-center justify-center
-              transition-all duration-200 hover:scale-110"
+              className="w-11 h-11 rounded-full flex items-center justify-center
+              transition-all duration-200 hover:scale-110 active:scale-95"
               style={{
                 background: isPlaying
-                  ? "rgba(180,0,0,0.9)"
-                  : "rgba(140,0,0,0.3)",
-                border: "1px solid rgba(255,26,26,0.6)",
+                  ? "rgba(100,0,0,0.85)"
+                  : "rgba(70,0,0,0.45)",
+                border: "1px solid rgba(190,30,30,0.45)",
                 boxShadow: isPlaying
-                  ? "0 0 12px rgba(255,26,26,0.6), inset 0 0 8px rgba(255,0,0,0.2)"
-                  : "0 0 6px rgba(255,26,26,0.2)",
-                color: "#ff6666",
+                  ? "0 0 10px rgba(190,30,30,0.35), inset 0 0 8px rgba(0,0,0,0.3)"
+                  : "0 0 4px rgba(190,30,30,0.15)",
+                color: "rgba(160,180,255,0.85)",
               }}
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
               {isPlaying ? (
-                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
-                  className="w-6 h-6">
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"
+                  className="w-5 h-5">
                   <path d="M4 2h3v12H4zM9 2h3v12H9z" />
                 </svg>
                 ) : (
-                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
-                  className="w-6 h-6 ml-0.5 text-[#6488ff]/60">
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"
+                  className="w-5 h-5 ml-0.5">
                   <path d="M4 2l10 6-10 6z" />
                 </svg>
               )}            
@@ -262,11 +264,13 @@ export default function AudioPlayer() {
 
             <button
               onClick={handleNext}
-              className="text-[#efdecd]/60 hover:text-[#ff4444] transition-all duration-200 text-lg hover:scale-110"
+              className="w-10 h-10 flex items-center justify-center rounded-full
+                         text-[#6488ff]/60 hover:text-[#a0b4ff] hover:bg-white/5
+                         transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label="Morceau suivant"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" 
-                  className="w-6 h-6 text-[#6488ff]/60">
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"
+                  className="w-5 h-5">
                   <path d="M11 2h2v12h-2zM2 2v12l8-6z" />
               </svg>
             </button>

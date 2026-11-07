@@ -7,6 +7,7 @@ import Bookme from "./pages/Bookme.jsx";
 import ScrollToTop from "./components/ScrollToTop";
 import Shop from "./pages/Shop";
 import AudioPlayer from "./components/AudioPlayer";
+import CGV from "./pages/CGV";
 
 export default function App() {
   return (
@@ -19,10 +20,12 @@ export default function App() {
         <Route path="/medias" element={<Medias />} />
         <Route path="/bookme" element={<Bookme />} />
         <Route path="/shop" element={<Shop />} /> 
+        <Route path="/cgv" element={<CGV />} />
       </Routes>
       <AudioPlayer />
     </>
   )
 }
+
 
  

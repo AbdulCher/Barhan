@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Icons from "./Icons";
 import PartnerLogo from "../assets/chachalogo.webp";
 
 const NAV_LINKS = [
-  { label: "HOME",    to: "/" },
-  { label: "ABOUT",   to: "/about" },
-  { label: "MUSIC",   to: "/music" },
-  { label: "MEDIAS",  to: "/medias" },
-  { label: "BOOK ME", to: "/bookme" },
-  { label: "SHOP",    to: "/shop" },
+  { label: "ACCUEIL",    to: "/" },
+  { label: "À PROPOS",   to: "/about" },
+  { label: "MUSIQUE",   to: "/music" },
+  { label: "MÉDIAS",  to: "/medias" },
+  { label: "BOUTIQUE",    to: "/shop" },
+  { label: "CONTACTEZ-NOUS", to: "/bookme" },
 ];
 
 const LEGAL_LINKS = [
   { label: "Mentions légales",             to: "/mentions-legales" },
   { label: "Politique de confidentialité", to: "/confidentialite" },
+  { label: "CGV",                          to: "/cgv" },
 ];
 
 const PARTNER = {
@@ -26,6 +27,10 @@ const PARTNER = {
 const YEAR = new Date().getFullYear();
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  // Même règle que le Header : "/" seulement pour l'accueil, sinon le début de l'adresse
+  const isActive = (to) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
+
   return (
     <footer className="relative w-full bg-transparent pb-20 text-[#efdecd] overflow-hidden">
 
@@ -72,16 +77,26 @@ export default function Footer() {
               Navigation
             </p>
             <nav className="flex flex-col gap-2 items-center">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="font-dm text-sm text-[#efdecd]/80 hover:text-[#e29600]
-                  transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link.to);
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    aria-current={active ? "page" : undefined}
+                    className={`font-dm text-sm transition-colors duration-200 flex items-center gap-2
+                      ${active ? "text-[#e29600] font-bold" : "text-[#efdecd]/80 hover:text-[#e29600]"}`}
+                  >
+                    {/* point doré devant la page active (même style que le Header) */}
+                    <span
+                      aria-hidden="true"
+                      className={`w-1.5 h-1.5 rounded-full bg-[#e29600] ${active ? "animate-pulse" : "opacity-0"}`}
+                    />
+                    {link.label}
+                    <span aria-hidden="true" className="w-1.5 h-1.5" />
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
@@ -139,7 +154,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
 
         {/* Copyright */}
-        <div className="w-full sm:w-[280px] flex justify-center sm:justify-start">
+        <div className="w-full sm:flex-1 flex justify-center sm:justify-start">
           <p className="font-dm text-xs text-[#e29600]/80 tracking-wide">
             © {YEAR} Barhan — Tous droits réservés
           </p>
@@ -171,16 +186,24 @@ export default function Footer() {
         </a>
 
         {/* Liens légaux */}
-        <div className="w-full sm:w-[280px] flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3 sm:gap-6">
-          {LEGAL_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="font-dm text-xs text-[#e29600]/80 hover:text-[#e29600] transition-colors duration-200"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="w-full sm:flex-1 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-x-6 sm:gap-y-2">
+          {LEGAL_LINKS.map((link) => {
+            const active = isActive(link.to);
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                aria-current={active ? "page" : undefined}
+                className={`font-dm text-xs transition-colors duration-200 ${
+                  active
+                    ? "text-[#e29600] font-bold underline underline-offset-4 decoration-[#e29600]/60"
+                    : "text-[#e29600]/80 hover:text-[#e29600]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
       </div>

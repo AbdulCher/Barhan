@@ -97,30 +97,30 @@ function DownloadCard({ item }) {
         </div>
       </div>
       <a
-  href={item.file}
-  download
-  className="font-dm flex items-center gap-2 text-xs font-bold tracking-widest uppercase
-             px-4 py-2 rounded-full transition-all duration-200 shrink-0 text-[#efdecd]"
-  style={{
-    background: "rgba(43,62,130,0.5)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(100,136,255,0.4)",
-    boxShadow: "0 0 16px rgba(43,62,130,0.3)",
-  }}
-  onMouseEnter={e => {
-    e.currentTarget.style.background = "#e29600";
-    e.currentTarget.style.border = "1px solid #e29600";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
-    e.currentTarget.style.color = "#000000";
-  }}
-  onMouseLeave={e => {
-    e.currentTarget.style.background = "rgba(43,62,130,0.5)";
-    e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
-    e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
-    e.currentTarget.style.color = "#efdecd";
-  }}
->
+        href={item.file}
+        download
+        className="font-dm flex items-center gap-2 text-xs font-bold tracking-widest uppercase
+        px-4 py-2 rounded-full transition-all duration-200 shrink-0 text-[#efdecd]"
+        style={{
+          background: "rgba(43,62,130,0.5)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(100,136,255,0.4)",
+          boxShadow: "0 0 16px rgba(43,62,130,0.3)",
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = "#e29600";
+          e.currentTarget.style.border = "1px solid #e29600";
+          e.currentTarget.style.boxShadow = "0 0 16px rgba(226,150,0,0.4)";
+          e.currentTarget.style.color = "#000000";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = "rgba(43,62,130,0.5)";
+          e.currentTarget.style.border = "1px solid rgba(100,136,255,0.4)";
+          e.currentTarget.style.boxShadow = "0 0 16px rgba(43,62,130,0.3)";
+          e.currentTarget.style.color = "#efdecd";
+        }}
+      >
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5">
           <path d="M8 2v9M4 7l4 4 4-4M2 14h12"/>
         </svg>
@@ -206,7 +206,7 @@ export default function Bookme() {
               Réservation & Contact
             </p>
             <h2 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
-              BOOK ME
+              RÉSERVATION
             </h2>
           </div>
 

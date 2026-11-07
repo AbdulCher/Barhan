@@ -3,12 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import barhanLogo from "../assets/barhanLogoSans.webp";
 
 const NAV_LINKS = [
-  { label: "HOME",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "ABOUT",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "MUSIC",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "MEDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "BOOK ME",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "SHOP",   to: "/shop",   color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "ACCUEIL",    to: "/",       color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "À PROPOS",  to: "/about",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "MUSIQUE",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "MÉDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "BOUTIQUE",   to: "/shop",   color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "CONTACTEZ-NOUS",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
 ];
 
     
@@ -57,13 +57,13 @@ export default function Header() {
         }}
       />
 
-      <nav className="relative max-w-6xl mx-auto flex items-center justify-between py-3 px-4 sm:px-6">
+      <nav className="relative max-w-[1600px] mx-auto flex items-center justify-between gap-6 py-3 px-4 sm:px-6 lg:px-10">
 
         <Link to="/" aria-label="Barhan Music — Accueil">
           <img src={barhanLogo} alt="Barhan Music" className="h-12 w-auto" />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-0.5 lg:gap-1">
+        <ul className="hidden md:flex items-center gap-1 lg:gap-2 xl:gap-4">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.to);
             return (
@@ -71,8 +71,8 @@ export default function Header() {
                 <Link
                   to={link.to}
                   className="font-dm rounded-xl relative flex flex-col items-center
-                    px-2 lg:px-3 py-1.5 text-[0.85rem] lg:text-[1rem]
-                    font-bold tracking-[0.1em] lg:tracking-[0.15em] uppercase
+                    px-2 lg:px-3 py-1.5 text-[0.75rem] lg:text-[0.85rem] xl:text-[0.95rem]
+                    font-bold tracking-[0.08em] lg:tracking-[0.16em] xl:tracking-[0.2em] uppercase
                     transition-all duration-200 select-none whitespace-nowrap"
                   style={{
                     color: active ? "#e29600" : "#efdecd",
@@ -155,8 +155,8 @@ export default function Header() {
                 <Link
                   to={link.to}
                   className="font-dm flex items-center justify-between px-5 py-4 rounded-xl
-                             text-sm font-bold tracking-widest uppercase
-                             transition-all duration-200"
+                  text-sm font-bold tracking-widest uppercase
+                  transition-all duration-200"
                   style={{
                     backgroundColor: active ? link.color : "rgba(255,255,255,0.04)",
                     color: active ? link.text : "rgba(255,255,255,0.6)",
