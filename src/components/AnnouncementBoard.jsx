@@ -60,7 +60,7 @@ function ItemLink({ link, color }) {
 
 // ── Ambiances de couleur : changez THEME pour essayer ──────────
 //   "velours" (bordeaux), "nuit" (bleu nuit), "ambre" (or fumé)
-const THEME = "nuit";
+const THEME = "or";
 
 const THEMES = {
   velours: {
@@ -68,7 +68,7 @@ const THEMES = {
     glow: "0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,220,190,0.06)",
     label: "#f0b25a",
     accent: "#e29600",
-    bar: "linear-gradient(90deg, #f0b25a, #e0533a)",
+    bar: "linear-gradient(90deg, rgba(226,150,0,0.25), #e29600)",
     dot: "#f0b25a",
   },
   nuit: {
@@ -76,7 +76,7 @@ const THEMES = {
     glow: "0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(200,215,255,0.08)",
     label: "#a0b4ff",
     accent: "#a0b4ff",
-    bar: "linear-gradient(90deg, #7f9bff, #c94a8a)",
+    bar: "linear-gradient(90deg, rgba(226,150,0,0.25), #e29600)",
     dot: "#a0b4ff",
   },
   ambre: {
@@ -84,8 +84,16 @@ const THEMES = {
     glow: "0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,230,180,0.1)",
     label: "#efdecd",
     accent: "#f0b25a",
-    bar: "linear-gradient(90deg, #efdecd, #e29600)",
+    bar: "linear-gradient(90deg, rgba(226,150,0,0.25), #e29600)",
     dot: "#efdecd",
+  },
+    or: {
+    bg: "linear-gradient(135deg, rgba(20,12,6,0.72) 0%, rgba(8,3,1,0.55) 100%)",
+    glow: "0 24px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(226,150,0,0.08)",
+    label: "#e29600",
+    accent: "#e29600",
+    bar: "linear-gradient(90deg, rgba(226,150,0,0.25), #e29600)",
+    dot: "#e29600",
   },
 };
 
@@ -123,6 +131,7 @@ export default function AnnouncementBoard({ className = "", theme = THEME }) {
       style={{ background: t.bg, boxShadow: t.glow }}
     >
       {/* Barre de progression (temps avant l'annonce suivante) */}
+            {/* Barre de progression (temps avant l'annonce suivante) */}
       <div className="h-[2px] w-full bg-white/5 shrink-0" aria-hidden="true">
         <div
           key={`${index}-${running}`}

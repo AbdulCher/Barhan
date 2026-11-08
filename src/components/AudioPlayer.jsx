@@ -139,17 +139,16 @@ export default function AudioPlayer() {
       aria-label="Lecteur audio"
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{
-        background: "linear-gradient(135deg, #1a0000 0%, #2d0505 40%, #0d0d0d 100%)",
-        borderTop: "1px solid rgba(140,0,0,0.4)",
-        boxShadow: "0 -4px 24px rgba(140,0,0,0.3)",
+        background: "linear-gradient(135deg, #0d0804 0%, #080301 50%, #050505 100%)",
+        borderTop: "1px solid rgba(226,150,0,0.15)",
+        boxShadow: "0 -4px 24px rgba(0,0,0,0.6)",
       }}
     >
-      {/* Ligne néon rouge en haut */}
+      {/* Fine ligne dorée en haut */}
       <div
         className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none"
         style={{
-          background: "linear-gradient(to right, transparent, rgba(204,34,0,0.8) 30%, #ff3300 50%, rgba(204,34,0,0.8) 70%, transparent)",
-          boxShadow: "0 0 8px rgba(255,51,0,0.5)",
+          background: "linear-gradient(to right, transparent, rgba(226,150,0,0.5) 30%, #e29600 50%, rgba(226,150,0,0.5) 70%, transparent)",
         }}
       />
 
@@ -159,10 +158,18 @@ export default function AudioPlayer() {
           className="absolute left-0 top-0 h-full transition-all duration-100"
           style={{
             width: `${progressPct}%`,
-            background: "linear-gradient(to right, #3d0000, #9a1a00)",
-            boxShadow: "0 0 4px rgba(154,26,0,0.35)",
+            background: "linear-gradient(to right, rgba(226,150,0,0.25), #e29600)",
           }}
-        />
+        >
+          {/* Boule d'or au bout de la barre (pendant la lecture) */}
+          {progressPct > 0 && (
+            <span
+              aria-hidden="true"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[7px] h-[7px] rounded-full"
+              style={{ background: "#ffd27a", boxShadow: "0 0 6px 2px rgba(226,150,0,0.7)" }}
+            />
+          )}
+        </div>
         <input
           type="range"
           min={0}
@@ -189,7 +196,7 @@ export default function AudioPlayer() {
               width="40"
               height="40"
               className="w-8 h-8 rounded-md object-cover"
-              style={{ boxShadow: "0 0 8px rgba(255,51,0,0.3)" }}
+              style={{ boxShadow: "0 0 8px rgba(226,150,0,0.25)" }}
             />
           ) : (
             /* Placeholder pochette avec néon */
@@ -197,17 +204,16 @@ export default function AudioPlayer() {
               aria-hidden="true"
               className="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
               style={{
-                background: "rgba(140,0,0,0.3)",
-                border: "1px solid rgba(255,51,0,0.3)",
-                boxShadow: "0 0 8px rgba(255,51,0,0.2)",
+                background: "rgba(226,150,0,0.08)",
+                border: "1px solid rgba(226,150,0,0.35)",
               }}
             >
-              <span className="text-[#ff4444] text-xs">♪</span>
+              <span className="text-[#e29600] text-xs">♪</span>
             </div>
           )}
           <div className="hidden sm:flex flex-col overflow-hidden" aria-live="polite">
             <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate"
-              style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
+              style={{ textShadow: "0 0 8px rgba(226,150,0,0.35)" }}>
               {track.title}
             </span>
             <span className="font-dm text-[#efdecd]/60 text-xs truncate">
@@ -223,7 +229,7 @@ export default function AudioPlayer() {
             <button
               onClick={handlePrev}
               className="w-10 h-10 flex items-center justify-center rounded-full
-                         text-[#6488ff]/60 hover:text-[#a0b4ff] hover:bg-white/5
+                         text-[#efdecd]/60 hover:text-[#e29600] hover:bg-white/5
                          transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label="Morceau précédent"
             >
@@ -232,20 +238,18 @@ export default function AudioPlayer() {
               </svg>
             </button>
 
-            {/* Bouton play — cercle néon rouge */}
+            {/* Bouton play — cercle doré (même style que « Dernière sortie ») */}
             <button
               onClick={togglePlay}
               className="w-11 h-11 rounded-full flex items-center justify-center
-              transition-all duration-200 hover:scale-110 active:scale-95"
+              border border-[#e29600] text-[#e29600]
+              hover:bg-[#e29600] hover:text-[#080301]
+              transition-all duration-200 hover:scale-105 active:scale-95"
               style={{
-                background: isPlaying
-                  ? "rgba(100,0,0,0.85)"
-                  : "rgba(70,0,0,0.45)",
-                border: "1px solid rgba(190,30,30,0.45)",
+                background: isPlaying ? "rgba(226,150,0,0.12)" : undefined,
                 boxShadow: isPlaying
-                  ? "0 0 10px rgba(190,30,30,0.35), inset 0 0 8px rgba(0,0,0,0.3)"
-                  : "0 0 4px rgba(190,30,30,0.15)",
-                color: "rgba(160,180,255,0.85)",
+                  ? "0 0 16px rgba(226,150,0,0.4)"
+                  : "0 0 14px rgba(226,150,0,0.25)",
               }}
               aria-label={isPlaying ? "Pause" : "Lecture"}
             >
@@ -265,7 +269,7 @@ export default function AudioPlayer() {
             <button
               onClick={handleNext}
               className="w-10 h-10 flex items-center justify-center rounded-full
-                         text-[#6488ff]/60 hover:text-[#a0b4ff] hover:bg-white/5
+                         text-[#efdecd]/60 hover:text-[#e29600] hover:bg-white/5
                          transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label="Morceau suivant"
             >
@@ -290,7 +294,7 @@ export default function AudioPlayer() {
         {/* Titre + artiste à droite — téléphone uniquement */}
         <div className="flex sm:hidden flex-col items-end text-right overflow-hidden min-w-0" aria-live="polite">
           <span className="font-bebas text-[#e29600] text-sm tracking-widest truncate max-w-full"
-            style={{ textShadow: "0 0 8px rgba(255,68,68,0.5)" }}>
+            style={{ textShadow: "0 0 8px rgba(226,150,0,0.35)" }}>
             {track.title}
           </span>
           <span className="font-dm text-[#efdecd]/60 text-xs truncate max-w-full">
@@ -299,14 +303,15 @@ export default function AudioPlayer() {
         </div>
         {/* Volume */}
         <div className="hidden sm:flex items-center gap-2 w-[120px] justify-self-end">
-          <span className="text-[#ff4444]/50 text-sm" aria-hidden="true">🔈</span>
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 text-[#efdecd]/50">
+            <path d="M2 6h3l4-3v10L5 10H2z" />
+          </svg>
           <div className="relative flex-1 h-1 bg-white/10 rounded-full">
             <div
               className="absolute left-0 top-0 h-full rounded-full"
               style={{
                 width: `${volume * 100}%`,
-                background: "linear-gradient(to right, #6488ff, #ff1a1a)",
-                boxShadow: "0 0 4px rgba(255,26,26,0.5)",
+                background: "linear-gradient(to right, rgba(226,150,0,0.35), #e29600)",
               }}
             />
             <input

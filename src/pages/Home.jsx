@@ -18,6 +18,7 @@ import barhanLogo from "../assets/barhanLogoSans.webp";
 // Photo de la section Présentation : remplacez par votre portrait
 // (ex. import PortraitPhoto from "../assets/barhanPortrait.webp";)
 import PortraitPhoto from "../assets/portraitphotos.jpg";
+import LatestRelease from "../components/LatestRelease";
 
 export default function Home() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -90,6 +91,9 @@ export default function Home() {
               />
             </h1>
             <Icons />
+                        <div className="min-[1240px]:hidden mt-6">
+              <LatestRelease centered />
+            </div>
           </div>
 
           {/* Panneau d'annonces — grand écran (textes dans src/data/Announcements.js)
@@ -99,6 +103,10 @@ export default function Home() {
           <div className="hidden min-[1240px]:flex absolute z-20 top-[72px]
                 left-[calc(50%-610px)]">
             <AnnouncementBoard className="rounded-t-none" />
+          </div>
+                    {/* Dernière sortie — grand écran, en bas à gauche, aligné avec le panneau */}
+          <div className="hidden min-[1200px]:block absolute z-20 bottom-36 left-[calc(50%-580px)]">
+            <LatestRelease />
           </div>
         </section>
 
