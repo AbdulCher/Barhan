@@ -48,15 +48,14 @@ export default function Header() {
       {/* Fond flouté */}
       <div className="absolute inset-0 bg-black backdrop-blur-md" />
 
-      {/* Border bottom dégradé */}
+      {/* Border bottom dégradé (même rouge que le lecteur) */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[1px] z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, transparent, #e29600 50%, #e29600 50%, transparent)",
+            "linear-gradient(to right, transparent, rgba(204,34,0,0.8) 30%, #ff3300 50%, rgba(204,34,0,0.8) 70%, transparent)",
         }}
       />
-
       <nav className="relative max-w-[1600px] mx-auto flex items-center justify-between gap-6 py-3 px-4 sm:px-6 lg:px-10">
 
         <Link to="/" aria-label="Barhan Music — Accueil">
@@ -127,8 +126,8 @@ export default function Header() {
       {/* ✅ Menu mobile — top calculé dynamiquement via headerHeight */}
       <div
         className={`md:hidden fixed inset-x-0 bottom-0 bg-black/97 backdrop-blur-md
-                    transition-all duration-300 ease-in-out flex flex-col
-                    ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        transition-all duration-300 ease-in-out flex flex-col
+        ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{ top: `${headerHeight}px` }}
       >
         <div

@@ -17,7 +17,7 @@ import AnnouncementBoard from "../components/AnnouncementBoard";
 import barhanLogo from "../assets/barhanLogoSans.webp";
 // Photo de la section Présentation : remplacez par votre portrait
 // (ex. import PortraitPhoto from "../assets/barhanPortrait.webp";)
-import PortraitPhoto from "../assets/portraitphoto.webp";
+import PortraitPhoto from "../assets/portraitphotos.jpg";
 
 export default function Home() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -72,19 +72,19 @@ export default function Home() {
           </div>
 
           {/* Panneau d'annonces — téléphone, tablette et petit ordinateur : collé sous le Header */}
-          <div className="min-[1240px]:hidden absolute z-20 top-24 inset-x-0 px-4 flex justify-center">
-            <AnnouncementBoard />
+          <div className="min-[1240px]:hidden absolute z-20 top-[72px] inset-x-0 px-4 flex justify-center">
+            <AnnouncementBoard className="rounded-t-none" />
           </div>
 
-          {/* Contenu centré */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 pt-44 min-[1240px]:pt-0 min-[1240px]:-mt-10">
+                    {/* Contenu centré */}
+          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 min-[1240px]:-mt-10">
             <h1 className="leading-none">
               {/* Texte lu par Google et les lecteurs d'écran, le logo reste l'affichage */}
               <span className="sr-only">Barhan, musicien et compositeur mauritanien installé à Paris</span>
               <img
                 src={barhanLogo}
                 alt=""
-                className="h-32 w-auto"
+                className="h-24 md:h-32 w-auto mb-16 brightness-60 contrast-125"
                 width="400"
                 height="128"
               />
@@ -96,9 +96,9 @@ export default function Home() {
               À gauche du logo, centré en hauteur.
               560px = 460px (largeur du panneau) + 100px (espace jusqu'au centre).
               → Pour l'éloigner du logo : augmentez 560px (ex. 600px). */}
-          <div className="hidden min-[1240px]:flex absolute z-20 top-40 -translate-y-1/2
-                          left-[calc(50%-560px)]">
-            <AnnouncementBoard />
+          <div className="hidden min-[1240px]:flex absolute z-20 top-[72px]
+                left-[calc(50%-610px)]">
+            <AnnouncementBoard className="rounded-t-none" />
           </div>
         </section>
 

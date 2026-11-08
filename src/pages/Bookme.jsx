@@ -242,7 +242,7 @@ export default function Bookme() {
             <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/75 uppercase">
               Concerts · Festivals · Événements
             </p>
-            <h1 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#d9604f] leading-none">
+            <h1 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#c65849] leading-none">
               RÉSERVATION
             </h1>
             <p className="font-dm text-base text-[#efdecd]/85 max-w-[560px] mt-3 leading-relaxed">

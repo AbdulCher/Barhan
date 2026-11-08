@@ -77,7 +77,7 @@ export default function Icons() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.label}
-            className="text-4xl transition-all duration-300 hover:scale-125"
+            className="text-3xl transition-all duration-300 hover:scale-125"
             style={{ color: item.color }}
           >
             {item.icon}

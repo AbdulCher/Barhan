@@ -301,7 +301,10 @@ export default function About() {
 
           <div className="relative z-10 flex flex-col items-center gap-6">
             <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/70 uppercase text-center">
-              Musicien mauritanien · Paris
+              Musicien mauritanien
+            </p>
+            <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/70 uppercase text-center">
+             - - Paris - -
             </p>
             <h1 className="font-bebas text-[32px] tracking-[0.20em] text-[#e29600] leading-none">
               BARHAN
