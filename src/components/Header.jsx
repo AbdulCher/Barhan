@@ -49,11 +49,12 @@ export default function Header() {
       <div className="absolute inset-0 bg-black backdrop-blur-md" />
 
       {/* Border bottom dégradé (même rouge que le lecteur) */}
+            {/* Border bottom dégradé (même or que le lecteur) */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[1px] z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(204,34,0,0.8) 30%, #ff3300 50%, rgba(204,34,0,0.8) 70%, transparent)",
+            "linear-gradient(to right, transparent, rgba(226,150,0,0.5) 30%, #e29600 50%, rgba(226,150,0,0.5) 70%, transparent)",
         }}
       />
       <nav className="relative max-w-[1600px] mx-auto flex items-center justify-between gap-6 py-3 px-4 sm:px-6 lg:px-10">

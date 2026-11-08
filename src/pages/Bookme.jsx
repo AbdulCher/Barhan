@@ -242,8 +242,8 @@ export default function Bookme() {
             <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/75 uppercase">
               Concerts · Festivals · Événements
             </p>
-            <h1 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#c65849] leading-none">
-              RÉSERVATION
+            <h1 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
+              Programmation
             </h1>
             <p className="font-dm text-base text-[#efdecd]/85 max-w-[560px] mt-3 leading-relaxed">
               Pour programmer Barhan sur votre scène ou à votre événement, contactez-nous directement
@@ -255,7 +255,7 @@ export default function Bookme() {
               bg-gradient-to-b from-[#6b0b0b] to-[#2e0202] text-[#efdecd] border border-[#8c0202]
               hover:from-[#821010] hover:to-[#3d0404] shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-all duration-200"
             >
-              Faire une demande ↓
+              Contact ↓
             </a>
           </div>
 
@@ -317,7 +317,7 @@ export default function Bookme() {
 
           {/* Formulaire */}
           <div id="demande" className="flex flex-col gap-6 scroll-mt-28">
-            <SectionTitle eyebrow="Formulaire" title="Faire une demande" />
+            <SectionTitle eyebrow="Formulaire" title="Me contacter" />
 
             {status === "sent" ? (
               <div role="status" className={`${cardBase} p-10 gap-4 items-center text-center`}>

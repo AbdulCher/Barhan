@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Hero */}
         <section
-          className="relative w-full h-screen pt-20 text-[#efdecd] overflow-hidden"
+          className="relative w-full h-svh pt-20 text-[#efdecd] overflow-hidden"
           aria-label="Section principale"
         >
           <div className="absolute inset-0 z-[2] pointer-events-none"
@@ -77,7 +77,7 @@ export default function Home() {
             <AnnouncementBoard className="rounded-t-none" />
           </div>
 
-                    {/* Contenu centré */}
+          {/* Contenu centré */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 min-[1240px]:-mt-10">
             <h1 className="leading-none">
               {/* Texte lu par Google et les lecteurs d'écran, le logo reste l'affichage */}
@@ -85,14 +85,20 @@ export default function Home() {
               <img
                 src={barhanLogo}
                 alt=""
-                className="h-24 md:h-32 w-auto mb-16 brightness-60 contrast-125"
+                                className="h-24 md:h-32 w-auto mb-4 min-[1240px]:mb-16 brightness-75 saturate-75"
                 width="400"
                 height="128"
               />
             </h1>
             <Icons />
-                        <div className="min-[1240px]:hidden mt-6">
-              <LatestRelease centered />
+
+            {/* Dernière sortie — téléphone : accrochée sous les icônes.
+                La boîte a une hauteur de 0, elle ne pousse donc pas le logo vers le haut.
+                → Pour l'éloigner des icônes : augmentez top-8 (ex. top-10). */}
+            <div className="min-[1240px]:hidden relative h-0 w-full">
+              <div className="absolute top-8 inset-x-0 flex justify-center">
+                <LatestRelease centered />
+              </div>
             </div>
           </div>
 
@@ -104,8 +110,8 @@ export default function Home() {
                 left-[calc(50%-610px)]">
             <AnnouncementBoard className="rounded-t-none" />
           </div>
-                    {/* Dernière sortie — grand écran, en bas à gauche, aligné avec le panneau */}
-          <div className="hidden min-[1200px]:block absolute z-20 bottom-36 left-[calc(50%-580px)]">
+          {/* Dernière sortie — grand écran, en bas à gauche */}
+          <div className="hidden min-[1240px]:block absolute z-20 bottom-36 left-[calc(50%-580px)]">
             <LatestRelease />
           </div>
         </section>
