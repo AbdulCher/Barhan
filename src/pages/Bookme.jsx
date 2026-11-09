@@ -13,7 +13,7 @@ const CONTACT = {
 };
 
 const ASSOCIATION = {
-  nom: "Association Ndeysan",
+  nom: "Association Ndaysan",
   adresse: "77 rue des Cités, 93300 Aubervilliers",
   siret: "751 210 121 00016",
   email: "ndaysanasso@gmail.com",

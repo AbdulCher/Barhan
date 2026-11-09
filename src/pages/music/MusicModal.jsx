@@ -31,7 +31,7 @@ export default function MusicModal({ album, onClose }) {
       {/* Bouton fermer */}
      <button
         onClick={onClose}
-        className="absolute top-6 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center
+        className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center
         transition-all duration-200 hover:scale-110"
         style={{
           background: "rgba(43,62,130,0.5)",

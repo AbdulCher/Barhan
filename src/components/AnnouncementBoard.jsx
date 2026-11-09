@@ -65,7 +65,7 @@ const THEME = "or";
 const THEMES = {
   velours: {
     bg: "linear-gradient(135deg, rgba(92,10,10,0.62) 0%, rgba(30,6,4,0.45) 100%)",
-    glow: "0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,220,190,0.06)",
+    glow: "0 24px 60px rgba(0,0,0,0.5)",
     label: "#f0b25a",
     accent: "#e29600",
     bar: "linear-gradient(90deg, rgba(226,150,0,0.25), #e29600)",
@@ -131,9 +131,8 @@ export default function AnnouncementBoard({ className = "", theme = THEME }) {
       style={{ background: t.bg, boxShadow: t.glow }}
     >
       {/* Barre de progression (temps avant l'annonce suivante) */}
-            {/* Barre de progression (temps avant l'annonce suivante) */}
-      <div className="h-[2px] w-full bg-white/5 shrink-0" aria-hidden="true">
-        <div
+           
+<div className="hidden sm:block h-[2px] w-full bg-white/5 shrink-0" aria-hidden="true">        <div
           key={`${index}-${running}`}
           className="h-full"
           style={{
