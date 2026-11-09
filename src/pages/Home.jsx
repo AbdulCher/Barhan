@@ -19,6 +19,7 @@ import barhanLogo from "../assets/barhanLogoSans.webp";
 // (ex. import PortraitPhoto from "../assets/barhanPortrait.webp";)
 import PortraitPhoto from "../assets/portraitphotos.jpg";
 import LatestRelease from "../components/LatestRelease";
+import PlayLink from "../components/PlayLink";
 
 export default function Home() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -48,9 +49,14 @@ export default function Home() {
 
       <div className="relative z-10">
 
-        {/* Hero */}
+        {/* Hero
+            Téléphone / tablette : tout est empilé (panneau → logo → icônes → Dernière sortie)
+            et tient dans l'écran, quelle que soit sa taille.
+            Grand écran (1240px et plus) : panneau en haut à gauche, logo au centre,
+            Dernière sortie en bas à gauche. */}
         <section
-          className="relative w-full h-svh pt-20 text-[#efdecd] overflow-hidden"
+          id="hero"
+          className="relative w-full h-svh flex flex-col text-[#efdecd] overflow-hidden"
           aria-label="Section principale"
         >
           <div className="absolute inset-0 z-[2] pointer-events-none"
@@ -72,49 +78,61 @@ export default function Home() {
             <div className="w-px h-16 bg-gradient-to-t from-transparent to-[#ddb183]/90" />
           </div>
 
-          {/* Panneau d'annonces — téléphone, tablette et petit ordinateur : collé sous le Header */}
-          <div className="min-[1240px]:hidden absolute z-20 top-[72px] inset-x-0 px-4 flex justify-center">
+          {/* ① Panneau d'annonces — téléphone / tablette : collé sous le Header */}
+          <div className="min-[1240px]:hidden relative z-20 shrink-0 pt-[72px] px-4 flex justify-center">
             <AnnouncementBoard className="rounded-t-none" />
           </div>
 
-          {/* Contenu centré */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 min-[1240px]:-mt-10">
+          {/* ② Logo + icônes — centrés dans l'espace restant.
+              La pointe du logo touche les icônes (pas d'espace sur téléphone). */}
+          <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center">
             <h1 className="leading-none">
               {/* Texte lu par Google et les lecteurs d'écran, le logo reste l'affichage */}
               <span className="sr-only">Barhan, musicien et compositeur mauritanien installé à Paris</span>
               <img
                 src={barhanLogo}
                 alt=""
-                                className="h-24 md:h-32 w-auto mb-4 min-[1240px]:mb-16 brightness-75 saturate-75"
+                className="block h-24 [@media(max-height:700px)]:h-20 [@media(max-height:620px)]:h-14
+                           md:h-32 w-auto min-[1240px]:mb-16 brightness-75 saturate-75"
                 width="400"
                 height="128"
               />
             </h1>
             <Icons />
+          </div>
 
-            {/* Dernière sortie — téléphone : accrochée sous les icônes.
-                La boîte a une hauteur de 0, elle ne pousse donc pas le logo vers le haut.
-                → Pour l'éloigner des icônes : augmentez top-8 (ex. top-10). */}
-            <div className="min-[1240px]:hidden relative h-0 w-full">
-              <div className="absolute top-8 inset-x-0 flex justify-center">
-                <LatestRelease centered />
-              </div>
+          {/* ③ Dernière sortie — téléphone / tablette : en bas, centrée.
+              Son bouton play est placé automatiquement à la même distance de la ligne
+              du lecteur que le bouton play du lecteur (calculé par PlayLink). */}
+          <div
+            data-release
+            className="min-[1240px]:hidden relative z-20 shrink-0 flex justify-center"
+            style={{ paddingBottom: "var(--release-bottom, 105px)" }}
+          >
+            {/* Sur les petits téléphones, le bloc est un peu réduit pour que tout tienne */}
+            <div className="origin-bottom [@media(max-height:640px)]:scale-[0.85]">
+              <LatestRelease centered />
             </div>
           </div>
 
-          {/* Panneau d'annonces — grand écran (textes dans src/data/Announcements.js)
-              À gauche du logo, centré en hauteur.
-              560px = 460px (largeur du panneau) + 100px (espace jusqu'au centre).
-              → Pour l'éloigner du logo : augmentez 560px (ex. 600px). */}
+          {/* Panneau d'annonces — grand écran (textes dans src/data/Announcements.js) */}
           <div className="hidden min-[1240px]:flex absolute z-20 top-[72px]
                 left-[calc(50%-610px)]">
             <AnnouncementBoard className="rounded-t-none" />
           </div>
-          {/* Dernière sortie — grand écran, en bas à gauche */}
-          <div className="hidden min-[1240px]:block absolute z-20 bottom-36 left-[calc(50%-580px)]">
+
+          {/* Dernière sortie — grand écran, en bas à gauche (hauteur calculée par PlayLink) */}
+          <div
+            data-release
+            className="hidden min-[1240px]:block absolute z-20 left-[calc(50%-580px)]"
+            style={{ bottom: "var(--release-bottom, 105px)" }}
+          >
             <LatestRelease />
           </div>
         </section>
+
+        {/* Fil d'or entre le play de « Dernière sortie » et le play du lecteur */}
+        <PlayLink />
 
         {/* Présentation (texte important pour le référencement) */}
         <section className="relative w-full px-6 py-20 md:py-24 flex justify-center" aria-labelledby="presentation-title">

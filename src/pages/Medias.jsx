@@ -236,7 +236,7 @@ export default function Medias() {
           <div className="flex flex-col items-center gap-3 mt-10">
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-[#e29600]/60" aria-hidden="true" />
-              <p className="font-dm text-[12px] tracking-[0.35em] text-[#efdecd]/60 uppercase">Galerie</p>
+              <p className="font-bold text-[16px] tracking-[0.35em] text-[#efdecd]/60 uppercase">Galerie</p>
               <span className="h-px w-8 bg-[#e29600]/60" aria-hidden="true" />
             </div>
                         <h1 className="font-bebas text-[32px] mt-3 tracking-[0.20em] text-[#e29600] leading-none">
