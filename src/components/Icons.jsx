@@ -1,8 +1,5 @@
 import {
   FaInstagram,
-  FaTwitter,
-  FaEnvelope,
-  FaFacebook,
   FaYoutube,
   FaSpotify,
   FaBandcamp,
@@ -42,12 +39,15 @@ const ICONS = [
   },
 ];
 
+// Téléphone en paysage (écran de moins de 500px de haut) :
+// on garde la barre horizontale sous le logo, même si l'écran est large.
 export default function Icons() {
   return (
     <>
-      {/* ── Desktop : barre verticale fixe à droite ── */}
+      {/* ── Ordinateur : barre verticale fixe à droite ── */}
       <nav
-        className="hidden md:flex fixed top-1/2 right-6 -translate-y-1/2 flex-col gap-5 z-50"
+        className="hidden md:flex [@media(orientation:landscape)_and_(max-height:500px)]:hidden
+                   fixed top-1/2 right-6 -translate-y-1/2 flex-col gap-5 z-50"
         aria-label="Réseaux sociaux"
       >
         {ICONS.map((item) => (
@@ -65,9 +65,10 @@ export default function Icons() {
         ))}
       </nav>
 
-      {/* ── Mobile : barre horizontale inline ── */}
+      {/* ── Téléphone (portrait et paysage) : barre horizontale sous le logo ── */}
       <nav
-        className="flex md:hidden items-center justify-center gap-6"
+        className="flex md:hidden [@media(orientation:landscape)_and_(max-height:500px)]:flex
+                   items-center justify-center gap-6"
         aria-label="Réseaux sociaux"
       >
         {ICONS.map((item) => (
@@ -87,4 +88,3 @@ export default function Icons() {
     </>
   );
 }
-

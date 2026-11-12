@@ -53,10 +53,12 @@ export default function Home() {
             Téléphone / tablette : tout est empilé (panneau → logo → icônes → Dernière sortie)
             et tient dans l'écran, quelle que soit sa taille.
             Grand écran (1240px et plus) : panneau en haut à gauche, logo au centre,
-            Dernière sortie en bas à gauche. */}
+            Dernière sortie en bas à gauche.
+            Téléphone en paysage (écran de moins de 500px de haut) : pas de panneau,
+            logo + icônes à gauche, Dernière sortie à droite. */}
         <section
           id="hero"
-          className="relative w-full h-svh flex flex-col text-[#efdecd] overflow-hidden"
+          className="relative w-full h-svh flex flex-col [@media(orientation:landscape)_and_(max-height:500px)]:flex-row text-[#efdecd] overflow-hidden"
           aria-label="Section principale"
         >
           <div className="absolute inset-0 z-[2] pointer-events-none"
@@ -67,7 +69,7 @@ export default function Home() {
           />
 
           {/* Texte vertical gauche */}
-          <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden md:flex flex-col items-center gap-3" aria-hidden="true">
+          <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden md:flex [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center gap-3" aria-hidden="true">
             <div className="w-px h-16 bg-gradient-to-b from-transparent to-[#ddb183]" />
             <p
               className="font-dm text-[14px] tracking-[0.35em] text-[#efdecd] uppercase"
@@ -79,13 +81,13 @@ export default function Home() {
           </div>
 
           {/* ① Panneau d'annonces — téléphone / tablette : collé sous le Header */}
-          <div className="min-[1240px]:hidden relative z-20 shrink-0 pt-[72px] px-4 flex justify-center">
+          <div className="min-[1240px]:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden relative z-20 shrink-0 pt-[72px] px-4 flex justify-center">
             <AnnouncementBoard className="rounded-t-none" />
           </div>
 
           {/* ② Logo + icônes — centrés dans l'espace restant.
               La pointe du logo touche les icônes (pas d'espace sur téléphone). */}
-          <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center">
+          <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center [@media(orientation:landscape)_and_(max-height:500px)]:pt-[72px] [@media(orientation:landscape)_and_(max-height:500px)]:pb-[90px]">
             <h1 className="leading-none">
               {/* Texte lu par Google et les lecteurs d'écran, le logo reste l'affichage */}
               <span className="sr-only">Barhan, musicien et compositeur mauritanien installé à Paris</span>
@@ -106,7 +108,7 @@ export default function Home() {
               du lecteur que le bouton play du lecteur (calculé par PlayLink). */}
           <div
             data-release
-            className="min-[1240px]:hidden relative z-20 shrink-0 flex justify-center"
+            className="min-[1240px]:hidden relative z-20 shrink-0 flex justify-center [@media(orientation:landscape)_and_(max-height:500px)]:self-end [@media(orientation:landscape)_and_(max-height:500px)]:pr-[6vw]"
             style={{ paddingBottom: "var(--release-bottom, 105px)" }}
           >
             {/* Sur les petits téléphones, le bloc est un peu réduit pour que tout tienne */}

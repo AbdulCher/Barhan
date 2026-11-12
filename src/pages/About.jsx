@@ -354,6 +354,7 @@ export default function About() {
                 <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Bio</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
+              
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 <strong className="font-bold text-[#efdecd]">Barhan</strong> (Barhan Ndiaye, connu auparavant sous le nom
                 de Bakhan) est un chanteur et compositeur mauritanien installé à Paris.
