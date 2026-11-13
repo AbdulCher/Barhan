@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { label: "MUSIQUE",  to: "/music",  color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
   { label: "MÉDIAS", to: "/medias", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
   { label: "BOUTIQUE",   to: "/shop",   color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
-  { label: "CONTACTEZ-NOUS",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "PRESSKIT",   to: "/presskit", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
+  { label: "CONTACT",to: "/bookme", color: "rgba(43,62,130,0.5)", text: "#EFDECD" },
 ];
 
     
@@ -48,8 +49,7 @@ export default function Header() {
       {/* Fond flouté */}
       <div className="absolute inset-0 bg-black backdrop-blur-md" />
 
-      {/* Border bottom dégradé (même rouge que le lecteur) */}
-            {/* Border bottom dégradé (même or que le lecteur) */}
+      {/* Border bottom dégradé (même or que le lecteur) */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[1px] z-10 pointer-events-none"
         style={{
@@ -63,7 +63,8 @@ export default function Header() {
           <img src={barhanLogo} alt="Barhan Music" className="h-12 w-auto" />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-1 lg:gap-2 xl:gap-4">
+        {/* Menu ordinateur : à partir de 1024px de large (en dessous : menu ☰) */}
+        <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-3">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.to);
             return (
@@ -71,8 +72,8 @@ export default function Header() {
                 <Link
                   to={link.to}
                   className="font-dm rounded-xl relative flex flex-col items-center
-                    px-2 lg:px-3 py-1.5 text-[0.75rem] lg:text-[0.85rem] xl:text-[0.95rem]
-                    font-bold tracking-[0.08em] lg:tracking-[0.16em] xl:tracking-[0.2em] uppercase
+                    px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.75rem] xl:text-[0.85rem] 2xl:text-[0.95rem]
+                    font-bold tracking-[0.08em] xl:tracking-[0.12em] 2xl:tracking-[0.2em] uppercase
                     transition-all duration-200 select-none whitespace-nowrap"
                   style={{
                     color: active ? "#e29600" : "#efdecd",
@@ -111,7 +112,7 @@ export default function Header() {
         {/* Hamburger mobile */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 z-10"
+          className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 z-10"
           aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         >
           <span className={`block h-px w-6 bg-white transition-all duration-300 origin-center
@@ -126,7 +127,7 @@ export default function Header() {
 
       {/* ✅ Menu mobile — top calculé dynamiquement via headerHeight */}
       <div
-        className={`md:hidden fixed inset-x-0 bottom-0 bg-black/97 backdrop-blur-md
+        className={`lg:hidden fixed inset-x-0 bottom-0 bg-black/97 backdrop-blur-md overflow-y-auto
         transition-all duration-300 ease-in-out flex flex-col
         ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{ top: `${headerHeight}px` }}
@@ -139,7 +140,7 @@ export default function Header() {
           }}
         />
 
-        <ul className="relative z-10 flex flex-col items-stretch px-6 pt-8 gap-2">
+        <ul className="relative z-10 flex flex-col items-stretch px-6 pt-6 gap-2">
           {NAV_LINKS.map((link, i) => {
             const active = isActive(link.to);
             return (
@@ -154,7 +155,7 @@ export default function Header() {
               >
                 <Link
                   to={link.to}
-                  className="font-dm flex items-center justify-between px-5 py-4 rounded-xl
+                  className="font-dm flex items-center justify-between px-5 py-3.5 rounded-xl
                   text-sm font-bold tracking-widest uppercase
                   transition-all duration-200"
                   style={{
@@ -176,7 +177,7 @@ export default function Header() {
           })}
         </ul>
 
-        <div className="relative z-10 mt-auto px-6 pb-10 flex flex-col items-center gap-3">
+        <div className="relative z-10 mt-auto px-6 pt-6 pb-10 flex flex-col items-center gap-3">
           <div className="w-full h-px bg-white/10 mb-4" />
           <p className="font-dm text-xs tracking-widest uppercase text-white/20">
             © {new Date().getFullYear()} Barhan

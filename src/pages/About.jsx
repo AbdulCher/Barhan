@@ -20,6 +20,11 @@ function today() {
   return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
 }
 
+// Fond sombre et transparent sous les paragraphes de la Bio
+// → Plus sombre : bg-black/60. Plus léger : bg-black/35.
+const PANEL =
+  "flex flex-col gap-6 p-6 md:p-10 rounded-2xl bg-black/45 backdrop-blur-md border border-[#efdecd]/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)]";
+
 const PAST_PREVIEW = 8; // nombre de concerts passés affichés avant « Voir tout »
 
 // ── Citations presse ───────────────────────────────────────────
@@ -268,7 +273,7 @@ export default function About() {
     <>
       <Helmet>
         <title>Barhan — Biographie du musicien mauritanien | Concerts & presse</title>
-        <meta name="description" content="Biographie de Barhan (ex-Bakhan), chanteur et compositeur mauritanien installé à Paris : de Nouakchott à Dakar, N'Djaména et Nairobi, entre traditions, jazz et blues. Concerts, presse et contact." />
+        <meta name="description" content="Biographie de Barhan (ex-Bakhan), chanteur et compositeur mauritanien installé à Paris : de Nouakchott à Nairobi, entre traditions africaines, jazz, blues, soul et chanson française. Compositions et reprises, concerts, presse et contact." />
         <meta property="og:title" content="Barhan — Biographie du musicien mauritanien" />
         <meta property="og:url" content="https://www.barhanmusic.com/about" />
       </Helmet>
@@ -354,10 +359,14 @@ export default function About() {
                 <h3 className="font-bold text-[18px] tracking-[0.10em] text-[#e29600] uppercase">Bio</h3>
                 <div className="flex-1 h-px bg-[#efdecd]/20" />
               </div>
+              <div className={PANEL}>
               
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 <strong className="font-bold text-[#efdecd]">Barhan</strong> (Barhan Ndiaye, connu auparavant sous le nom
-                de Bakhan) est un chanteur et compositeur mauritanien installé à Paris.
+                de Bakhan) est un chanteur, guitariste et compositeur mauritanien installé à Paris. Artiste sans
+                frontières, il cherche dans les mélodies et les rythmes du monde ce qui relie les humains : du rap de
+                ses débuts aux traditions d'Afrique de l'Ouest, puis au jazz, au blues, à la soul et à la chanson
+                française, il passe d'un style à l'autre avec la même sincérité.
               </p>
               <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
                 Son aventure musicale commence en 1999 sous le pseudonyme d'Alias Chico. Son duo avec le rappeur
@@ -396,6 +405,14 @@ export default function About() {
                 pianiste issu de l'école de musique Didier Lockwood à Melun, qui lui présentera tous les membres
                 de son groupe actuel.
               </p>
+              <p className="font-dm text-lg leading-loose text-[#efdecd]/85 font-light">
+                Aujourd'hui, Barhan mène deux chemins qui se répondent. D'un côté, ses compositions, qui font
+                dialoguer l'Afrique et la musique occidentale. De l'autre, un répertoire de grands standards — Ray
+                Charles, Nina Simone, Bill Withers, Oscar Brown Jr., Jacques Brel, Édith Piaf… — qu'il revisite avec
+                sa voix et sa guitare, sur scène comme dans les hôtels, les bars et les soirées privées. Deux façons
+                de raconter la même chose : <em>la musique comme langue commune</em>.
+              </p>
+              </div>
             </div>
 
             {/* ── CONCERTS ── */}

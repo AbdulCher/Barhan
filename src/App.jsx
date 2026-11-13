@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Shop from "./pages/Shop";
 import AudioPlayer from "./components/AudioPlayer";
 import CGV from "./pages/CGV";
+import Presskit from "./pages/Presskit";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/medias" element={<Medias />} />
         <Route path="/bookme" element={<Bookme />} />
         <Route path="/shop" element={<Shop />} /> 
+        <Route path="/presskit" element={<Presskit />} />
         <Route path="/cgv" element={<CGV />} />
       </Routes>
       <AudioPlayer />
