@@ -15,14 +15,14 @@ function AlbumCard({ album, onListen }) {
   return (
     <div
       className={`
-        relative flex flex-col
-        bg-black/45 backdrop-blur-md
-        border border-l-[3px] rounded-2xl overflow-hidden
-        shadow-[0_18px_45px_rgba(0,0,0,0.5)]
-        transition-all duration-500
-        ${open
-          ? "border-[#e29600]/45 border-l-[#e29600] shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_30px_rgba(226,150,0,0.12)]"
-          : "border-[#efdecd]/12 border-l-[#e29600]/70 hover:border-[#e29600]/45 hover:border-l-[#e29600] hover:shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_24px_rgba(226,150,0,0.1)]"}
+      relative flex flex-col
+      bg-black/45 backdrop-blur-md
+      border border-l-[3px] rounded-2xl overflow-hidden
+      shadow-[0_18px_45px_rgba(0,0,0,0.5)]
+      transition-all duration-500
+      ${open
+        ? "border-[#e29600]/45 border-l-[#e29600] shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_30px_rgba(226,150,0,0.12)]"
+        : "border-[#efdecd]/12 border-l-[#e29600]/70 hover:border-[#e29600]/45 hover:border-l-[#e29600] hover:shadow-[0_18px_45px_rgba(0,0,0,0.5),0_0_24px_rgba(226,150,0,0.1)]"}
       `}
     >
       <div
@@ -148,7 +148,7 @@ function TrackCard({ track, index, isPlaying, onPlay }) {
   return (
     <div
       className="relative flex items-center gap-5 px-5 py-4 rounded-xl cursor-pointer group
-                 transition-all duration-300"
+      transition-all duration-300"
       style={{
         background: isPlaying
           ? "rgba(43,62,130,0.35)"
@@ -244,7 +244,7 @@ function TrackCard({ track, index, isPlaying, onPlay }) {
         ) : (
           <div
             className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300
-                       opacity-0 group-hover:opacity-100"
+            opacity-0 group-hover:opacity-100"
             style={{
               background: "rgba(43,62,130,0.4)",
               border: "1px solid rgba(43,62,130,0.5)",

@@ -220,8 +220,7 @@ export default function Medias() {
       />
       {/* Voile léger sur le fond rouge (comme avant).
           → Plus sombre : augmentez /40 (ex. /55). */}
-      <div className="fixed inset-0 z-[2] bg-[#030405]/40" />
-
+      <div className="fixed inset-0 z-[2] bg-[#080301]/70" />
       <Header />
 
       <section className="relative z-10 w-full min-h-screen bg-transparent text-white pt-28 pb-24 overflow-hidden">

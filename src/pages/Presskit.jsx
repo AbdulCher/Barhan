@@ -16,8 +16,17 @@ import BgHeros from "../assets/bgHeros.webp";
 import { tracks } from "../data/Tracks";
 
 const PK = {
-  accroche: "Un artiste sans frontières, qui cherche dans les mélodies et les rythmes du monde ce qui relie les humains.",
-  genres: ["Afro-jazz", "Jazz & soul", "Blues", "Chanson française", "Musiques d'Afrique de l'Ouest"],
+  // Photo principale (en haut de la page) : fichier dans public/assets/presskit/
+  photoPrincipale: {
+    src: "/assets/presskit/portraittropikantes.webp",
+    alt: "Barhan chante sur scène au festival Tropikante",
+    credit: "", // À COMPLÉTER : « © Nom du photographe »
+  },
+
+  // Phrase signature + ligne qui explique
+  accroche: "Chanter ce qui nous relie.",
+  sousAccroche: "Chanteur et guitariste mauritanien, entre blues du Sahel, jazz, soul et chanson française.",
+  genres: ["Blues du Sahel", "Afro-jazz", "Jazz & soul", "Chanson française"],
 
   // La démarche (texte qui explique tout en quelques lignes)
   demarche:
@@ -42,8 +51,6 @@ const PK = {
       ideal: "Hôtels, bars, restaurants, soirées privées et événements",
     },
   ],
-  // Formules sur scène — À COMPLÉTER (ex. "Solo · Duo · Trio · Groupe complet")
-  formules: "Solo · Duo · Trio · Groupe complet",
 
   citation: {
     texte: "Une voix qui traverse les frontières et les époques.",
@@ -94,9 +101,14 @@ const PK = {
     "Installé en France, finaliste du Prix Découvertes RFI en 2009, il sort N'deysan à Paris en 2011, puis Mots de tête, enregistré à Nairobi en 2018 : c'est avec cet album que Bakhan devient Barhan. De retour à Paris en 2019, il forme son groupe actuel autour du pianiste Paul Sany.",
   ],
 
-  // Formation sur scène — À COMPLÉTER
-  formation: [
-    { role: "Chant, guitare", nom: "Barhan" },
+  // Formules sur scène : la formation s'adapte à l'événement
+  formules: [
+    { nom: "Solo", detail: "Voix & guitare", ideal: "Hôtels, bars, restaurants, soirées privées" },
+    { nom: "Duo / Trio", detail: "Avec piano, saxophone ou basse", ideal: "Bars à jazz, cocktails, petites salles" },
+    { nom: "Quintet", detail: "Le groupe au complet", ideal: "Festivals, salles de concert" },
+  ],
+  // Musiciens qui accompagnent régulièrement Barhan
+  musiciens: [
     { role: "Piano", nom: "Paul Sany" },
     { role: "Saxophone", nom: "Tom Naouri" },
     { role: "Basse", nom: "Denis Pitalua" },
@@ -106,6 +118,7 @@ const PK = {
   // Photos HD : mettez les fichiers dans public/assets/presskit/
   // (une version légère pour l'affichage + la version HD à télécharger)
   photos: [
+    { apercu: "/assets/presskit/barhan-live-tropikante.webp", hd: "/assets/presskit/barhan-live-tropikante.webp", credit: "" },
     // { apercu: "/assets/presskit/barhan-1-web.jpg", hd: "/assets/presskit/barhan-1-hd.jpg", credit: "© Nom du photographe" },
   ],
 
@@ -242,24 +255,44 @@ export default function Presskit() {
       <Header />
 
       <main className="relative z-10 text-[#efdecd]">
-        {/* ① EN-TÊTE */}
-        <section className="min-h-[70svh] flex flex-col items-center justify-center text-center px-6 pt-28 pb-12 gap-5">
-          <p className="font-bold text-[13px] md:text-[15px] tracking-[0.35em] text-[#efdecd]/70 uppercase">Presskit</p>
-          <h1 className="font-bebas text-6xl md:text-8xl tracking-[0.15em] text-[#e29600] leading-none">BARHAN</h1>
-          <p className="max-w-[640px] text-lg md:text-xl leading-relaxed text-[#efdecd]/85" style={{ fontFamily: "'Cinzel', serif" }}>
-            {PK.accroche}
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {PK.genres.map((g) => (
-              <span key={g} className="font-dm text-[11px] tracking-widest uppercase px-3 py-1 rounded-full border border-[#efdecd]/20 text-[#efdecd]/75">
-                {g}
-              </span>
-            ))}
+        {/* ① EN-TÊTE : texte + photo */}
+        <section className="max-w-[1100px] mx-auto px-6 pt-28 md:pt-32 pb-14 grid md:grid-cols-[1fr_1.1fr] gap-10 md:gap-14 items-center">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-5 order-2 md:order-1">
+            <p className="font-bold text-[13px] md:text-[15px] tracking-[0.35em] text-[#efdecd]/70 uppercase">Presskit</p>
+            <h1 className="font-bebas text-6xl md:text-8xl tracking-[0.15em] text-[#e29600] leading-none">BARHAN</h1>
+            <p className="text-2xl md:text-3xl leading-snug text-[#efdecd]" style={{ fontFamily: "'Cinzel', serif" }}>
+              {PK.accroche}
+            </p>
+            <p className="max-w-[480px] font-dm text-base md:text-lg leading-relaxed text-[#efdecd]/80">
+              {PK.sousAccroche}
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-2">
+              {PK.genres.map((g) => (
+                <span key={g} className="font-dm text-[11px] tracking-widest uppercase px-3 py-1 rounded-full border border-[#efdecd]/20 text-[#efdecd]/75">
+                  {g}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
+              <a href={`mailto:${PK.email}?subject=Booking%20Barhan`} className={BTN_GOLD}>✉ Booking</a>
+              <a href="#documents" className={BTN_GOLD}>↓ Documents</a>
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 mt-2">
-            <a href={`mailto:${PK.email}?subject=Booking%20Barhan`} className={BTN_GOLD}>✉ Booking</a>
-            <a href="#documents" className={BTN_GOLD}>↓ Documents</a>
-          </div>
+
+          {/* Photo avec cadre doré décalé (comme sur l'accueil) */}
+          <figure className="relative order-1 md:order-2 w-full max-w-[560px] mx-auto">
+            <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-[#e29600]/45" />
+            <img
+              src={PK.photoPrincipale.src}
+              alt={PK.photoPrincipale.alt}
+              width="1920"
+              height="1272"
+              className="relative w-full aspect-[3/2] object-cover object-[70%_40%] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+            />
+            {PK.photoPrincipale.credit && (
+              <figcaption className="relative mt-2 font-dm text-[10px] text-right text-[#efdecd]/55">{PK.photoPrincipale.credit}</figcaption>
+            )}
+          </figure>
         </section>
 
         <div className="max-w-[900px] mx-auto px-6 pb-28 flex flex-col gap-16">
@@ -332,11 +365,6 @@ export default function Presskit() {
                 </article>
               ))}
             </div>
-            {PK.formules && (
-              <p className="text-center font-dm text-xs tracking-[0.25em] uppercase text-[#efdecd]/70">
-                Formules : <span className="text-[#e29600]">{PK.formules}</span>
-              </p>
-            )}
           </section>
 
           {/* ③ MUSIQUE + VIDÉO */}
@@ -385,17 +413,25 @@ export default function Presskit() {
             </div>
           </section>
 
-          {/* ⑤ FORMATION */}
-          <section aria-labelledby="pk-formation" className="flex flex-col gap-6">
-            <SectionTitle id="pk-formation">Sur scène</SectionTitle>
-            <div className={`${PANEL} p-6 grid sm:grid-cols-2 gap-x-10 gap-y-3`}>
-              {PK.formation.map((f) => (
-                <div key={f.role + f.nom} className="flex justify-between gap-4 border-b border-[#efdecd]/7 pb-2">
-                  <span className="font-dm text-sm text-[#efdecd]/65">{f.role}</span>
-                  <span className="font-dm text-sm font-bold text-[#efdecd]/90 text-right">{f.nom}</span>
+          {/* ⑤ FORMULES SUR SCÈNE */}
+          <section aria-labelledby="pk-formules" className="flex flex-col gap-6">
+            <SectionTitle id="pk-formules">Formules sur scène</SectionTitle>
+            <p className="text-center font-dm text-base text-[#efdecd]/80">
+              La formation s'adapte au lieu et à l'événement, du solo au groupe complet.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {PK.formules.map((f) => (
+                <div key={f.nom} className={`${PANEL} p-5 flex flex-col gap-2 text-center`}>
+                  <span className="font-bebas text-3xl tracking-wider text-[#e29600] leading-none">{f.nom}</span>
+                  <span className="font-dm text-sm font-bold text-[#efdecd]/90">{f.detail}</span>
+                  <span className="font-dm text-xs leading-snug text-[#efdecd]/65">{f.ideal}</span>
                 </div>
               ))}
             </div>
+            <p className="text-center font-dm text-xs leading-relaxed text-[#efdecd]/65">
+              <span className="font-bold tracking-widest uppercase text-[#e29600]">Musiciens réguliers · </span>
+              {PK.musiciens.map((m) => `${m.nom} (${m.role.toLowerCase()})`).join(" · ")}
+            </p>
           </section>
 
           {/* ⑥ PHOTOS HD */}
