@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { label: "MUSIQUE",   to: "/music" },
   { label: "MÉDIAS",  to: "/medias" },
   { label: "BOUTIQUE",    to: "/shop" },
-  { label: "CONTACTEZ-NOUS", to: "/bookme" },
+  { label: "PRESSKIT",    to: "/presskit" },
+  { label: "CONTACT",     to: "/bookme" },
 ];
 
 const LEGAL_LINKS = [

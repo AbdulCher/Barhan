@@ -55,9 +55,9 @@ export default function MusicModal({ album, onClose }) {
           onClick={onClose}
           aria-label="Fermer"
           className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full flex items-center justify-center
-                     bg-black/70 backdrop-blur-md border border-[#e29600]/60 text-[#efdecd]
-                     hover:bg-[#e29600] hover:border-[#e29600] hover:text-black hover:scale-105
-                     transition-all duration-200"
+          bg-black/70 backdrop-blur-md border border-[#e29600]/60 text-[#efdecd]
+          hover:bg-[#e29600] hover:border-[#e29600] hover:text-black hover:scale-105
+          transition-all duration-200"
           style={{ boxShadow: "0 0 14px rgba(0,0,0,0.5)" }}
         >
           <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" className="w-4 h-4">

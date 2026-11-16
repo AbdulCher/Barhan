@@ -117,9 +117,17 @@ const PK = {
 
   // Photos HD : mettez les fichiers dans public/assets/presskit/
   // (une version légère pour l'affichage + la version HD à télécharger)
+  // ratio = largeur ÷ hauteur de la case. Les 3 photos ont toujours la même hauteur :
+  //   1    = carré           → photos des côtés
+  //   1.5  = paysage 3:2     → photo du groupe (mettez le format réel de votre photo
+  //                            pour qu'elle s'affiche en entier : 1.78 pour du 16:9)
   photos: [
-    { apercu: "/assets/presskit/barhan-live-tropikante.webp", hd: "/assets/presskit/barhan-live-tropikante.webp", credit: "" },
-    // { apercu: "/assets/presskit/barhan-1-web.jpg", hd: "/assets/presskit/barhan-1-hd.jpg", credit: "© Nom du photographe" },
+    // Gauche
+    { apercu: "/assets/presskit/dessin.png", hd: "/assets/presskit/dessin.png", credit: "", ratio: 1, position: "object-[56%_35%]" },
+    // Milieu (plus large) : la photo du groupe
+    { apercu: "/assets/presskit/barhanband-hd.png", hd: "/assets/presskit/barhanband-hd.png", credit: "© Nom du photographe", ratio: 1.5 },
+    // Droite
+    { apercu: "/assets/presskit/portraittropikantes.webp", hd: "/assets/presskit/portraittropikantes.webp", credit: "", ratio: 1, position: "object-[56%_35%]" },
   ],
 
   // Documents : mettez les fichiers dans public/assets/docs/
@@ -435,15 +443,28 @@ export default function Presskit() {
           </section>
 
           {/* ⑥ PHOTOS HD */}
-          <section aria-labelledby="pk-photos" className="flex flex-col gap-6">
+          <section aria-labelledby="pk-photos"
+            className="relative left-1/2 -translate-x-1/2 w-[min(1052px,calc(100vw-3rem))] flex flex-col gap-6">
             <SectionTitle id="pk-photos">Photos HD</SectionTitle>
             {PK.photos.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div
+                className="grid grid-cols-1 sm:grid-cols-[var(--cols)] gap-4 items-start"
+                style={{ "--cols": PK.photos.map((ph) => `${ph.ratio || 1}fr`).join(" ") }}
+              >
                 {PK.photos.map((ph, i) => (
-                  <a key={i} href={ph.hd} download
-                    className="group relative block overflow-hidden rounded-xl border border-[#efdecd]/15 hover:border-[#e29600]">
-                    <img src={ph.apercu} alt={`Photo presse de Barhan ${i + 1}`} loading="lazy"
-                      className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <a
+                    key={i}
+                    href={ph.hd}
+                    download
+                    className="group relative block overflow-hidden rounded-xl border border-[#efdecd]/15 hover:border-[#e29600]"
+                    style={{ aspectRatio: ph.ratio || 1 }}
+                  >
+                    <img
+                      src={ph.apercu}
+                      alt={`Photo presse de Barhan ${i + 1}`}
+                      loading="lazy"
+                      className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${ph.position || ""}`}
+                    />
                     <span className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
                       <span className="font-dm text-[10px] text-[#efdecd]/70">{ph.credit}</span>
                       <span className="font-dm text-[11px] font-bold tracking-widest uppercase text-[#e29600]">↓ HD</span>

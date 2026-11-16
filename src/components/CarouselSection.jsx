@@ -109,7 +109,7 @@ export default function CarouselSection({ albums, onAlbumClick }) {
                     src={album.cover}
                     alt=""
                     className="w-full h-[220px] sm:h-[260px] md:h-[310px] object-cover rounded-2xl
-                               shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+                    shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
                     style={{ opacity: dim, transition: "opacity 500ms" }}
                     draggable={false}
                   />
